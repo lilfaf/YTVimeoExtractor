@@ -4,7 +4,7 @@ YTVimeoExtractor helps you get mp4 urls which can be use in iOS's native player.
 
 YTVimeoExtractor doesn't use UIWebView which makes it fast and clean.
 
-### Install
+## Install
 
 It will be available via CocoaPods soon...
 
