@@ -21,7 +21,7 @@ Create an instance of YTVimeoExtractor and pass it the video url and the desired
 ```objc
 self.extractor = [[YTVimeoExtractor alloc] initWithURL:@"http://vimeo.com/58600663" quality:YTVimeoVideoQualityMedium];
 self.extractor.delegate = self;
-[_.extractor start];
+[self.extractor start];
 ```
 
 Then implement YTVimeoExtractor delegate methods in your ViewController.
