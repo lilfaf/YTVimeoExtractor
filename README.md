@@ -6,9 +6,15 @@ YTVimeoExtractor doesn't use UIWebView which makes it fast and clean.
 
 ## Install
 
-It will be available via CocoaPods soon...
+The preferred way of installation is via [CocoaPods](http://cocoapods.org). Just add to your Podfile
 
-Just copy the YTVimeoExtractor folder to your project.
+```ruby
+pod 'YTVimeoExtractor'
+```
+
+and run `pod install`.
+
+Alternatively you can just copy the YTVimeoExtractor folder to your project.
 
 ```objc
 #import "YTVimeoExtractor.h"
@@ -44,7 +50,7 @@ Check the sample application for more details.
 
 ## Requirements
 
-YTVimeoExtractor requires iOS 5.0 and above as it is deployed for an ARC environment.
+YTVimeoExtractor requires iOS 4.0 and above as it is deployed for an ARC environment.
 
 ## License
 
