@@ -15,6 +15,9 @@
 #define YTVimeoExtractorErrorCodeNoStreamURL 2
 #define YTVimeoExtractorErrorCodeNotInitialized 3
 
+typedef void (^YTSuccessBlock)(NSURL *videoURL);
+typedef void (^YTErrorBlock)(NSError *error);
+
 typedef enum {
     YTVimeoVideoQualityLow    = 0,
     YTVimeoVideoQualityMedium = 1,
@@ -32,6 +35,15 @@ typedef enum {
 @property (strong, nonatomic, readonly) NSURL *streamURL;
 
 @property (unsafe_unretained, nonatomic) id<YTVimeoExtractorDelegate> delegate;
+
++ (void)fetchVideoURLFromURL:(NSString *)videoURL
+                     quality:(YTVimeoVideoQuality)quality
+                     success:(YTSuccessBlock)success
+                     failure:(YTErrorBlock)failure;
++ (void)fetchVideoURLFromID:(NSString *)videoID
+                    quality:(YTVimeoVideoQuality)quality
+                    success:(YTSuccessBlock)success
+                    failure:(YTErrorBlock)failure;
 
 - (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality;
 - (id)initWithID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality;
