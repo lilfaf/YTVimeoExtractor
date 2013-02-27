@@ -11,6 +11,8 @@
 @property (strong, nonatomic) NSURLConnection *connection;
 @property (strong, nonatomic) NSMutableData *buffer;
 @property (strong, nonatomic) NSString *playerURL;
+@property (copy, nonatomic) YTSuccessBlock success;
+@property (copy, nonatomic) YTErrorBlock failure;
 
 - (void)setupRequest:(NSMutableURLRequest **)request;
 - (void)extractorFailedWithMessage:(NSString*)message errorCode:(int)code;
@@ -19,6 +21,29 @@
 @end
 
 @implementation YTVimeoExtractor
++ (void)fetchVideoURLFromURL:(NSString *)videoURL
+                     quality:(YTVimeoVideoQuality)quality
+                     success:(YTSuccessBlock)success
+                     failure:(YTErrorBlock)failure
+{
+    YTVimeoExtractor *extractor = [[YTVimeoExtractor alloc] initWithURL:videoURL quality:quality];
+    extractor.success = success;
+    extractor.failure = failure;
+    
+    [extractor start];
+}
+
++ (void)fetchVideoURLFromID:(NSString *)videoID
+                    quality:(YTVimeoVideoQuality)quality
+                    success:(YTSuccessBlock)success
+                    failure:(YTErrorBlock)failure
+{
+    YTVimeoExtractor *extractor = [[YTVimeoExtractor alloc] initWithID:videoID quality:quality];
+    extractor.success = success;
+    extractor.failure = failure;
+    
+    [extractor start];
+}
 
 #pragma mark - Constructors
 
@@ -47,7 +72,7 @@
 #pragma mark - Public
 
 - (void)start {
-    if (!self.delegate || !self.vimeoURL) {
+    if (!(self.delegate || self.success) || !self.vimeoURL) {
         [self extractorFailedWithMessage:@"Delegate or URL not specified" errorCode:YTVimeoExtractorErrorCodeNotInitialized];
         return;
     }
@@ -76,8 +101,12 @@
                                          code:code
                                      userInfo:[NSDictionary dictionaryWithObject:message forKey:NSLocalizedDescriptionKey]];
     
-    if ([self.delegate respondsToSelector:@selector(vimeoExtractor:failedExtractingVimeoURLWithError:)])
+    if (self.failure) {
+        self.failure(error);
+    }
+    else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:failedExtractingVimeoURLWithError:)]) {
         [self.delegate vimeoExtractor:self failedExtractingVimeoURLWithError:error];
+    }
 }
 
 - (NSString *)playerURLFromHTML:(NSString *)html {
@@ -145,17 +174,23 @@
     // handle second request
     else if (self.streamURL && ([self.buffer length] == 0)) {
         _running = NO;
-        if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:)])
+        
+        if (self.success) {
+            self.success(self.streamURL);
+        }
+        else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:)]) {
             [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:self.streamURL];
+        }
     }
     else {
-        [self extractorFailedWithMessage:@"Found Invalide stream URL" errorCode:YTVimeoExtractorErrorCodeNoStreamURL];
+        
+        [self extractorFailedWithMessage:@"Found Invalid stream URL" errorCode:YTVimeoExtractorErrorCodeNoStreamURL];
         _running = NO;
     }
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [self extractorFailedWithMessage:@"Cant find live stream URL" errorCode:YTVimeoExtractorErrorCodeNoStreamURL];
+    [self extractorFailedWithMessage:@"Cannot find live stream URL" errorCode:YTVimeoExtractorErrorCodeNoStreamURL];
 }
 
 @end
