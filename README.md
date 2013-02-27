@@ -22,7 +22,20 @@ Alternatively you can just copy the YTVimeoExtractor folder to your project.
 
 ## Usage
 
-Create an instance of YTVimeoExtractor and pass it the video url and the desired quality.
+Use the block based methods and pass it the video url and the desired quality
+
+```objc
+[YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
+                               quality:YTVimeoVideoQualityMedium
+                               success:^(NSURL *videoURL) {
+    NSLog(@"Video URL: %@", [videoURL absoluteString]);
+}
+failure:^(NSError *error) {
+    // handle error
+}];
+```
+
+or create an instance of YTVimeoExtractor
 
 ```objc
 self.extractor = [[YTVimeoExtractor alloc] initWithURL:@"http://vimeo.com/58600663" quality:YTVimeoVideoQualityMedium];
@@ -30,7 +43,7 @@ self.extractor.delegate = self;
 [self.extractor start];
 ```
 
-Then implement YTVimeoExtractor delegate methods in your ViewController.
+and implement YTVimeoExtractor delegate methods in your ViewController.
 
 ```objc
 - (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL
