@@ -115,7 +115,8 @@
     
     [scanner scanUpToString:@"<video " intoString:nil];
     if (![scanner isAtEnd]) {
-        [scanner setScanLocation: [scanner scanLocation] + 20];
+        [scanner scanUpToString:@"data-src" intoString:nil];
+        [scanner setScanLocation: [scanner scanLocation] + 10];
         [scanner scanUpToString:@"\"" intoString:&url];
     }
     return url;
@@ -149,12 +150,14 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // handle first request
     if (!self.playerURL && ([self.buffer length] > 0)) {
-        NSString *responseHTML = [[NSString alloc] initWithData:self.buffer encoding:NSUTF8StringEncoding];
+        NSString *responseHTML = [[NSString alloc] initWithData:self.buffer encoding:NSUTF8StringEncoding];        
         if ([responseHTML length] <= 0) {
             [self extractorFailedWithMessage:@"Found Invalide HTML" errorCode:YTVimeoExtractorErrorCodeInvalidHTML];
             return;
         }
         self.playerURL = [self playerURLFromHTML:responseHTML];
+        
+        self.playerURL = [NSString stringWithFormat:@"https:%@", [self.playerURL substringWithRange:NSMakeRange(0, [self.playerURL length] - 20)]];
         
         // setup quality
         self.playerURL = [self.playerURL substringWithRange:NSMakeRange(0, [self.playerURL length] - 20)];
