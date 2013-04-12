@@ -110,15 +110,23 @@
 }
 
 - (NSString *)playerURLFromHTML:(NSString *)html {
-    NSString *url;
-    NSScanner *scanner = [[NSScanner alloc] initWithString:html];
+    __block NSString *url;
     
-    [scanner scanUpToString:@"<video " intoString:nil];
-    if (![scanner isAtEnd]) {
-        [scanner scanUpToString:@"data-src" intoString:nil];
-        [scanner setScanLocation: [scanner scanLocation] + 10];
-        [scanner scanUpToString:@"\"" intoString:&url];
-    }
+    NSError *error;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\"//.*?\""
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    [regex enumerateMatchesInString:html
+                            options:0
+                              range:NSMakeRange(0, html.length)
+                         usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                           NSRange removedQuotesRange = NSMakeRange(result.range.location + 1, result.range.length - 2);
+                           NSString *string = [html substringWithRange: removedQuotesRange];
+                           
+                           if ([string rangeOfString:@"redirect"].location != NSNotFound) {
+                             url = string;
+                           }
+                         }];
     return url;
 }
 
@@ -156,7 +164,11 @@
             return;
         }
         self.playerURL = [self playerURLFromHTML:responseHTML];
-        
+      
+        if (!self.playerURL || self.playerURL.length <= 20) {
+          [self extractorFailedWithMessage:@"Found Invalid stream URL" errorCode:YTVimeoExtractorErrorCodeNotInitialized];
+          return;
+        }
         self.playerURL = [NSString stringWithFormat:@"https:%@", [self.playerURL substringWithRange:NSMakeRange(0, [self.playerURL length] - 20)]];
         
         // setup quality
