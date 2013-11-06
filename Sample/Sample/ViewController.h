@@ -10,7 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "YTVimeoExtractor.h"
 
-@interface ViewController : UIViewController <YTVimeoExtractorDelegate>
+@interface ViewController : UIViewController
 
 @property (nonatomic, readonly) BOOL fullScreen;
 

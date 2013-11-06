@@ -27,11 +27,16 @@ Use the block based methods and pass it the video url and the desired quality
 ```objc
 [YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
                                quality:YTVimeoVideoQualityMedium
-                               success:^(NSURL *videoURL) {
-    NSLog(@"Video URL: %@", [videoURL absoluteString]);
-}
-failure:^(NSError *error) {
-    // handle error
+                     completionHandler:^(NSURL *videoURL, NSError *error) {
+    if (error) {
+    	// handle error
+    	NSLog(@"Video URL: %@", [videoURL absoluteString]);
+	} else {
+		// run player
+		self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+    	[self.playerViewController.moviePlayer prepareToPlay];
+    	[self presentViewController:self.playerViewController animated:YES completion:nil];
+	}
 }];
 ```
 
@@ -48,9 +53,7 @@ and implement YTVimeoExtractor delegate methods in your ViewController.
 ```objc
 - (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL
 {
-    self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-    [self.playerViewController.moviePlayer prepareToPlay];
-    [self presentViewController:self.playerViewController animated:YES completion:nil];
+    // handle success
 }
 
 - (void)vimeoExtractor:(YTVimeoExtractor *)extractor failedExtractingVimeoURLWithError:(NSError *)error;
@@ -63,7 +66,7 @@ Check the sample application for more details.
 
 ## Requirements
 
-YTVimeoExtractor requires iOS 4.0 and above as it is deployed for an ARC environment.
+YTVimeoExtractor requires iOS 5.0 and above as it is deployed for an ARC environment.
 
 ## License
 
