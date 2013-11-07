@@ -132,7 +132,13 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
         return;
     }
     
-    NSDictionary *videoInfo = [filesInfo objectForKey:@[ @"mobile", @"sd", @"hd" ][self.quality]];
+    NSDictionary *videoInfo;
+    YTVimeoVideoQuality videoQuality = self.quality;
+    do {
+        videoInfo = [filesInfo objectForKey:@[ @"mobile", @"sd", @"hd" ][videoQuality]];
+        videoQuality--;
+    } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
+    
     if (!videoInfo) {
         [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
         return;
