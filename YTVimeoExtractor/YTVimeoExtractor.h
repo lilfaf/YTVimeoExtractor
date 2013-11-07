@@ -23,7 +23,7 @@ typedef enum YTVimeoVideoQuality : NSUInteger {
     YTVimeoVideoQualityHigh
 }YTVimeoVideoQuality;
 
-typedef void (^completionHandler) (NSURL *videoURL, NSError *error);
+typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality);
 
 @protocol  YTVimeoExtractorDelegate;
 
@@ -47,7 +47,7 @@ typedef void (^completionHandler) (NSURL *videoURL, NSError *error);
 
 @protocol YTVimeoExtractorDelegate <NSObject>
 
-- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL;
+- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL withQuality:(YTVimeoVideoQuality)quality;
 - (void)vimeoExtractor:(YTVimeoExtractor *)extractor failedExtractingVimeoURLWithError:(NSError *)error;
 
 @end

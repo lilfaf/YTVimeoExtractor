@@ -88,7 +88,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     NSError *error = [NSError errorWithDomain:YTVimeoExtractorErrorDomain code:code userInfo:userInfo];
     
     if (self.completionHandler) {
-        self.completionHandler(nil, error);
+        self.completionHandler(nil, error, self.quality);
     }
     else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:failedExtractingVimeoURLWithError:)]) {
         [self.delegate vimeoExtractor:self failedExtractingVimeoURLWithError:error];
@@ -146,10 +146,10 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     
     NSURL *fileURL = [NSURL URLWithString:[videoInfo objectForKey:@"url"]];
     if (self.completionHandler) {
-        self.completionHandler(fileURL, nil);
+        self.completionHandler(fileURL, nil, videoQuality);
     }
-    else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:)]) {
-        [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL];
+    else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:withQuality:)]) {
+        [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL withQuality:videoQuality];
     }
     
     _running = NO;
