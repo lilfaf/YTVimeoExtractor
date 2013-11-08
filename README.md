@@ -27,7 +27,7 @@ Use the block based methods and pass it the video url and the desired quality
 ```objc
 [YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
                                quality:YTVimeoVideoQualityMedium
-                     completionHandler:^(NSURL *videoURL, NSError *error) {
+                     completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
     if (error) {
     	// handle error
     	NSLog(@"Video URL: %@", [videoURL absoluteString]);
@@ -51,7 +51,7 @@ self.extractor.delegate = self;
 and implement YTVimeoExtractor delegate methods in your ViewController.
 
 ```objc
-- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL
+- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL withQuality:(YTVimeoVideoQuality)quality
 {
     // handle success
 }
