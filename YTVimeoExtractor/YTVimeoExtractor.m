@@ -107,7 +107,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
         [connection cancel];
     }
     
-    NSUInteger capacity = (response.expectedContentLength != NSURLResponseUnknownLength) ? response.expectedContentLength : 0;
+    NSUInteger capacity = (response.expectedContentLength != NSURLResponseUnknownLength) ? (uint)response.expectedContentLength : 0;
     self.buffer = [[NSMutableData alloc] initWithCapacity:capacity];
 }
 
