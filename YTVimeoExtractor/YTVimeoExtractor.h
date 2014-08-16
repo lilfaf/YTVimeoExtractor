@@ -31,15 +31,20 @@ typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideo
 
 @property (nonatomic, readonly) BOOL running;
 @property (nonatomic, readonly) YTVimeoVideoQuality quality;
+@property (nonatomic, readonly) NSString* referer;
 @property (strong, nonatomic, readonly) NSURL *vimeoURL;
 
 @property (unsafe_unretained, nonatomic) id<YTVimeoExtractorDelegate> delegate;
 
 + (void)fetchVideoURLFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(completionHandler)handler;
 + (void)fetchVideoURLFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(completionHandler)handler;
++ (void)fetchVideoURLFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(completionHandler)handler;
++ (void)fetchVideoURLFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(completionHandler)handler;
 
 - (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality;
 - (id)initWithID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality;
+- (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer;
+- (id)initWithID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer;
 
 - (void)start;
 
