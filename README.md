@@ -40,7 +40,7 @@ Use the block based methods and pass it the video url and the desired quality
 }];
 ```
 
-or create an instance of YTVimeoExtractor
+or create an instance of YTVimeoExtractor.
 
 ```objc
 self.extractor = [[YTVimeoExtractor alloc] initWithURL:@"http://vimeo.com/58600663" quality:YTVimeoVideoQualityMedium];
@@ -60,6 +60,25 @@ and implement YTVimeoExtractor delegate methods in your ViewController.
 {
     // handle error
 }
+```
+
+If the Vimeo videos have domain-level restrictions and can only be played from particular domains, it's easy to add a referer:
+
+```objc
+[YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
+                               quality:YTVimeoVideoQualityMedium
+                               referer:@"http://www.mywebsite.com"
+                     completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+    if (error) {
+        // handle error
+        NSLog(@"Video URL: %@", [videoURL absoluteString]);
+    } else {
+        // run player
+        self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+        [self.playerViewController.moviePlayer prepareToPlay];
+        [self presentViewController:self.playerViewController animated:YES completion:nil];
+    }
+}];
 ```
 
 Check the sample application for more details.
