@@ -34,11 +34,11 @@
 
 - (IBAction)playVideo:(id)sender
 {
-    [YTVimeoExtractor fetchVideoURLFromURL:self.textURL.text quality:self.quality completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
+    [YTVimeoExtractor fetchVideoURLFromURL:self.textURL.text quality:self.quality completionHandler:^(NSURL *videoURL, NSString* title, NSError *error, YTVimeoVideoQuality quality) {
         if (error) {
             NSLog(@"Error : %@", [error localizedDescription]);
         } else if (videoURL) {
-            NSLog(@"Extracted url : %@", [videoURL absoluteString]);
+            NSLog(@"Extracted url : %@, title: %@", [videoURL absoluteString], title);
             
             self.playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
             [self.playerView.moviePlayer prepareToPlay];

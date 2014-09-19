@@ -23,7 +23,7 @@ typedef enum YTVimeoVideoQuality : NSUInteger {
     YTVimeoVideoQualityHigh
 }YTVimeoVideoQuality;
 
-typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality);
+typedef void (^completionHandler) (NSURL *videoURL, NSString* title, NSError *error, YTVimeoVideoQuality quality);
 
 @protocol  YTVimeoExtractorDelegate;
 
