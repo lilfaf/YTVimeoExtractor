@@ -160,6 +160,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     YTVimeoVideoQuality videoQuality = self.quality;
     do {
         videoInfo = [filesInfo objectForKey:@[ @"mobile", @"sd", @"hd" ][videoQuality]];
+        if (!videoQuality) break;
         videoQuality--;
     } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
 
