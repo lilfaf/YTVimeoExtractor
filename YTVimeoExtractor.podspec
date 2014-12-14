@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/lilfaf/YTVimeoExtractor.git", :tag => "0.0.7" }
 
   s.platform     = :ios, '5.0'
+  s.platform     = :osx, '10.8'
   s.source_files = 'YTVimeoExtractor/*.{h,m}'
   s.requires_arc = true
 end

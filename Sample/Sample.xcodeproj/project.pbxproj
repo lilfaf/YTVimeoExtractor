@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF396C241A3E0C6400E47BD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF396C231A3E0C6400E47BD8 /* AppDelegate.m */; };
+		BF396C261A3E0C6400E47BD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF396C251A3E0C6400E47BD8 /* main.m */; };
+		BF396C281A3E0C6400E47BD8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF396C271A3E0C6400E47BD8 /* Images.xcassets */; };
+		BF396C2B1A3E0C6400E47BD8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF396C291A3E0C6400E47BD8 /* MainMenu.xib */; };
+		BF396C401A3E104100E47BD8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF396C3E1A3E104100E47BD8 /* AVFoundation.framework */; };
+		BF396C411A3E104100E47BD8 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF396C3F1A3E104100E47BD8 /* AVKit.framework */; };
+		BF396C471A3E180400E47BD8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF396C461A3E180400E47BD8 /* CoreMedia.framework */; };
+		BF396C481A3E194B00E47BD8 /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7E5C3116D2B5EF00712F0D /* YTVimeoExtractor.m */; };
+		BF396C511A3E1CA700E47BD8 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF396C4F1A3E1CA700E47BD8 /* MainWindowController.m */; };
+		BF396C521A3E1CA700E47BD8 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF396C501A3E1CA700E47BD8 /* MainWindow.xib */; };
 		BF7E5C0716D26B8300712F0D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7E5C0616D26B8300712F0D /* UIKit.framework */; };
 		BF7E5C0916D26B8300712F0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7E5C0816D26B8300712F0D /* Foundation.framework */; };
 		BF7E5C0B16D26B8300712F0D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7E5C0A16D26B8300712F0D /* CoreGraphics.framework */; };
@@ -24,6 +34,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF396C1E1A3E0C6400E47BD8 /* MacSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF396C211A3E0C6400E47BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF396C221A3E0C6400E47BD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BF396C231A3E0C6400E47BD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BF396C251A3E0C6400E47BD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BF396C271A3E0C6400E47BD8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BF396C2A1A3E0C6400E47BD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BF396C3E1A3E104100E47BD8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		BF396C3F1A3E104100E47BD8 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/AVKit.framework; sourceTree = DEVELOPER_DIR; };
+		BF396C461A3E180400E47BD8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		BF396C4E1A3E1CA700E47BD8 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		BF396C4F1A3E1CA700E47BD8 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		BF396C501A3E1CA700E47BD8 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		BF7E5C0316D26B8300712F0D /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7E5C0616D26B8300712F0D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BF7E5C0816D26B8300712F0D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,6 +70,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BF396C1B1A3E0C6400E47BD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF396C471A3E180400E47BD8 /* CoreMedia.framework in Frameworks */,
+				BF396C401A3E104100E47BD8 /* AVFoundation.framework in Frameworks */,
+				BF396C411A3E104100E47BD8 /* AVKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF7E5C0016D26B8300712F0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,11 +94,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF396C1F1A3E0C6400E47BD8 /* MacSample */ = {
+			isa = PBXGroup;
+			children = (
+				BF396C221A3E0C6400E47BD8 /* AppDelegate.h */,
+				BF396C231A3E0C6400E47BD8 /* AppDelegate.m */,
+				BF396C271A3E0C6400E47BD8 /* Images.xcassets */,
+				BF396C291A3E0C6400E47BD8 /* MainMenu.xib */,
+				BF396C201A3E0C6400E47BD8 /* Supporting Files */,
+				BF396C4E1A3E1CA700E47BD8 /* MainWindowController.h */,
+				BF396C4F1A3E1CA700E47BD8 /* MainWindowController.m */,
+				BF396C501A3E1CA700E47BD8 /* MainWindow.xib */,
+			);
+			path = MacSample;
+			sourceTree = "<group>";
+		};
+		BF396C201A3E0C6400E47BD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF396C211A3E0C6400E47BD8 /* Info.plist */,
+				BF396C251A3E0C6400E47BD8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BF7E5BFA16D26B8300712F0D = {
 			isa = PBXGroup;
 			children = (
 				BF7E5C2C16D26B9F00712F0D /* YTVimeoExtractor */,
 				BF7E5C0C16D26B8300712F0D /* Sample */,
+				BF396C1F1A3E0C6400E47BD8 /* MacSample */,
 				BF7E5C0516D26B8300712F0D /* Frameworks */,
 				BF7E5C0416D26B8300712F0D /* Products */,
 			);
@@ -75,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7E5C0316D26B8300712F0D /* Sample.app */,
+				BF396C1E1A3E0C6400E47BD8 /* MacSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +141,9 @@
 		BF7E5C0516D26B8300712F0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF396C461A3E180400E47BD8 /* CoreMedia.framework */,
+				BF396C3E1A3E104100E47BD8 /* AVFoundation.framework */,
+				BF396C3F1A3E104100E47BD8 /* AVKit.framework */,
 				BFA9544816D2D004000BB6D1 /* MediaPlayer.framework */,
 				BF7E5C0616D26B8300712F0D /* UIKit.framework */,
 				BF7E5C0816D26B8300712F0D /* Foundation.framework */,
@@ -131,6 +193,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BF396C1D1A3E0C6400E47BD8 /* MacSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF396C3C1A3E0C6400E47BD8 /* Build configuration list for PBXNativeTarget "MacSample" */;
+			buildPhases = (
+				BF396C1A1A3E0C6400E47BD8 /* Sources */,
+				BF396C1B1A3E0C6400E47BD8 /* Frameworks */,
+				BF396C1C1A3E0C6400E47BD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacSample;
+			productName = MacSample;
+			productReference = BF396C1E1A3E0C6400E47BD8 /* MacSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		BF7E5C0216D26B8300712F0D /* Sample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF7E5C2916D26B8300712F0D /* Build configuration list for PBXNativeTarget "Sample" */;
@@ -156,6 +235,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Louis Larpin";
+				TargetAttributes = {
+					BF396C1D1A3E0C6400E47BD8 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
 			};
 			buildConfigurationList = BF7E5BFE16D26B8300712F0D /* Build configuration list for PBXProject "Sample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -163,6 +247,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = BF7E5BFA16D26B8300712F0D;
 			productRefGroup = BF7E5C0416D26B8300712F0D /* Products */;
@@ -170,11 +255,22 @@
 			projectRoot = "";
 			targets = (
 				BF7E5C0216D26B8300712F0D /* Sample */,
+				BF396C1D1A3E0C6400E47BD8 /* MacSample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BF396C1C1A3E0C6400E47BD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF396C281A3E0C6400E47BD8 /* Images.xcassets in Resources */,
+				BF396C521A3E1CA700E47BD8 /* MainWindow.xib in Resources */,
+				BF396C2B1A3E0C6400E47BD8 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF7E5C0116D26B8300712F0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +287,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BF396C1A1A3E0C6400E47BD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF396C481A3E194B00E47BD8 /* YTVimeoExtractor.m in Sources */,
+				BF396C261A3E0C6400E47BD8 /* main.m in Sources */,
+				BF396C511A3E1CA700E47BD8 /* MainWindowController.m in Sources */,
+				BF396C241A3E0C6400E47BD8 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF7E5BFF16D26B8300712F0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,6 +312,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BF396C291A3E0C6400E47BD8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF396C2A1A3E0C6400E47BD8 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		BF7E5C0F16D26B8300712F0D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -232,6 +347,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BF396C381A3E0C6400E47BD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = MacSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BF396C391A3E0C6400E47BD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = MacSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		BF7E5C2716D26B8300712F0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -319,6 +492,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BF396C3C1A3E0C6400E47BD8 /* Build configuration list for PBXNativeTarget "MacSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF396C381A3E0C6400E47BD8 /* Debug */,
+				BF396C391A3E0C6400E47BD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		BF7E5BFE16D26B8300712F0D /* Build configuration list for PBXProject "Sample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

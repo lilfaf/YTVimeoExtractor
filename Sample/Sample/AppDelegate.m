@@ -43,4 +43,8 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (IBAction)playVideo:(id)sender {
+}
+- (IBAction)playVideo:(id)sender {
+}
 @end
