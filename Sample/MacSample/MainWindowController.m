@@ -30,7 +30,6 @@
 - (void)windowWillClose:(NSNotification *)notification {
     [self.videoPlayer pause];
     [self.playerView removeFromSuperviewWithoutNeedingDisplay];
-    //self.videoPlayer.delegate = nil;
     self.videoPlayer = nil;
     self.playerView = nil;
 }
