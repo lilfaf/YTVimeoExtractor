@@ -85,7 +85,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
 - (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer
 {
-    NSString *videoID = [[videoURL componentsSeparatedByString:@"/"] lastObject];
+    NSString *videoID = [NSURL URLWithString:videoURL].lastPathComponent;
     return [self initWithID:videoID quality:quality referer:referer];
 }
 
