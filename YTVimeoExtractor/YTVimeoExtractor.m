@@ -15,6 +15,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 @property (strong, nonatomic) NSURLConnection *connection;
 @property (strong, nonatomic) NSMutableData *buffer;
 @property (copy, nonatomic) completionHandler completionHandler;
+@property (copy, nonatomic) metadataCompletionHandler metadataCompletionHandler;
 
 - (void)extractorFailedWithMessage:(NSString*)message errorCode:(int)code;
 
@@ -42,7 +43,31 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
 + (void)fetchVideoURLFromID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality completionHandler:(completionHandler)handler
 {
-    return [YTVimeoExtractor fetchVideoURLFromID:videoID quality:quality referer:nil completionHandler:handler];}
+    return [YTVimeoExtractor fetchVideoURLFromID:videoID quality:quality referer:nil completionHandler:handler];
+}
+
++ (void)fetchVideoMetadataFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(metadataCompletionHandler)handler
+{
+    YTVimeoExtractor *extractor = [[YTVimeoExtractor alloc] initWithURL:videoURL quality:quality referer:referer];
+    extractor.metadataCompletionHandler = handler;
+    [extractor start];
+}
+
++ (void)fetchVideoMetadataFromID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(metadataCompletionHandler)handler
+{
+    YTVimeoExtractor *extractor = [[YTVimeoExtractor alloc] initWithID:videoID quality:quality referer:referer];
+    extractor.metadataCompletionHandler = handler;
+    [extractor start];
+}
++ (void)fetchVideoMetadataFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(metadataCompletionHandler)handler
+{
+    return [YTVimeoExtractor fetchVideoMetadataFromURL:videoURL quality:quality referer:nil completionHandler:handler];
+}
+
++ (void)fetchVideoMetadataFromID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality completionHandler:(metadataCompletionHandler)handler
+{
+    return [YTVimeoExtractor fetchVideoMetadataFromID:videoID quality:quality referer:nil completionHandler:handler];
+}
 
 #pragma mark - Constructors
 
@@ -85,7 +110,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
 - (void)start
 {
-    if (!(self.delegate || self.completionHandler) || !self.vimeoURL) {
+    if (!(self.delegate || self.completionHandler || self.metadataCompletionHandler) || !self.vimeoURL) {
         [self extractorFailedWithMessage:@"Delegate, block or URL not specified" errorCode:YTVimeoExtractorErrorCodeNotInitialized];
         return;
     }
@@ -112,7 +137,10 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     NSError *error = [NSError errorWithDomain:YTVimeoExtractorErrorDomain code:code userInfo:userInfo];
 
     if (self.completionHandler) {
-        self.completionHandler(nil, nil, nil, error, self.quality);
+        self.completionHandler(nil, error, self.quality);
+    }
+    else if (self.metadataCompletionHandler) {
+        self.metadataCompletionHandler(nil, nil, error, self.quality);
     }
     else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:failedExtractingVimeoURLWithError:)]) {
         [self.delegate vimeoExtractor:self failedExtractingVimeoURLWithError:error];
@@ -170,10 +198,15 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     }
 
     NSURL *fileURL = [NSURL URLWithString:[videoInfo objectForKey:@"url"]];
-    NSString* title = [jsonData valueForKeyPath:@"video.title"];
-    NSURL *thumbnailURL = [NSURL URLWithString:[jsonData valueForKeyPath:@"video.thumbs.base"]];
+    NSDictionary* metadata = [jsonData valueForKeyPath:@"video"];
     if (self.completionHandler) {
-        self.completionHandler(fileURL, title, thumbnailURL, nil, videoQuality);
+        self.completionHandler(fileURL, nil, videoQuality);
+    }
+    else if (self.metadataCompletionHandler) {
+        self.metadataCompletionHandler(fileURL, metadata, nil, videoQuality);
+    }
+    else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:metadata:withQuality:)]) {
+        [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL metadata:metadata withQuality:videoQuality];
     }
     else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:withQuality:)]) {
         [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL withQuality:videoQuality];
