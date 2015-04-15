@@ -49,6 +49,17 @@
     }];
 }
 
+- (IBAction)printMetadata:(id)sender {
+    [YTVimeoExtractor fetchVideoMetadataFromURL:self.textURL.text quality:self.quality completionHandler:^(NSURL *videoURL, NSDictionary *metadata, NSError *error, YTVimeoVideoQuality quality) {
+        if (error) {
+            NSLog(@"Error : %@", [error localizedDescription]);
+        } else if (videoURL) {
+            NSLog(@"Extracted url : %@", [videoURL absoluteString]);
+            NSLog(@"Extracted metadata: %@", metadata);
+        }
+    }];
+}
+
 - (IBAction)changeQuality
 {
     switch (self.qualitySeg.selectedSegmentIndex) {
