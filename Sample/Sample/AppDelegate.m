@@ -45,6 +45,5 @@
 
 - (IBAction)playVideo:(id)sender {
 }
-- (IBAction)playVideo:(id)sender {
-}
+
 @end

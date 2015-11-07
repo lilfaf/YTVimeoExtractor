@@ -24,6 +24,7 @@ typedef enum YTVimeoVideoQuality : NSUInteger {
 }YTVimeoVideoQuality;
 
 typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality);
+typedef void (^metadataCompletionHandler) (NSURL *videoURL, NSDictionary* metadata, NSError *error, YTVimeoVideoQuality quality);
 
 @protocol  YTVimeoExtractorDelegate;
 
@@ -41,6 +42,12 @@ typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideo
 + (void)fetchVideoURLFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(completionHandler)handler;
 + (void)fetchVideoURLFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(completionHandler)handler;
 
++ (void)fetchVideoMetadataFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(metadataCompletionHandler)handler;
++ (void)fetchVideoMetadataFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(metadataCompletionHandler)handler;
++ (void)fetchVideoMetadataFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(metadataCompletionHandler)handler;
++ (void)fetchVideoMetadataFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(metadataCompletionHandler)handler;
+
+
 - (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality;
 - (id)initWithID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality;
 - (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer;
@@ -52,7 +59,11 @@ typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideo
 
 @protocol YTVimeoExtractorDelegate <NSObject>
 
+@optional
 - (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL withQuality:(YTVimeoVideoQuality)quality;
+- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL metadata:(NSDictionary*)metadata withQuality:(YTVimeoVideoQuality)quality;
+
+@required
 - (void)vimeoExtractor:(YTVimeoExtractor *)extractor failedExtractingVimeoURLWithError:(NSError *)error;
 
 @end
