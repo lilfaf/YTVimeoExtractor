@@ -7,7 +7,7 @@
 
 #import "YTVimeoExtractor.h"
 
-NSString *const YTVimeoPlayerConfigURL = @"http://player.vimeo.com/video/%@/config";
+NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/config";
 NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
 @interface YTVimeoExtractor ()
