@@ -28,7 +28,7 @@ typedef void (^metadataCompletionHandler) (NSURL *videoURL, NSDictionary* metada
 
 @protocol  YTVimeoExtractorDelegate;
 
-@interface YTVimeoExtractor : NSObject <NSURLConnectionDelegate>
+@interface YTVimeoExtractor : NSObject <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 
 @property (nonatomic, readonly) BOOL running;
 @property (nonatomic, readonly) YTVimeoVideoQuality quality;

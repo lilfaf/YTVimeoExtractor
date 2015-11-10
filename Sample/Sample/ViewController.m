@@ -39,12 +39,14 @@
             NSLog(@"Error : %@", [error localizedDescription]);
         } else if (videoURL) {
             NSLog(@"Extracted url : %@", [videoURL absoluteString]);
-            
-            self.playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-            [self.playerView.moviePlayer prepareToPlay];
-            [self presentViewController:self.playerView animated:YES completion:^(void) {
-                self.playerView = nil;
-            }];
+
+            dispatch_async (dispatch_get_main_queue(), ^{
+                self.playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+                [self.playerView.moviePlayer prepareToPlay];
+                [self presentViewController:self.playerView animated:YES completion:^(void) {
+                    self.playerView = nil;
+                }];
+            });
         }
     }];
 }

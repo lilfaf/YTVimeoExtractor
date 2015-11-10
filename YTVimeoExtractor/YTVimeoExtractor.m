@@ -12,7 +12,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
 @interface YTVimeoExtractor ()
 
-@property (strong, nonatomic) NSURLConnection *connection;
+@property (strong, nonatomic) NSURLSession *session;
 @property (strong, nonatomic) NSMutableData *buffer;
 @property (copy, nonatomic) completionHandler completionHandler;
 @property (copy, nonatomic) metadataCompletionHandler metadataCompletionHandler;
@@ -36,6 +36,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     extractor.completionHandler = handler;
     [extractor start];
 }
+
 + (void)fetchVideoURLFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(completionHandler)handler
 {
     return [YTVimeoExtractor fetchVideoURLFromURL:videoURL quality:quality referer:nil completionHandler:handler];
@@ -59,6 +60,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     extractor.metadataCompletionHandler = handler;
     [extractor start];
 }
+
 + (void)fetchVideoMetadataFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(metadataCompletionHandler)handler
 {
     return [YTVimeoExtractor fetchVideoMetadataFromURL:videoURL quality:quality referer:nil completionHandler:handler];
@@ -100,8 +102,8 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
 - (void)dealloc
 {
-    [self.connection cancel];
-    self.connection = nil;
+    [self.session invalidateAndCancel];
+    self.session = nil;
     self.buffer = nil;
     self.delegate = nil;
 }
@@ -119,14 +121,22 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
         return;
     }
 
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:self.vimeoURL];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-
+    // build request headers
+    NSMutableDictionary *sessionHeaders = [NSMutableDictionary dictionaryWithDictionary:@{@"Content-Type" : @"application/json"}];
     if (self.referer) {
-        [request setValue:self.referer forHTTPHeaderField:@"Referer"];
+        [sessionHeaders setValue:self.referer forKey:@"Referer"];
     }
 
-    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    // configure the session
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    sessionConfig.HTTPAdditionalHeaders = sessionHeaders;
+
+    // initialise the session
+    self.session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+
+    // start the request
+    [[self.session dataTaskWithURL:self.vimeoURL] resume];
+
     _running = YES;
 }
 
@@ -148,76 +158,88 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     _running = NO;
 }
 
-#pragma mark - NSURLConnectionDelegate
+#pragma mark - NSURLSessionDataDelegate
 
--(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-    NSInteger statusCode = [httpResponse statusCode];
-    if (statusCode != 200) {
+    if (httpResponse.statusCode != 200) {
         [self extractorFailedWithMessage:@"Invalid video indentifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
-        [connection cancel];
+        // cancel the session
+        completionHandler(NSURLSessionResponseCancel);
     }
 
-    NSUInteger capacity = (response.expectedContentLength != NSURLResponseUnknownLength) ? (uint)response.expectedContentLength : 0;
+    // initialise data buffer
+    NSUInteger capacity = 0;
+    if (response.expectedContentLength != NSURLResponseUnknownLength) {
+        capacity = (uint)response.expectedContentLength;
+    }
     self.buffer = [[NSMutableData alloc] initWithCapacity:capacity];
+
+    // continue the task normally
+    completionHandler(NSURLSessionResponseAllow);
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
     [self.buffer appendData:data];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+#pragma mark - NSURLSessionTaskDelegate
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
-    NSError *error;
-    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&error];
-
     if (error) {
-        [self extractorFailedWithMessage:@"Invalid video indentifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
-        return;
+        [self extractorFailedWithMessage:error.localizedDescription errorCode:YTVimeoExtractorErrorInvalidIdentifier];
     }
+    else {
+        // parse json from buffered data
+        NSError *jsonError;
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
 
-    NSDictionary *filesInfo = [jsonData valueForKeyPath:@"request.files.h264"];
-    if (!filesInfo) {
-        [self extractorFailedWithMessage:@"Unsupported video codec" errorCode:YTVimeoExtractorErrorUnsupportedCodec];
-        return;
-    }
+        if (jsonError) {
+            [self extractorFailedWithMessage:@"Invalid video indentifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
+            return;
+        }
 
-    NSDictionary *videoInfo;
-    YTVimeoVideoQuality videoQuality = self.quality;
-    do {
-        videoInfo = [filesInfo objectForKey:@[ @"mobile", @"sd", @"hd" ][videoQuality]];
-        if (!videoQuality) break;
-        videoQuality--;
-    } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
+        // get file informations for ios compliant video format
+        NSDictionary *filesInfo = [jsonData valueForKeyPath:@"request.files.h264"];
+        if (!filesInfo) {
+            [self extractorFailedWithMessage:@"Unsupported video codec" errorCode:YTVimeoExtractorErrorUnsupportedCodec];
+            return;
+        }
 
-    if (!videoInfo) {
-        [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
-        return;
-    }
+        // get video info for the requested quality or fallback to the next available quality
+        NSDictionary *videoInfo;
+        YTVimeoVideoQuality videoQuality = self.quality;
+        do {
+            videoInfo = [filesInfo objectForKey:@[ @"mobile", @"sd", @"hd" ][videoQuality]];
+            if (!videoQuality) break;
+            videoQuality--;
+        } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
 
-    NSURL *fileURL = [NSURL URLWithString:[videoInfo objectForKey:@"url"]];
-    NSDictionary* metadata = [jsonData valueForKeyPath:@"video"];
-    if (self.completionHandler) {
-        self.completionHandler(fileURL, nil, videoQuality);
-    }
-    else if (self.metadataCompletionHandler) {
-        self.metadataCompletionHandler(fileURL, metadata, nil, videoQuality);
-    }
-    else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:metadata:withQuality:)]) {
-        [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL metadata:metadata withQuality:videoQuality];
-    }
-    else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:withQuality:)]) {
-        [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL withQuality:videoQuality];
+        if (!videoInfo) {
+            [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
+            return;
+        }
+
+        NSURL *fileURL = [NSURL URLWithString:[videoInfo objectForKey:@"url"]];
+        NSDictionary* metadata = [jsonData valueForKeyPath:@"video"];
+
+        if (self.completionHandler) {
+            self.completionHandler(fileURL, nil, videoQuality);
+        }
+        else if (self.metadataCompletionHandler) {
+            self.metadataCompletionHandler(fileURL, metadata, nil, videoQuality);
+        }
+        else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:metadata:withQuality:)]) {
+            [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL metadata:metadata withQuality:videoQuality];
+        }
+        else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:withQuality:)]) {
+            [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL withQuality:videoQuality];
+        }
     }
 
     _running = NO;
 }
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    [self extractorFailedWithMessage:[error localizedDescription] errorCode:YTVimeoExtractorErrorInvalidIdentifier];
-}
-
 @end
