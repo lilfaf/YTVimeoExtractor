@@ -32,10 +32,12 @@ Use the block based methods and pass it the video url and the desired quality
     	// handle error
     	NSLog(@"Video URL: %@", [videoURL absoluteString]);
 	} else {
-		// run player
-		self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-    	[self.playerViewController.moviePlayer prepareToPlay];
-    	[self presentViewController:self.playerViewController animated:YES completion:nil];
+        // run player
+        dispatch_async (dispatch_get_main_queue(), ^{
+            self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+            [self.playerViewController.moviePlayer prepareToPlay];
+            [self presentViewController:self.playerViewController animated:YES completion:nil];
+       });
 	}
 }];
 ```
@@ -74,9 +76,11 @@ If the Vimeo videos have domain-level restrictions and can only be played from p
         NSLog(@"Video URL: %@", [videoURL absoluteString]);
     } else {
         // run player
-        self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-        [self.playerViewController.moviePlayer prepareToPlay];
-        [self presentViewController:self.playerViewController animated:YES completion:nil];
+        dispatch_async (dispatch_get_main_queue(), ^{
+          self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+          [self.playerViewController.moviePlayer prepareToPlay];
+          [self presentViewController:self.playerViewController animated:YES completion:nil];
+        });
     }
 }];
 ```
@@ -85,7 +89,7 @@ Check the sample application for more details.
 
 ## Requirements
 
-YTVimeoExtractor requires iOS 5.0 and above as it is deployed for an ARC environment.
+YTVimeoExtractor requires iOS 7.0 and above as it is deployed for an ARC environment.
 
 ## License
 
