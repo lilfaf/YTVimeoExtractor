@@ -189,57 +189,59 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
-    if (error) {
-        [self extractorFailedWithMessage:error.localizedDescription errorCode:YTVimeoExtractorErrorInvalidIdentifier];
-    }
-    else {
-        // parse json from buffered data
-        NSError *jsonError;
-        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
-
-        if (jsonError) {
-            [self extractorFailedWithMessage:@"Invalid video indentifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
-            return;
-        }
-
-        // get file informations for ios compliant video format
-        NSDictionary *filesInfo = [jsonData valueForKeyPath:@"request.files.h264"];
-        if (!filesInfo) {
-            [self extractorFailedWithMessage:@"Unsupported video codec" errorCode:YTVimeoExtractorErrorUnsupportedCodec];
-            return;
-        }
-
-        // get video info for the requested quality or fallback to the next available quality
-        NSDictionary *videoInfo;
-        YTVimeoVideoQuality videoQuality = self.quality;
-        do {
-            videoInfo = [filesInfo objectForKey:@[ @"mobile", @"sd", @"hd" ][videoQuality]];
-            if (!videoQuality) break;
-            videoQuality--;
-        } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
-
-        if (!videoInfo) {
-            [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
-            return;
-        }
-
-        NSURL *fileURL = [NSURL URLWithString:[videoInfo objectForKey:@"url"]];
-        NSDictionary* metadata = [jsonData valueForKeyPath:@"video"];
-
-        if (self.completionHandler) {
-            self.completionHandler(fileURL, nil, videoQuality);
-        }
-        else if (self.metadataCompletionHandler) {
-            self.metadataCompletionHandler(fileURL, metadata, nil, videoQuality);
-        }
-        else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:metadata:withQuality:)]) {
-            [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL metadata:metadata withQuality:videoQuality];
-        }
-        else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:withQuality:)]) {
-            [self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL withQuality:videoQuality];
-        }
-    }
-
-    _running = NO;
+	NSError *jsonError;
+	NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
+	
+	if (jsonError) {
+		[self extractorFailedWithMessage:@"Invalid video indentifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
+		return;
+	}
+	
+	NSArray *videoArray = [jsonData valueForKeyPath:@"request.files.progressive"];
+	if (!videoArray) {
+		[self extractorFailedWithMessage:@"Unsupported video codec" errorCode:YTVimeoExtractorErrorUnsupportedCodec];
+		return;
+	}
+	
+	NSDictionary *videoInfos;
+	if (videoArray.count > 0) {
+		if (self.quality == YTVimeoVideoQualityBestAvailable) {
+			videoInfos = [videoArray lastObject];
+		}
+		else {
+			switch (self.quality) {
+				case YTVimeoVideoQualityLow:
+					if (videoArray.count > 0) {
+						videoInfos = [videoArray objectAtIndex:0];
+					}
+					break;
+				case YTVimeoVideoQualityMedium:
+					if (videoArray.count > 1) {
+						videoInfos = [videoArray objectAtIndex:1];
+					}
+					break;
+				default:
+					if (videoArray.count > 2) {
+						videoInfos = [videoArray objectAtIndex:2];
+					}
+					break;
+			}
+		}
+	}
+	
+	if (videoInfos) {
+		NSURL *fileURL = [NSURL URLWithString:[videoInfos objectForKey:@"url"]];
+		if (self.completionHandler) {
+			self.completionHandler(fileURL, nil, self.quality);
+		}
+		else if ([self.delegate respondsToSelector:@selector(vimeoExtractor:didSuccessfullyExtractVimeoURL:withQuality:)]) {
+			[self.delegate vimeoExtractor:self didSuccessfullyExtractVimeoURL:fileURL withQuality:self.quality];
+		}
+	}
+	else {
+		[self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
+	}
+	
+	_running = NO;
 }
 @end
