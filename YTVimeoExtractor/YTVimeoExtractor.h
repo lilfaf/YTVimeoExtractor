@@ -20,7 +20,8 @@ enum {
 typedef enum YTVimeoVideoQuality : NSUInteger {
     YTVimeoVideoQualityLow,
     YTVimeoVideoQualityMedium,
-    YTVimeoVideoQualityHigh
+    YTVimeoVideoQualityHigh,
+    YTVimeoVideoQualityBestAvailable
 }YTVimeoVideoQuality;
 
 typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality);
