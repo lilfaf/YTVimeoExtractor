@@ -73,7 +73,8 @@
             break;
         case 2:
             self.quality = YTVimeoVideoQualityHigh;
-            
+        case 3:
+            self.quality = YTVimeoVideoQualityHD;
         default:
             break;
     }
