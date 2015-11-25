@@ -209,21 +209,39 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
             return;
         }
 
-        // get video info for the requested quality or fallback to the next available quality
         NSDictionary *videoInfo;
         NSArray *availableVideoQuality = @[ @"270p", @"360p", @"720p", @"1080p" ];
         YTVimeoVideoQuality videoQuality = self.quality;
         
-        do {
-            NSUInteger index = [filesInfo indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                return [[obj objectForKey:@"quality"] isEqualToString:[availableVideoQuality objectAtIndex:videoQuality]];
-            }];
-            if (index != NSNotFound) {
-                videoInfo = [filesInfo objectAtIndex:index];
-            } else {
-                videoQuality--;
-            }
-        } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
+        if (filesInfo.count == 1) {
+            //Has one object therefore, there is no need to parse it out
+            //This addresses a exception based on this comment:https://github.com/pixelkind/YTVimeoExtractor/commit/6ca4de401d45d4349fc2df7e0f40cb3ae3ed28a6#commitcomment-14626501
+            
+            
+            videoInfo = [filesInfo objectAtIndex:0];
+            
+        }else{
+            //Has more than one object
+            //Parse
+            // get video info for the requested quality or fallback to the next available quality
+            
+            do {
+                NSUInteger index = [filesInfo indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    return [[obj objectForKey:@"quality"] isEqualToString:[availableVideoQuality objectAtIndex:videoQuality]];
+                }];
+                if (index != NSNotFound) {
+                    videoInfo = [filesInfo objectAtIndex:index];
+                } else {
+                    videoQuality--;
+                }
+            } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
+        }
+        
+        if (!videoInfo) {
+            [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
+            return;
+        }
+
         
         if (!videoInfo) {
             [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
