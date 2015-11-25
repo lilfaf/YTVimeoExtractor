@@ -203,7 +203,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
         }
 
         // get file informations for ios compliant video format
-        NSDictionary *filesInfo = [jsonData valueForKeyPath:@"request.files.h264"];
+        NSArray *filesInfo = [jsonData valueForKeyPath:@"request.files.progressive"];
         if (!filesInfo) {
             [self extractorFailedWithMessage:@"Unsupported video codec" errorCode:YTVimeoExtractorErrorUnsupportedCodec];
             return;
@@ -211,13 +211,20 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
         // get video info for the requested quality or fallback to the next available quality
         NSDictionary *videoInfo;
+        NSArray *availableVideoQuality = @[ @"270p", @"360p", @"720p", @"1080p" ];
         YTVimeoVideoQuality videoQuality = self.quality;
+        
         do {
-            videoInfo = [filesInfo objectForKey:@[ @"mobile", @"sd", @"hd" ][videoQuality]];
-            if (!videoQuality) break;
-            videoQuality--;
+            NSUInteger index = [filesInfo indexOfObjectPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                return [[obj objectForKey:@"quality"] isEqualToString:[availableVideoQuality objectAtIndex:videoQuality]];
+            }];
+            if (index != NSNotFound) {
+                videoInfo = [filesInfo objectAtIndex:index];
+            } else {
+                videoQuality--;
+            }
         } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
-
+        
         if (!videoInfo) {
             [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
             return;
