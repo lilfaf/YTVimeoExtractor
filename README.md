@@ -26,7 +26,7 @@ Use the block based methods and pass it the video url and the desired quality
 
 ```objc
 [YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
-                               quality:YTVimeoVideoQualityMedium
+                               quality:YTVimeoVideoQualityHD1080
                      completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
     if (error) {
     	// handle error
@@ -45,7 +45,7 @@ Use the block based methods and pass it the video url and the desired quality
 or create an instance of YTVimeoExtractor.
 
 ```objc
-self.extractor = [[YTVimeoExtractor alloc] initWithURL:@"http://vimeo.com/58600663" quality:YTVimeoVideoQualityMedium];
+self.extractor = [[YTVimeoExtractor alloc] initWithURL:@"http://vimeo.com/58600663" quality:YTVimeoVideoQualityHD1080];
 self.extractor.delegate = self;
 [self.extractor start];
 ```
@@ -68,7 +68,7 @@ If the Vimeo videos have domain-level restrictions and can only be played from p
 
 ```objc
 [YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
-                               quality:YTVimeoVideoQualityMedium
+                               quality:YTVimeoVideoQualityHD1080
                                referer:@"http://www.mywebsite.com"
                      completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
     if (error) {
