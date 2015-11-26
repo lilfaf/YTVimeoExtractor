@@ -209,29 +209,38 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
             return;
         }
 
+        // sort file informations
+        filesInfo = [filesInfo sortedArrayUsingDescriptors:[NSArray arrayWithObjects:[NSSortDescriptor sortDescriptorWithKey:@"width" ascending:YES], nil]];
+
         NSDictionary *videoInfo;
+        NSArray *availableVideoQualities = @[ @"270p", @"360p", @"720p", @"1080p" ];
         YTVimeoVideoQuality videoQuality = self.quality;
 
         if (self.quality == YTVimeoVideoQualityBestAvailable) {
             videoInfo = [filesInfo lastObject];
-
-        // get video info for the requested quality or fallback to the next available quality
-        } else {
+        }
+        else if (filesInfo.count == 1) {
+            // no need to search for the requested quality as there is only one available
+            videoInfo = [filesInfo objectAtIndex:0];
+        }
+        else {
+            // get video info for the requested quality or fallback to the next available quality
             do {
                 for (NSDictionary *info in filesInfo) {
-                    if ([info[@"quality"] isEqualToString:@[@"270p", @"360p", @"720p"][videoQuality]]) {
-                        videoInfo = info;
-                    }
+                    if ([info[@"quality"] isEqualToString:availableVideoQualities[videoQuality]]) videoInfo = info;
                 }
                 if (videoInfo) break;
                 videoQuality--;
-            } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow);
+            } while (!videoInfo && videoQuality >= YTVimeoVideoQualityLow270);
         }
 
         if (!videoInfo) {
             [self extractorFailedWithMessage:@"Unavailable video quality" errorCode:YTVimeoExtractorErrorUnavailableQuality];
             return;
         }
+
+        // reset quality to reflect extracted informations
+        videoQuality = [availableVideoQualities indexOfObject:videoInfo[@"quality"]];
 
         NSURL *fileURL = [NSURL URLWithString:[videoInfo objectForKey:@"url"]];
         NSDictionary* metadata = [jsonData valueForKeyPath:@"video"];

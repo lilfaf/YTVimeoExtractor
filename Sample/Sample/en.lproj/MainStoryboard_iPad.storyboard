@@ -29,13 +29,14 @@
                                     <action selector="playVideo:" destination="3" eventType="touchUpInside" id="rE9-8o-DT3"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="3" id="JwA-PX-9pw">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="4" id="JwA-PX-9pw">
                                 <rect key="frame" x="142" y="386" width="281" height="29"/>
                                 <animations/>
                                 <segments>
-                                    <segment title="Low"/>
-                                    <segment title="Standard"/>
-                                    <segment title="HD"/>
+                                    <segment title="270p"/>
+                                    <segment title="360p"/>
+                                    <segment title="720p"/>
+                                    <segment title="1080p"/>
                                     <segment title="Best"/>
                                 </segments>
                                 <connections>

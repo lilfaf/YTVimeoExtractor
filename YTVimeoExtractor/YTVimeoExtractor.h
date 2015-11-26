@@ -18,10 +18,16 @@ enum {
 };
 
 typedef enum YTVimeoVideoQuality : NSUInteger {
-    YTVimeoVideoQualityLow,
-    YTVimeoVideoQualityMedium,
-    YTVimeoVideoQualityHigh,
-    YTVimeoVideoQualityBestAvailable
+    YTVimeoVideoQualityLow270,
+    YTVimeoVideoQualityMedium360,
+    YTVimeoVideoQualityHD720,
+    YTVimeoVideoQualityHD1080,
+    YTVimeoVideoQualityBestAvailable,
+
+    // Depreciated code
+    YTVimeoVideoQualityLow    DEPRECATED_MSG_ATTRIBUTE("please use YTVimeoVideoQualityLow270 instead") = YTVimeoVideoQualityLow270,
+    YTVimeoVideoQualityMedium DEPRECATED_MSG_ATTRIBUTE("please use YTVimeoVideoQualityMedium360 instead") = YTVimeoVideoQualityMedium360,
+    YTVimeoVideoQualityHigh   DEPRECATED_MSG_ATTRIBUTE("please use YTVimeoVideoQualityHD720 or YTVimeoVideoQualityHD1080 instead") = YTVimeoVideoQualityHD1080
 }YTVimeoVideoQuality;
 
 typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality);

@@ -29,19 +29,6 @@
                                     <action selector="playVideo:" destination="4" eventType="touchUpInside" id="3tc-fI-2Hv"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="3" id="aV1-7M-IBa">
-                                <rect key="frame" x="20" y="173" width="281" height="29"/>
-                                <animations/>
-                                <segments>
-                                    <segment title="Low"/>
-                                    <segment title="Standard"/>
-                                    <segment title="HD"/>
-                                    <segment title="Best"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changeQuality" destination="4" eventType="valueChanged" id="1vc-Au-PNc"/>
-                                </connections>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="wQc-Ib-hFU">
                                 <rect key="frame" x="20" y="230" width="128" height="44"/>
                                 <animations/>
@@ -52,6 +39,20 @@
                                     <action selector="printMetadata:" destination="2" eventType="touchUpInside" id="NaL-Kf-6t0"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="4" id="aV1-7M-IBa">
+                                <rect key="frame" x="20" y="173" width="281" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="270p"/>
+                                    <segment title="360p"/>
+                                    <segment title="720p"/>
+                                    <segment title="1080p"/>
+                                    <segment title="Best"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeQuality" destination="4" eventType="valueChanged" id="1vc-Au-PNc"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

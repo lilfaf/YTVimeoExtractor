@@ -39,7 +39,7 @@
             NSLog(@"Error : %@", [error localizedDescription]);
         } else if (videoURL) {
             NSLog(@"Extracted url : %@", [videoURL absoluteString]);
-            NSLog(@"Extracted with quality : %@", @[@"Low", @"Standard", @"HD", @"Best"][quality]);
+            NSLog(@"Extracted with quality : %@", @[@"Low", @"Medium", @"HD 720", @"HD 1080"][quality]);
 
             dispatch_async (dispatch_get_main_queue(), ^{
                 self.playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
@@ -67,13 +67,16 @@
 {
     switch (self.qualitySeg.selectedSegmentIndex) {
         case 0:
-            self.quality = YTVimeoVideoQualityLow;
+            self.quality = YTVimeoVideoQualityLow270;
             break;
         case 1:
-            self.quality = YTVimeoVideoQualityMedium;
+            self.quality = YTVimeoVideoQualityMedium360;
             break;
         case 2:
-            self.quality = YTVimeoVideoQualityHigh;
+            self.quality = YTVimeoVideoQualityHD720;
+            break;
+        case 3:
+            self.quality = YTVimeoVideoQualityHD1080;
             break;
         default:
             self.quality = YTVimeoVideoQualityBestAvailable;
