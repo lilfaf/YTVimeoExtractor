@@ -7,6 +7,7 @@
 
 #import "YTVimeoExtractor.h"
 
+NSString *const YTVimeoURL = @"https://vimeo.com/%@";
 NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/config";
 NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 
@@ -79,7 +80,13 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
     if (self) {
         _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoID]];
         _quality = quality;
-        _referer = referer;
+
+        // use given referer or default to vimeo domain
+        if (referer) {
+            _referer = referer;
+        } else {
+            _referer = [NSString stringWithFormat:YTVimeoURL, videoID];
+        }
         _running = NO;
     }
     return self;

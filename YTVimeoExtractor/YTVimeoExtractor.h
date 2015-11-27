@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const YTVimeoURL;
 extern NSString *const YTVimeoPlayerConfigURL;
 extern NSString *const YTVimeoExtractorErrorDomain;
 
