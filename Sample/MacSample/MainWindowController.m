@@ -24,7 +24,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    self.quality = YTVimeoVideoQualityMedium;
+    self.quality = YTVimeoVideoQualityBestAvailable;
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
@@ -51,16 +51,21 @@
 - (IBAction)changeQuality:(id)sender {
     switch (self.qualitySeg.selectedSegment) {
         case 0:
-            self.quality = YTVimeoVideoQualityLow;
+            self.quality = YTVimeoVideoQualityLow270;
             break;
         case 1:
-            self.quality = YTVimeoVideoQualityMedium;
+            self.quality = YTVimeoVideoQualityMedium360;
             break;
         case 2:
-            self.quality = YTVimeoVideoQualityHigh;
-            
-        default:
+            self.quality = YTVimeoVideoQualityHD720;
             break;
+        case 3:
+            self.quality = YTVimeoVideoQualityHD1080;
+            break;
+        default:
+            self.quality = YTVimeoVideoQualityBestAvailable;
+            break;
+
     }
 }
 @end

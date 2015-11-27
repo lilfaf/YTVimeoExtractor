@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.AVKitIBPlugin" version="6254"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
@@ -20,13 +20,14 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="578" height="363"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="578" height="363"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlo-2n-FoI">
                         <rect key="frame" x="492" y="7" width="66" height="25"/>
+                        <animations/>
                         <buttonCell key="cell" type="roundTextured" title="Play" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kIP-Ot-fn0">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -36,7 +37,8 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qj8-EU-bhe">
-                        <rect key="frame" x="20" y="8" width="291" height="23"/>
+                        <rect key="frame" x="20" y="8" width="189" height="23"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="http://vimeo.com/58600663" placeholderString="" drawsBackground="YES" id="o7L-xz-cIa">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -45,15 +47,19 @@
                     </textField>
                     <avPlayerView fixedFrame="YES" controlsStyle="none" translatesAutoresizingMaskIntoConstraints="NO" id="rfM-L3-aFx">
                         <rect key="frame" x="0.0" y="39" width="578" height="324"/>
+                        <animations/>
                     </avPlayerView>
                     <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHQ-iH-HYR">
-                        <rect key="frame" x="317" y="7" width="169" height="24"/>
+                        <rect key="frame" x="215" y="6" width="273" height="24"/>
+                        <animations/>
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="BKa-8I-9SX">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment label="Low"/>
-                                <segment label="Standard" selected="YES" tag="1"/>
-                                <segment label="HD"/>
+                                <segment label="270p"/>
+                                <segment label="360p" selected="YES" tag="1"/>
+                                <segment label="720p"/>
+                                <segment label="1080p"/>
+                                <segment label="Best"/>
                             </segments>
                         </segmentedCell>
                         <connections>
@@ -61,6 +67,7 @@
                         </connections>
                     </segmentedControl>
                 </subviews>
+                <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="VVk-9V-9Ie"/>
