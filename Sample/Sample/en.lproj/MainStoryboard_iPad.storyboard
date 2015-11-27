@@ -29,7 +29,7 @@
                                     <action selector="playVideo:" destination="3" eventType="touchUpInside" id="rE9-8o-DT3"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="JwA-PX-9pw">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="4" id="JwA-PX-9pw">
                                 <rect key="frame" x="142" y="386" width="281" height="29"/>
                                 <animations/>
                                 <segments>

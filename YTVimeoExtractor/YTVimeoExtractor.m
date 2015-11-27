@@ -248,6 +248,9 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
             return;
         }
 
+        // reset quality to reflect extracted informations
+        videoQuality = [availableVideoQualities indexOfObject:videoInfo[@"quality"]];
+
         NSURL *fileURL = [NSURL URLWithString:[videoInfo objectForKey:@"url"]];
         NSDictionary* metadata = [jsonData valueForKeyPath:@"video"];
 
