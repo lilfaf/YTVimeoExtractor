@@ -171,7 +171,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
 {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
     if (httpResponse.statusCode != 200) {
-        [self extractorFailedWithMessage:@"Invalid video indentifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
+        [self extractorFailedWithMessage:@"Invalid video identifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
         // cancel the session
         completionHandler(NSURLSessionResponseCancel);
     }
@@ -205,7 +205,7 @@ NSString *const YTVimeoExtractorErrorDomain = @"YTVimeoExtractorErrorDomain";
         NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
 
         if (jsonError) {
-            [self extractorFailedWithMessage:@"Invalid video indentifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
+            [self extractorFailedWithMessage:@"Invalid video identifier" errorCode:YTVimeoExtractorErrorInvalidIdentifier];
             return;
         }
 
