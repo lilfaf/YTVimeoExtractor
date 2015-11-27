@@ -33,10 +33,11 @@
                                 <rect key="frame" x="142" y="386" width="281" height="29"/>
                                 <animations/>
                                 <segments>
-                                    <segment title="Low"/>
-                                    <segment title="Standard"/>
-                                    <segment title="High"/>
-                                    <segment title="HD"/>
+                                    <segment title="270p"/>
+                                    <segment title="360p"/>
+                                    <segment title="720p"/>
+                                    <segment title="1080p"/>
+                                    <segment title="Best"/>
                                 </segments>
                                 <connections>
                                     <action selector="changeQuality" destination="3" eventType="valueChanged" id="EXi-N2-04a"/>

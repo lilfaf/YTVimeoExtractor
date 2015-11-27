@@ -73,9 +73,11 @@
             self.quality = YTVimeoVideoQualityMedium360;
             break;
         case 2:
-            self.quality = YTVimeoVideoQualityHigh;
+            self.quality = YTVimeoVideoQualityHD720;
+            break;
         case 3:
-            self.quality = YTVimeoVideoQualityHD;
+            self.quality = YTVimeoVideoQualityHD1080;
+            break;
         default:
             self.quality = YTVimeoVideoQualityBestAvailable;
             break;
