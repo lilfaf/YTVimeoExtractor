@@ -10,4 +10,6 @@
 
 @interface YTVimeoExtractorOperation : NSOperation
 
+-(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer;
+
 @end
