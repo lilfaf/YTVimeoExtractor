@@ -8,7 +8,7 @@
 
 #import "YTVimeoExtractorOperation.h"
 #import "YTVimeoExtractor.h"
-
+#import "YTVimeoVideo.h"
 
 @interface YTVimeoExtractorOperation ()<NSURLSessionDataDelegate>
 
@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSURLSession *networkSession;
 
 @property (strong, nonatomic) NSMutableData *buffer;
+@property (nonatomic, readonly) NSString *videoIdentifier;
 
 
 @property (nonatomic, assign) BOOL isExecuting;
@@ -34,7 +35,7 @@
     
     if (!(self = [super init]))
         return nil;
-    
+    _videoIdentifier = videoIdentifier;
     _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoIdentifier]];
     
     // use given referer or default to vimeo domain
@@ -141,6 +142,9 @@
         // parse json from buffered data
         NSError *jsonError;
         __unused NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
+        
+        YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:self.videoIdentifier info:jsonData];
+        
     }
     
 }

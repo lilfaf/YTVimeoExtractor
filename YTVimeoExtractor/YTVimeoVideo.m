@@ -10,4 +10,71 @@
 
 @implementation YTVimeoVideo
 
+#pragma mark -
+- (instancetype) init
+{
+    @throw [NSException exceptionWithName:NSGenericException reason:@"Use the `initWithIdentifier:info` method instead." userInfo:nil];
+}
+
+- (instancetype)initWithIdentifier:(NSString *)identifier info:(NSDictionary *)info{
+    
+    NSParameterAssert(identifier);
+    NSParameterAssert(info);
+    
+    if (!(self = [super init]))
+        return nil;
+    
+    NSDictionary *videoInfo = [info valueForKey:@"video"];
+    _metaData = videoInfo;
+    NSDictionary *thumbnailsInfo = [videoInfo valueForKeyPath:@"thumbs"];
+    
+    _identifier = identifier;
+    NSString *title = videoInfo[@"title"] ?: @"";
+    
+    _duration = [videoInfo[@"duration"] doubleValue];
+    _title = title;
+
+    
+    NSArray *filesInfo = [info valueForKeyPath:@"request.files.progressive"];
+   
+
+    
+    NSMutableDictionary *streamURLs = [NSMutableDictionary new];
+    NSMutableDictionary *thumbnailURLs = [NSMutableDictionary new];
+
+    
+    for (NSDictionary *info in filesInfo) {
+       
+        NSInteger quality = [[info valueForKey:@"quality"]integerValue];
+        NSString *urlString = info[@"url"];
+        streamURLs[@(quality)] = urlString;
+    }
+    
+    _streamURLs = [streamURLs copy];
+    
+    for (NSString *key in thumbnailsInfo) {
+        
+        NSInteger thumbnailquality = [key integerValue];
+        NSString *thumbnailURL = thumbnailsInfo[key];
+        thumbnailURLs [@(thumbnailquality)] = thumbnailURL;
+    }
+    
+    _thumbnailURLs = [thumbnailURLs copy];
+    
+    return self;
+}
+
+
+#pragma mark - NSObject
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"[%@] %@", self.identifier, self.title];
+}
+#pragma mark - NSCopying
+
+- (id) copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
 @end
