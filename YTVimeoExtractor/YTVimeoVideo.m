@@ -50,7 +50,37 @@
         streamURLs[@(quality)] = urlString;
     }
     
-    _streamURLs = [streamURLs copy];
+    //Check to see if streamURLs contains streams that are not playable on iOS and OS X
+    //Sometimes we will get a url that is a flv file.
+    NSSet *unsuitableStreams = [streamURLs keysOfEntriesPassingTest:^
+                                BOOL(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    NSString *value = obj;
+                                    
+    if([value rangeOfString:@".mp4?"].location == NSNotFound){
+       //Stream is unsuitable.
+       return YES;
+   
+    }else{
+       return NO;
+    }
+        
+  }];
+    
+    //Has unsuitable streams
+    if (unsuitableStreams.count > 0) {
+        
+        //Remove them from the dictionary
+        NSArray* array = [unsuitableStreams allObjects];
+        [streamURLs removeObjectsForKeys:array];
+
+    }
+    
+    if (streamURLs.count == 0) {
+        //TODO: Consider doing a different approach here e.g. maybe produce an error.
+        return nil;
+    }else{
+        _streamURLs = [streamURLs copy];
+    }
     
     for (NSString *key in thumbnailsInfo) {
         
