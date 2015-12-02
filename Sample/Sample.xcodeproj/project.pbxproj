@@ -13,6 +13,10 @@
 		018241BE1C0A720400629CE3 /* YTVimeoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241BC1C0A720400629CE3 /* YTVimeoClient.m */; };
 		018241C11C0A72B100629CE3 /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241C01C0A72B100629CE3 /* YTVimeoVideo.m */; };
 		018241C21C0A72B100629CE3 /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241C01C0A72B100629CE3 /* YTVimeoVideo.m */; };
+		0190F0641C0F3B2E001523B7 /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 0190F0631C0F3B2E001523B7 /* testdata.json */; };
+		0190F0661C0F3E1F001523B7 /* testdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0190F0651C0F3E1F001523B7 /* testdata.plist */; };
+		01E559771C0F1E30001F314E /* MacSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E559761C0F1E30001F314E /* MacSampleTests.m */; };
+		01E5597F1C0F1FDD001F314E /* YTVimeoVideoTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E5597E1C0F1FDB001F314E /* YTVimeoVideoTestCase.m */; };
 		BF396C241A3E0C6400E47BD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF396C231A3E0C6400E47BD8 /* AppDelegate.m */; };
 		BF396C261A3E0C6400E47BD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF396C251A3E0C6400E47BD8 /* main.m */; };
 		BF396C281A3E0C6400E47BD8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF396C271A3E0C6400E47BD8 /* Images.xcassets */; };
@@ -39,6 +43,16 @@
 		BFA9544916D2D004000BB6D1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9544816D2D004000BB6D1 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		01E559791C0F1E30001F314E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF7E5BFB16D26B8300712F0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF396C1D1A3E0C6400E47BD8;
+			remoteInfo = MacSample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		018241B71C0A704A00629CE3 /* YTVimeoExtractorOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractorOperation.h; sourceTree = "<group>"; };
 		018241B81C0A704A00629CE3 /* YTVimeoExtractorOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractorOperation.m; sourceTree = "<group>"; };
@@ -47,6 +61,12 @@
 		018241BF1C0A72B100629CE3 /* YTVimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoVideo.h; sourceTree = "<group>"; };
 		018241C01C0A72B100629CE3 /* YTVimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoVideo.m; sourceTree = "<group>"; };
 		018241C31C0A73F000629CE3 /* YTVimeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoError.h; sourceTree = "<group>"; };
+		0190F0631C0F3B2E001523B7 /* testdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testdata.json; sourceTree = "<group>"; };
+		0190F0651C0F3E1F001523B7 /* testdata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = testdata.plist; sourceTree = "<group>"; };
+		01E559741C0F1E30001F314E /* MacSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01E559761C0F1E30001F314E /* MacSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacSampleTests.m; sourceTree = "<group>"; };
+		01E559781C0F1E30001F314E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01E5597E1C0F1FDB001F314E /* YTVimeoVideoTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoVideoTestCase.m; sourceTree = "<group>"; };
 		BF396C1E1A3E0C6400E47BD8 /* MacSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF396C211A3E0C6400E47BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF396C221A3E0C6400E47BD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +103,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		01E559711C0F1E30001F314E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF396C1B1A3E0C6400E47BD8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,6 +134,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01E5596F1C0F1D92001F314E /* YTVimeoExtractor Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "YTVimeoExtractor Tests";
+			sourceTree = "<group>";
+		};
+		01E559751C0F1E30001F314E /* MacSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				0190F0631C0F3B2E001523B7 /* testdata.json */,
+				0190F0651C0F3E1F001523B7 /* testdata.plist */,
+				01E5597E1C0F1FDB001F314E /* YTVimeoVideoTestCase.m */,
+				01E559761C0F1E30001F314E /* MacSampleTests.m */,
+				01E559781C0F1E30001F314E /* Info.plist */,
+			);
+			path = MacSampleTests;
+			sourceTree = "<group>";
+		};
 		BF396C1F1A3E0C6400E47BD8 /* MacSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,9 +180,11 @@
 		BF7E5BFA16D26B8300712F0D = {
 			isa = PBXGroup;
 			children = (
+				01E5596F1C0F1D92001F314E /* YTVimeoExtractor Tests */,
 				BF7E5C2C16D26B9F00712F0D /* YTVimeoExtractor */,
 				BF7E5C0C16D26B8300712F0D /* Sample */,
 				BF396C1F1A3E0C6400E47BD8 /* MacSample */,
+				01E559751C0F1E30001F314E /* MacSampleTests */,
 				BF7E5C0516D26B8300712F0D /* Frameworks */,
 				BF7E5C0416D26B8300712F0D /* Products */,
 			);
@@ -147,6 +195,7 @@
 			children = (
 				BF7E5C0316D26B8300712F0D /* Sample.app */,
 				BF396C1E1A3E0C6400E47BD8 /* MacSample.app */,
+				01E559741C0F1E30001F314E /* MacSampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +262,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		01E559731C0F1E30001F314E /* MacSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01E5597B1C0F1E30001F314E /* Build configuration list for PBXNativeTarget "MacSampleTests" */;
+			buildPhases = (
+				01E559701C0F1E30001F314E /* Sources */,
+				01E559711C0F1E30001F314E /* Frameworks */,
+				01E559721C0F1E30001F314E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01E5597A1C0F1E30001F314E /* PBXTargetDependency */,
+			);
+			name = MacSampleTests;
+			productName = MacSampleTests;
+			productReference = 01E559741C0F1E30001F314E /* MacSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BF396C1D1A3E0C6400E47BD8 /* MacSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF396C3C1A3E0C6400E47BD8 /* Build configuration list for PBXNativeTarget "MacSample" */;
@@ -256,6 +323,10 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Louis Larpin";
 				TargetAttributes = {
+					01E559731C0F1E30001F314E = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = BF396C1D1A3E0C6400E47BD8;
+					};
 					BF396C1D1A3E0C6400E47BD8 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -276,11 +347,21 @@
 			targets = (
 				BF7E5C0216D26B8300712F0D /* Sample */,
 				BF396C1D1A3E0C6400E47BD8 /* MacSample */,
+				01E559731C0F1E30001F314E /* MacSampleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		01E559721C0F1E30001F314E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0190F0661C0F3E1F001523B7 /* testdata.plist in Resources */,
+				0190F0641C0F3B2E001523B7 /* testdata.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF396C1C1A3E0C6400E47BD8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +388,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		01E559701C0F1E30001F314E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01E559771C0F1E30001F314E /* MacSampleTests.m in Sources */,
+				01E5597F1C0F1FDD001F314E /* YTVimeoVideoTestCase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BF396C1A1A3E0C6400E47BD8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,6 +426,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01E5597A1C0F1E30001F314E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF396C1D1A3E0C6400E47BD8 /* MacSample */;
+			targetProxy = 01E559791C0F1E30001F314E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BF396C291A3E0C6400E47BD8 /* MainMenu.xib */ = {
@@ -373,6 +471,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		01E5597C1C0F1E30001F314E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = MacSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = louis.larpin.Sample.MacSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacSample.app/Contents/MacOS/MacSample";
+			};
+			name = Debug;
+		};
+		01E5597D1C0F1E30001F314E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = MacSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = louis.larpin.Sample.MacSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacSample.app/Contents/MacOS/MacSample";
+			};
+			name = Release;
+		};
 		BF396C381A3E0C6400E47BD8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -523,6 +683,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		01E5597B1C0F1E30001F314E /* Build configuration list for PBXNativeTarget "MacSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01E5597C1C0F1E30001F314E /* Debug */,
+				01E5597D1C0F1E30001F314E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BF396C3C1A3E0C6400E47BD8 /* Build configuration list for PBXNativeTarget "MacSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

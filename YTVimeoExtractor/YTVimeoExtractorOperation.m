@@ -133,19 +133,21 @@
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
-    //send operation
-    [self finish];
+    
+    
     if (error) {
         
     }else{
         
         // parse json from buffered data
         NSError *jsonError;
-        __unused NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
-        
+         NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
+        _jsonDict = jsonData;
         YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:self.videoIdentifier info:jsonData];
+        _operationVideo = video;
         
     }
     
+    [self finish];
 }
 @end

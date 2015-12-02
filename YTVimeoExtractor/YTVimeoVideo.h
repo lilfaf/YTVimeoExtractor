@@ -63,4 +63,6 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoThumbnailQuality) {
  */
 @property (nonatomic, readonly) NSDictionary *metaData;
 
+@property (nonatomic, readonly) NSDictionary *otherStreamURLs;
+
 @end

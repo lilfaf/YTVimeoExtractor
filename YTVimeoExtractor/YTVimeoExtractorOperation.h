@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "YTVimeoVideo.h"
 @interface YTVimeoExtractorOperation : NSOperation
 
 -(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer;
-
+@property (nonatomic, readonly) YTVimeoVideo *operationVideo;
+@property (nonatomic, readonly) NSDictionary *jsonDict;
 @end

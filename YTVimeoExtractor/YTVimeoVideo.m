@@ -22,7 +22,7 @@
     NSParameterAssert(info);
     
     if (!(self = [super init]))
-        return nil;
+        return nil; // LCOV_EXCL_LINE
     
     NSDictionary *videoInfo = [info valueForKey:@"video"];
     _metaData = videoInfo;
@@ -71,6 +71,9 @@
         
         //Remove them from the dictionary
         NSArray* array = [unsuitableStreams allObjects];
+        NSMutableDictionary *otherStreams = [NSMutableDictionary dictionaryWithObjects:array forKeys:array];
+        _otherStreamURLs = [otherStreams copy];
+        
         [streamURLs removeObjectsForKeys:array];
 
     }
