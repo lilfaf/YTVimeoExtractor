@@ -1,5 +1,5 @@
 language: objective-c
-xcode_project: Sample.xcodeproj
+xcode_project: /YTVimeoExtractor/Sample/Sample.xcodeproj
 xcode_scheme: MacSampleTests
 script:
-- xcodebuild clean build test -project Sample.xcodeproj -scheme MacSampleTests
+- xcodebuild clean build test -project /YTVimeoExtractor/Sample/Sample.xcodeproj -scheme MacSampleTests
