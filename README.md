@@ -1,5 +1,7 @@
 ## YTVimeoExtractor
 
+[![Build Status](https://travis-ci.org/SoneeJohn/YTVimeoExtractor.svg?branch=v1.0.0-develop)](https://travis-ci.org/SoneeJohn/YTVimeoExtractor)
+
 YTVimeoExtractor helps you get mp4 urls which can be use in iOS's native player. You can even choose between mobile, standard and high definition quality.
 
 YTVimeoExtractor doesn't use UIWebView which makes it fast and clean.
