@@ -39,28 +39,17 @@
 }
 
 -(void)testThumbnails{
-    __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
-
-    YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:@"147318819" referer:nil];
     
-    operation.completionBlock = ^{
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-retain-cycles"
-        YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:@"147318819" info:operation.jsonDict];
-        #pragma clang diagnostic pop
-        
-       
+    NSString *filePath = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"testdata.plist"];
+    
+    NSData *buffer = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:buffer];
+    
+    YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:@"147318819" info:myDictionary];
+    
             
-        XCTAssertNotNil(video.thumbnailURLs);
-        
-        
-        [expectation fulfill];
+    XCTAssertNotNil(video.thumbnailURLs);
     
-    };
-    
-    [operation start];
-    
-    [self waitForExpectationsWithTimeout:60 handler:nil];
 }
 
 -(void)testUnsuitableStreamThatAlsoHasSuitableStreams{
