@@ -1,4 +1,5 @@
 language: objective-c
-xcode_project: Sample.xcodeproj
-xcode_scheme: MacSampleTests
-script: xcodebuild clean build test -project Sample.xcodeproj -scheme MacSample
+before_install:
+    - brew update
+    - brew install xctool
+script: xctool -project Sample.xcodeproj -scheme MacSample test
