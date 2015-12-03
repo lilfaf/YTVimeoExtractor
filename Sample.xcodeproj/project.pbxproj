@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0174ABA21C0FC5D900FA0352 /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0174ABA11C0FC5D900FA0352 /* YTVimeoURLParser.m */; };
-		0174ABA31C0FC5D900FA0352 /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0174ABA11C0FC5D900FA0352 /* YTVimeoURLParser.m */; };
+		0105D7031C0FEFE8004E66BA /* YTVimeoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D6F91C0FEFE8004E66BA /* YTVimeoClient.m */; };
+		0105D7041C0FEFE8004E66BA /* YTVimeoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D6F91C0FEFE8004E66BA /* YTVimeoClient.m */; };
+		0105D7051C0FEFE8004E66BA /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D6FC1C0FEFE8004E66BA /* YTVimeoExtractor.m */; };
+		0105D7061C0FEFE8004E66BA /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D6FC1C0FEFE8004E66BA /* YTVimeoExtractor.m */; };
+		0105D7071C0FEFE8004E66BA /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D6FE1C0FEFE8004E66BA /* YTVimeoExtractorOperation.m */; };
+		0105D7081C0FEFE8004E66BA /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D6FE1C0FEFE8004E66BA /* YTVimeoExtractorOperation.m */; };
+		0105D7091C0FEFE8004E66BA /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D7001C0FEFE8004E66BA /* YTVimeoURLParser.m */; };
+		0105D70A1C0FEFE8004E66BA /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D7001C0FEFE8004E66BA /* YTVimeoURLParser.m */; };
+		0105D70B1C0FEFE8004E66BA /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D7021C0FEFE8004E66BA /* YTVimeoVideo.m */; };
+		0105D70C1C0FEFE8004E66BA /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105D7021C0FEFE8004E66BA /* YTVimeoVideo.m */; };
 		0174ABA51C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0174ABA41C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m */; };
-		018241B91C0A704A00629CE3 /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241B81C0A704A00629CE3 /* YTVimeoExtractorOperation.m */; };
-		018241BA1C0A704A00629CE3 /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241B81C0A704A00629CE3 /* YTVimeoExtractorOperation.m */; };
-		018241BD1C0A720400629CE3 /* YTVimeoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241BC1C0A720400629CE3 /* YTVimeoClient.m */; };
-		018241BE1C0A720400629CE3 /* YTVimeoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241BC1C0A720400629CE3 /* YTVimeoClient.m */; };
-		018241C11C0A72B100629CE3 /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241C01C0A72B100629CE3 /* YTVimeoVideo.m */; };
-		018241C21C0A72B100629CE3 /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018241C01C0A72B100629CE3 /* YTVimeoVideo.m */; };
 		0190F0641C0F3B2E001523B7 /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 0190F0631C0F3B2E001523B7 /* testdata.json */; };
 		0190F0661C0F3E1F001523B7 /* testdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0190F0651C0F3E1F001523B7 /* testdata.plist */; };
 		01E559771C0F1E30001F314E /* MacSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E559761C0F1E30001F314E /* MacSampleTests.m */; };
@@ -27,7 +29,6 @@
 		BF396C401A3E104100E47BD8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF396C3E1A3E104100E47BD8 /* AVFoundation.framework */; };
 		BF396C411A3E104100E47BD8 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF396C3F1A3E104100E47BD8 /* AVKit.framework */; };
 		BF396C471A3E180400E47BD8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF396C461A3E180400E47BD8 /* CoreMedia.framework */; };
-		BF396C481A3E194B00E47BD8 /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7E5C3116D2B5EF00712F0D /* YTVimeoExtractor.m */; };
 		BF396C511A3E1CA700E47BD8 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF396C4F1A3E1CA700E47BD8 /* MainWindowController.m */; };
 		BF396C521A3E1CA700E47BD8 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF396C501A3E1CA700E47BD8 /* MainWindow.xib */; };
 		BF7E5C0716D26B8300712F0D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7E5C0616D26B8300712F0D /* UIKit.framework */; };
@@ -42,7 +43,6 @@
 		BF7E5C2016D26B8300712F0D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7E5C1E16D26B8300712F0D /* MainStoryboard_iPhone.storyboard */; };
 		BF7E5C2316D26B8300712F0D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7E5C2116D26B8300712F0D /* MainStoryboard_iPad.storyboard */; };
 		BF7E5C2616D26B8300712F0D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7E5C2516D26B8300712F0D /* ViewController.m */; };
-		BF7E5C3216D2B5EF00712F0D /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7E5C3116D2B5EF00712F0D /* YTVimeoExtractor.m */; };
 		BFA9544916D2D004000BB6D1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9544816D2D004000BB6D1 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,16 +57,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0174ABA01C0FC5D900FA0352 /* YTVimeoURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoURLParser.h; sourceTree = "<group>"; };
-		0174ABA11C0FC5D900FA0352 /* YTVimeoURLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoURLParser.m; sourceTree = "<group>"; };
+		0105D6F81C0FEFE8004E66BA /* YTVimeoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoClient.h; sourceTree = "<group>"; };
+		0105D6F91C0FEFE8004E66BA /* YTVimeoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoClient.m; sourceTree = "<group>"; };
+		0105D6FA1C0FEFE8004E66BA /* YTVimeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoError.h; sourceTree = "<group>"; };
+		0105D6FB1C0FEFE8004E66BA /* YTVimeoExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractor.h; sourceTree = "<group>"; };
+		0105D6FC1C0FEFE8004E66BA /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
+		0105D6FD1C0FEFE8004E66BA /* YTVimeoExtractorOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractorOperation.h; sourceTree = "<group>"; };
+		0105D6FE1C0FEFE8004E66BA /* YTVimeoExtractorOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractorOperation.m; sourceTree = "<group>"; };
+		0105D6FF1C0FEFE8004E66BA /* YTVimeoURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoURLParser.h; sourceTree = "<group>"; };
+		0105D7001C0FEFE8004E66BA /* YTVimeoURLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoURLParser.m; sourceTree = "<group>"; };
+		0105D7011C0FEFE8004E66BA /* YTVimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoVideo.h; sourceTree = "<group>"; };
+		0105D7021C0FEFE8004E66BA /* YTVimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoVideo.m; sourceTree = "<group>"; };
 		0174ABA41C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoURLParserTestCase.m; sourceTree = "<group>"; };
-		018241B71C0A704A00629CE3 /* YTVimeoExtractorOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractorOperation.h; sourceTree = "<group>"; };
-		018241B81C0A704A00629CE3 /* YTVimeoExtractorOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractorOperation.m; sourceTree = "<group>"; };
-		018241BB1C0A720400629CE3 /* YTVimeoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoClient.h; sourceTree = "<group>"; };
-		018241BC1C0A720400629CE3 /* YTVimeoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoClient.m; sourceTree = "<group>"; };
-		018241BF1C0A72B100629CE3 /* YTVimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoVideo.h; sourceTree = "<group>"; };
-		018241C01C0A72B100629CE3 /* YTVimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoVideo.m; sourceTree = "<group>"; };
-		018241C31C0A73F000629CE3 /* YTVimeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoError.h; sourceTree = "<group>"; };
 		0190F0631C0F3B2E001523B7 /* testdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testdata.json; sourceTree = "<group>"; };
 		0190F0651C0F3E1F001523B7 /* testdata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = testdata.plist; sourceTree = "<group>"; };
 		01E559741C0F1E30001F314E /* MacSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,8 +105,6 @@
 		BF7E5C2216D26B8300712F0D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		BF7E5C2416D26B8300712F0D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BF7E5C2516D26B8300712F0D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		BF7E5C3016D2B5EE00712F0D /* YTVimeoExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractor.h; sourceTree = "<group>"; };
-		BF7E5C3116D2B5EF00712F0D /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
 		BFA9544816D2D004000BB6D1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -140,6 +140,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0105D6F71C0FEFE8004E66BA /* YTVimeoExtractor */ = {
+			isa = PBXGroup;
+			children = (
+				0105D6F81C0FEFE8004E66BA /* YTVimeoClient.h */,
+				0105D6F91C0FEFE8004E66BA /* YTVimeoClient.m */,
+				0105D6FA1C0FEFE8004E66BA /* YTVimeoError.h */,
+				0105D6FB1C0FEFE8004E66BA /* YTVimeoExtractor.h */,
+				0105D6FC1C0FEFE8004E66BA /* YTVimeoExtractor.m */,
+				0105D6FD1C0FEFE8004E66BA /* YTVimeoExtractorOperation.h */,
+				0105D6FE1C0FEFE8004E66BA /* YTVimeoExtractorOperation.m */,
+				0105D6FF1C0FEFE8004E66BA /* YTVimeoURLParser.h */,
+				0105D7001C0FEFE8004E66BA /* YTVimeoURLParser.m */,
+				0105D7011C0FEFE8004E66BA /* YTVimeoVideo.h */,
+				0105D7021C0FEFE8004E66BA /* YTVimeoVideo.m */,
+			);
+			path = YTVimeoExtractor;
+			sourceTree = "<group>";
+		};
 		01E5596F1C0F1D92001F314E /* YTVimeoExtractor Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,8 +206,8 @@
 		BF7E5BFA16D26B8300712F0D = {
 			isa = PBXGroup;
 			children = (
+				0105D6F71C0FEFE8004E66BA /* YTVimeoExtractor */,
 				01E5596F1C0F1D92001F314E /* YTVimeoExtractor Tests */,
-				BF7E5C2C16D26B9F00712F0D /* YTVimeoExtractor */,
 				BF7E5C0C16D26B8300712F0D /* Sample */,
 				BF396C1F1A3E0C6400E47BD8 /* MacSample */,
 				BF7E5C0516D26B8300712F0D /* Frameworks */,
@@ -247,25 +265,6 @@
 				BF7E5C1C16D26B8300712F0D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		BF7E5C2C16D26B9F00712F0D /* YTVimeoExtractor */ = {
-			isa = PBXGroup;
-			children = (
-				BF7E5C3016D2B5EE00712F0D /* YTVimeoExtractor.h */,
-				BF7E5C3116D2B5EF00712F0D /* YTVimeoExtractor.m */,
-				018241B71C0A704A00629CE3 /* YTVimeoExtractorOperation.h */,
-				018241B81C0A704A00629CE3 /* YTVimeoExtractorOperation.m */,
-				018241BB1C0A720400629CE3 /* YTVimeoClient.h */,
-				018241BC1C0A720400629CE3 /* YTVimeoClient.m */,
-				018241BF1C0A72B100629CE3 /* YTVimeoVideo.h */,
-				018241C01C0A72B100629CE3 /* YTVimeoVideo.m */,
-				018241C31C0A73F000629CE3 /* YTVimeoError.h */,
-				0174ABA01C0FC5D900FA0352 /* YTVimeoURLParser.h */,
-				0174ABA11C0FC5D900FA0352 /* YTVimeoURLParser.m */,
-			);
-			name = YTVimeoExtractor;
-			path = ../YTVimeoExtractor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,13 +410,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF396C481A3E194B00E47BD8 /* YTVimeoExtractor.m in Sources */,
+				0105D7061C0FEFE8004E66BA /* YTVimeoExtractor.m in Sources */,
+				0105D70A1C0FEFE8004E66BA /* YTVimeoURLParser.m in Sources */,
 				BF396C261A3E0C6400E47BD8 /* main.m in Sources */,
-				0174ABA31C0FC5D900FA0352 /* YTVimeoURLParser.m in Sources */,
-				018241BE1C0A720400629CE3 /* YTVimeoClient.m in Sources */,
-				018241C21C0A72B100629CE3 /* YTVimeoVideo.m in Sources */,
-				018241BA1C0A704A00629CE3 /* YTVimeoExtractorOperation.m in Sources */,
+				0105D7081C0FEFE8004E66BA /* YTVimeoExtractorOperation.m in Sources */,
 				BF396C511A3E1CA700E47BD8 /* MainWindowController.m in Sources */,
+				0105D70C1C0FEFE8004E66BA /* YTVimeoVideo.m in Sources */,
+				0105D7041C0FEFE8004E66BA /* YTVimeoClient.m in Sources */,
 				BF396C241A3E0C6400E47BD8 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,14 +425,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0105D7051C0FEFE8004E66BA /* YTVimeoExtractor.m in Sources */,
+				0105D7091C0FEFE8004E66BA /* YTVimeoURLParser.m in Sources */,
 				BF7E5C1316D26B8300712F0D /* main.m in Sources */,
+				0105D7071C0FEFE8004E66BA /* YTVimeoExtractorOperation.m in Sources */,
 				BF7E5C1716D26B8300712F0D /* AppDelegate.m in Sources */,
-				0174ABA21C0FC5D900FA0352 /* YTVimeoURLParser.m in Sources */,
-				018241BD1C0A720400629CE3 /* YTVimeoClient.m in Sources */,
-				018241C11C0A72B100629CE3 /* YTVimeoVideo.m in Sources */,
-				018241B91C0A704A00629CE3 /* YTVimeoExtractorOperation.m in Sources */,
+				0105D70B1C0FEFE8004E66BA /* YTVimeoVideo.m in Sources */,
+				0105D7031C0FEFE8004E66BA /* YTVimeoClient.m in Sources */,
 				BF7E5C2616D26B8300712F0D /* ViewController.m in Sources */,
-				BF7E5C3216D2B5EF00712F0D /* YTVimeoExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
