@@ -1,0 +1,7 @@
+language: objective-c
+xcode_project: Sample.xcodeproj
+xcode_scheme: MacSampleTests
+osx_image: beta-xcode6.3
+ 
+script:
+- xcodebuild clean build test -project Sample.xcodeproj -scheme MacSampleTests
