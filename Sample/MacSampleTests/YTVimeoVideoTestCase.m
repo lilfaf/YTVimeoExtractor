@@ -60,7 +60,7 @@
     
     [operation start];
     
-    [self waitForExpectationsWithTimeout:15 handler:nil];
+    [self waitForExpectationsWithTimeout:60 handler:nil];
 }
 
 -(void)testUnsuitableStreamThatAlsoHasSuitableStreams{
