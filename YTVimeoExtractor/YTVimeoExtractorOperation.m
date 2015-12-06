@@ -96,7 +96,16 @@
     return selector == @selector(isExecuting) || selector == @selector(isFinished) || [super automaticallyNotifiesObserversForKey:key];
 }
 
-- (void) finish
+-(void)finishOperationWithError:(NSError *)error{
+    
+    
+}
+
+-(void)finishOperationWithVideo:(YTVimeoVideo *)video{
+    
+    
+}
+- (void)finish
 {
     self.isExecuting = NO;
     self.isFinished = YES;
@@ -106,8 +115,15 @@
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
+   
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+    
     if (httpResponse.statusCode != 200) {
+        //
+        __unused NSError *error;
+        
+        //TODO: Parse out the statusCode code. E.g. 404 would be a deleted video.
+        
         // cancel the session
         [self finish];
         completionHandler(NSURLSessionResponseCancel);
