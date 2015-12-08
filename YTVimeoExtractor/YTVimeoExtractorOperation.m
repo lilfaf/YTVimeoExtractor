@@ -197,7 +197,19 @@
          NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
         _jsonDict = jsonData;
         YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:self.videoIdentifier info:jsonData];
-        [self finishOperationWithVideo:video];
+        [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
+           
+            if (error) {
+                
+                [self finishOperationWithError:error];
+           
+            }else{
+                
+                [self finishOperationWithVideo:video];
+
+            }
+            
+        }];
     }
     
 }

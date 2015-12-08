@@ -111,5 +111,29 @@
     
 }
 
+-(void)testPrivateVideo{
+    
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
+    
+    
+    YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:@"148222047" referer:nil];
+    
+    [operation start];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+    operation.completionBlock = ^(){
+        
+        XCTAssertTrue(operation.error.code == YTVimeoErrorRestrictedPlayback);
+        XCTAssertTrue(operation.error.domain == YTVimeoVideoErrorDomain);
+        
+        [expectation fulfill];
+    };
+    
+    
+#pragma clang diagnostic pop
+    
+    [self waitForExpectationsWithTimeout:15 handler:nil];
+}
+
 
 @end
