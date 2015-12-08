@@ -31,7 +31,7 @@
 
 - (instancetype) init
 {
-    @throw [NSException exceptionWithName:NSGenericException reason:@"Use the `initWithVideoIdentifier:referer` method instead." userInfo:nil];
+    @throw [NSException exceptionWithName:NSGenericException reason:@"Use the `initWithVideoIdentifier:referer`or `initWithURL:referer` method instead." userInfo:nil];
 }
 -(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer{
     
@@ -50,6 +50,12 @@
 
     return self;
 }
+
+- (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer{
+    
+    return [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer];
+}
+
 
 #pragma mark - NSOperation
 
@@ -195,6 +201,11 @@
         // parse json from buffered data
         NSError *jsonError;
          NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
+        if (!jsonData) {
+            NSError *invalidIDError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorInvalidVideoIdentifier userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The video identifier is invalid"}];
+            [self finishOperationWithError:invalidIDError];
+            return;
+        }
         _jsonDict = jsonData;
         YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:self.videoIdentifier info:jsonData];
         [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {

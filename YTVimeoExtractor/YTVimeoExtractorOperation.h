@@ -11,6 +11,7 @@
 @interface YTVimeoExtractorOperation : NSOperation
 
 -(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer;
+- (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer;
 @property (nonatomic, readonly) YTVimeoVideo *operationVideo;
 @property (nonatomic, readonly) NSDictionary *jsonDict;
 @property (nonatomic, readonly) NSError *error;

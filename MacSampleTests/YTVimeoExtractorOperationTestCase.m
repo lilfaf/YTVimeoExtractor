@@ -37,6 +37,25 @@
     
 }
 
+-(void)testInvalidID{
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
+
+    YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithURL:@"https://vimeo.com/ondemand/rolodexofhate" referer:nil];
+    
+    [operation start];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+    operation.completionBlock = ^(){
+        
+        XCTAssertTrue(operation.error.domain == YTVimeoVideoErrorDomain);
+        XCTAssertFalse(operation.error.code == YTVimeoErrorInvalidVideoIdentifier);
+        [expectation fulfill];
+    };
+    
+    [self waitForExpectationsWithTimeout:15 handler:nil];
+
+}
+
 #pragma mark -
 - (void)testIsAsynchronous{
     YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:@"9845854" referer:nil];
