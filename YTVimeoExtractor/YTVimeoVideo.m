@@ -8,6 +8,11 @@
 
 #import "YTVimeoVideo.h"
 #import "YTVimeoError.h"
+
+@interface YTVimeoVideo ()
+@property (nonatomic, strong) NSDictionary *infoDict;
+
+@end
 NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
 @implementation YTVimeoVideo
 
@@ -24,44 +29,69 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     
     if (!(self = [super init]))
         return nil; // LCOV_EXCL_LINE
+    _infoDict = [info copy];
     
-    NSDictionary *videoInfo = [info valueForKey:@"video"];
-    _metaData = videoInfo;
+    return self;
+}
+#pragma mark - 
+- (void)extractVideoInfoWithCompletionHandler:(void (^)(NSError *error))completionHandler{
+
+    if (!completionHandler)
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The `completionHandler` must not be nil." userInfo:nil];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+    NSDictionary *videoInfo = [self.infoDict valueForKey:@"video"];
+    
     NSDictionary *thumbnailsInfo = [videoInfo valueForKeyPath:@"thumbs"];
+    if (thumbnailsInfo.count == 0 || thumbnailsInfo == nil) {
+        //Private video
+        //This could also be a deleted video. However, the `YTVimeoExtractorOperation`class will catch deleted videos. 
+        NSError *privateError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRestrictedPlayback userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The request Vimeo video is private."}];
+        completionHandler(privateError);
+        return;
+    }
     
-    _identifier = identifier;
+    _metaData = videoInfo;
+
     NSString *title = videoInfo[@"title"] ?: @"";
     
     _duration = [videoInfo[@"duration"] doubleValue];
     _title = title;
-
     
-    NSArray *filesInfo = [info valueForKeyPath:@"request.files.progressive"];
-   
-
+    
+    NSArray *filesInfo = [self.infoDict valueForKeyPath:@"request.files.progressive"];
+    
     
     NSMutableDictionary *streamURLs = [NSMutableDictionary new];
     NSMutableDictionary *thumbnailURLs = [NSMutableDictionary new];
-
+    
     
     for (NSDictionary *info in filesInfo) {
-       
+        
         NSInteger quality = [[info valueForKey:@"quality"]integerValue];
         NSString *urlString = info[@"url"];
         
         //Only if the file is playable on OS X or iOS natively
         if([urlString rangeOfString:@".mp4"].location != NSNotFound){
-
+            
             streamURLs[@(quality)] = urlString;
-
+            
         }
     }
     
-    if (streamURLs.count == 0) {
-        return nil;
+    if (streamURLs.count == 0 || streamURLs == nil) {
+        
+        NSError *unsuitableError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorNoSuitableStreamAvailable userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The request Vimeo video does not have a suitable stream. The file cannot natively play on iOS or OS X."}];
+        
+        completionHandler(unsuitableError);
+        return;
+    
     }else{
+        
         _streamURLs = [streamURLs copy];
     }
+    
     
     for (NSString *key in thumbnailsInfo) {
         
@@ -72,7 +102,9 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     
     _thumbnailURLs = [thumbnailURLs copy];
     
-    return self;
+    completionHandler(nil);
+
+    });
 }
 
 

@@ -36,6 +36,10 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoThumbnailQuality) {
  */
 - (instancetype) initWithIdentifier:(NSString *)identifier info:(NSDictionary *)info;
 
+- (void)extractVideoInfoWithCompletionHandler:(void (^)(NSError * __nullable error))completionHandler;
+
+
+
 /**
  *  The Vimeo video identifier.
  */

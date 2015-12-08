@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "YTVimeoVideo.h"
 #import "YTVimeoExtractorOperation.h"
+#import "YTVimeoError.h"
 @interface YTVimeoVideoTestCase : XCTestCase
 
 @end
@@ -38,8 +39,7 @@
 
 }
 
--(void)testThumbnails{
-    
+-(void)testNilCompletionHandler{
     NSString *filePath = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"testdata.plist"];
     
     NSData *buffer = [NSData dataWithContentsOfFile:filePath];
@@ -47,9 +47,28 @@
     
     YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:@"147318819" info:myDictionary];
     
-            
-    XCTAssertNotNil(video.thumbnailURLs);
+    XCTAssertThrowsSpecificNamed([video extractVideoInfoWithCompletionHandler:nil],NSException, NSInvalidArgumentException);
+}
+
+
+-(void)testThumbnails{
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
+
+    NSString *filePath = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"testdata.plist"];
     
+    NSData *buffer = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:buffer];
+    
+    YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:@"147318819" info:myDictionary];
+    
+    [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
+        
+        XCTAssertNotNil(video.thumbnailURLs);
+        
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:15 handler:nil];
 }
 
 /*
@@ -92,19 +111,42 @@
     NSData *buffer = [NSData dataWithContentsOfFile:filePath];
     NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:buffer];
 
-
-
-
     YTVimeoVideo *videoObject = [[YTVimeoVideo alloc]initWithIdentifier:@"147318819" info:myDictionary];
     //[147318819] Istanbul | Flow Through the City of Tales
     NSString *des = [NSString stringWithFormat:@"[%@] %@",videoObject.identifier, videoObject.title];
     
-    if ([videoObject.description isEqualToString:des]) {
-        
-    }
-    
-    //XCTAssertTrue();
     XCTAssertEqualObjects(videoObject.description,des);
+}
+#pragma mark - 
+-(void)testPrivateVideo{
+    
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
+    
+    YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:@"148222047" referer:nil];
+    
+    operation.completionBlock = ^{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+        
+        YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:@"148222047" info:operation.jsonDict];
+        
+#pragma clang diagnostic pop
+        
+        [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
+            
+            XCTAssertTrue(error.domain == YTVimeoVideoErrorDomain);
+            XCTAssertTrue(error.code == YTVimeoErrorRestrictedPlayback);
+           
+            
+            [expectation fulfill];
+        }];
+        
+        
+    };
+    
+    [operation start];
+    
+    [self waitForExpectationsWithTimeout:15 handler:nil];
 }
 
 @end
