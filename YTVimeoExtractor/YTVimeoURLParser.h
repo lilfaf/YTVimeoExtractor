@@ -17,4 +17,12 @@
  *  @return `YES`if URL is valid. Otherwise `NO``
  */
 - (BOOL)validateVimeoURL:(NSString *)vimeoURL;
+/**
+ *  Will extract the Vimeo video identifier from a given URL.
+ *
+ *  @param vimeoURL The Vimeo URL will be parsed.
+ *
+ *  @return Will return a identifier if the URL is valid. Otherwise will return a empty string.
+ */
+- (NSString *)extractVideoIdentifier:(NSString *)vimeoURL;
 @end

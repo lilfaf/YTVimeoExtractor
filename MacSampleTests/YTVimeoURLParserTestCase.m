@@ -29,24 +29,34 @@
     
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
     XCTAssertTrue([parser validateVimeoURL:@"https://vimeo.com/145706460"]);
+    XCTAssertTrue([parser extractVideoIdentifier:@"https://vimeo.com/145706460"].length > 0);
+
 }
 
 -(void)testValidVimeoURL_StaffPicks{
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
+    
     XCTAssertTrue([parser validateVimeoURL:@"https://vimeo.com/channels/staffpicks/147365861"]);
+    XCTAssertTrue([parser extractVideoIdentifier:@"https://vimeo.com/channels/staffpicks/147365861"].length > 0);
+
 
 }
 
 -(void)testValidVimeoURL_Groups{
     
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
+    
     XCTAssertTrue([parser validateVimeoURL:@"https://vimeo.com/groups/travelhd/videos/147536447"]);
+    XCTAssertTrue([parser extractVideoIdentifier:@"https://vimeo.com/groups/travelhd/videos/147536447"].length > 0);
+
 }
 
 -(void)testValidVimeoURL_Album{
     
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
     XCTAssertTrue([parser validateVimeoURL:@"https://vimeo.com/album/3643712/video/59749737"]);
+    XCTAssertTrue([parser extractVideoIdentifier:@"https://vimeo.com/album/3643712/video/59749737"].length > 0);
+
 }
 
 #pragma mark -
@@ -54,18 +64,22 @@
     
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
     XCTAssertFalse([parser validateVimeoURL:nil]);
+    XCTAssertFalse([parser extractVideoIdentifier:nil].length > 0);
+
 }
 
 -(void)testInvalidVimeoURL_EmptyString{
     
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
     XCTAssertFalse([parser validateVimeoURL:@""]);
+    XCTAssertFalse([parser extractVideoIdentifier:@""].length > 0);
 }
 
 -(void)testInvalidVimeoURL_NonNumeric{
     
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
     XCTAssertFalse([parser validateVimeoURL:@"https://vimeo.com/album/3643712/video/AAAAAA"]);
+    XCTAssertFalse([parser extractVideoIdentifier:@"https://vimeo.com/album/3643712/video/AAAAAA"].length > 0);
 }
 
 

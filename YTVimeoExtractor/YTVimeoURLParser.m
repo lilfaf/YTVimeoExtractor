@@ -52,4 +52,50 @@
 
 }
 
+-(NSString *)extractVideoIdentifier:(NSString *)vimeoURL{
+    
+    __block NSString *vimeoVideoID;
+    
+    @try{
+        //Get the last part of the '/' which will be the videoID
+        
+        vimeoVideoID = [[vimeoURL componentsSeparatedByString:@"/"] lastObject];
+        
+    } @catch (NSException *exception) {
+        
+        NSLog(@"Caught exception %@", exception);
+        vimeoVideoID = @"";
+        return vimeoVideoID;
+    }
+    
+    //Check if vimeoVideoID is nil
+    if (vimeoVideoID == nil) {
+        vimeoVideoID = @"";
+        return vimeoVideoID;
+    }
+    //If not nil check if it is empty e.g @""
+    else if ([vimeoVideoID length] == 0){
+
+        return vimeoVideoID;
+    }
+    
+    //Check if videoID contains only digits
+    NSCharacterSet *_NumericOnly = [NSCharacterSet decimalDigitCharacterSet];
+    NSCharacterSet *myStringSet = [NSCharacterSet characterSetWithCharactersInString:vimeoVideoID];
+    
+    if ([_NumericOnly isSupersetOfSet: myStringSet]) {
+        
+        return vimeoVideoID;
+        
+    } else{
+        vimeoVideoID = @"";
+        return vimeoVideoID;
+        
+    }
+    
+    return @"";
+    
+    
+}
+
 @end
