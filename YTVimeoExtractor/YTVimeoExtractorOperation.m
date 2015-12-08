@@ -29,10 +29,13 @@
 @end
 @implementation YTVimeoExtractorOperation
 
-
+- (instancetype) init
+{
+    @throw [NSException exceptionWithName:NSGenericException reason:@"Use the `initWithVideoIdentifier:referer` method instead." userInfo:nil];
+}
 -(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer{
     
-    
+    NSParameterAssert(videoIdentifier);
     if (!(self = [super init]))
         return nil;
     _videoIdentifier = videoIdentifier;
