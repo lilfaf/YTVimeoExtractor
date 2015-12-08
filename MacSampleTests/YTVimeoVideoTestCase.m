@@ -34,8 +34,12 @@
 }
 
 -(void)testNilParms{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wnonnull"
    
     XCTAssertThrowsSpecific([[YTVimeoVideo alloc]initWithIdentifier:nil info:nil], NSException, @"should throw an exception");
+    #pragma clang diagnostic pop
 
 }
 
@@ -46,8 +50,13 @@
     NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:buffer];
     
     YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:@"147318819" info:myDictionary];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
+#pragma clang diagnostic ignored "-Wnonnull"
     
     XCTAssertThrowsSpecificNamed([video extractVideoInfoWithCompletionHandler:nil],NSException, NSInvalidArgumentException);
+    
+    #pragma clang diagnostic pop
 }
 
 

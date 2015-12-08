@@ -34,20 +34,20 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoThumbnailQuality) {
  *
  *  @return A newly initialized `YTVimeoVideo` object.
  */
-- (instancetype) initWithIdentifier:(NSString *)identifier info:(NSDictionary *)info;
+- (nullable instancetype) initWithIdentifier:(NSString *_Nonnull)identifier info:(NSDictionary *_Nonnull)info;
 
-- (void)extractVideoInfoWithCompletionHandler:(void (^)(NSError * __nullable error))completionHandler;
+- (void)extractVideoInfoWithCompletionHandler:(void (^_Nonnull)(NSError * __nullable error))completionHandler;
 
 
 
 /**
  *  The Vimeo video identifier.
  */
-@property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) NSString *__nullable identifier;
 /**
  *  The title of the video.
  */
-@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *__nullable title;
 /**
  *  The duration of the video in seconds.
  */
@@ -56,15 +56,15 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoThumbnailQuality) {
 /**
  *  A `NSDictionary` object that contains the various stream URLs.
  */
-@property (nonatomic, readonly) NSDictionary *streamURLs;
+@property (nonatomic, readonly) NSDictionary *__nullable streamURLs;
 /**
  *  A `NSDictionary` object that contains the various thumbnail URLs.
  *  @see YTVimeoVideoThumbnailQuality
  */
-@property (nonatomic, readonly) NSDictionary *thumbnailURLs;
+@property (nonatomic, readonly) NSDictionary *__nullable thumbnailURLs;
 /**
  *  A `NSDictionary` object that contains all the metadata about the video.
  */
-@property (nonatomic, readonly) NSDictionary *metaData;
+@property (nonatomic, readonly) NSDictionary *__nullable metaData;
 
 @end
