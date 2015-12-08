@@ -129,18 +129,18 @@
         
         if (httpResponse.statusCode == 404) {
            
-            NSError *deletedError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRemovedVideo userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The request Vimeo video was deleted."}];
+            NSError *deletedError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRemovedVideo userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video was deleted."}];
             [self finishOperationWithError:deletedError];
             
         }else if (httpResponse.statusCode == 403){
             
-            NSError *privateError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRestrictedPlayback userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The request Vimeo video is private."}];
+            NSError *privateError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRestrictedPlayback userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video is private."}];
             [self finishOperationWithError:privateError];
             
         }else{
             NSString *response = [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode];
 
-            NSError *unknownError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorUnknown userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey:[NSString stringWithFormat:@"The request Vimeo video out this reponse: %@",response]}];
+            NSError *unknownError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorUnknown userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey:[NSString stringWithFormat:@"The requested Vimeo video out this reponse: %@",response]}];
             
           [self finishOperationWithError:unknownError];
         }
