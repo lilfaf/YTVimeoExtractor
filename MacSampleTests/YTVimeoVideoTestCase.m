@@ -52,6 +52,7 @@
     
 }
 
+/*
 -(void)testUnsuitableStreamThatAlsoHasSuitableStreams{
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
     
@@ -82,6 +83,7 @@
     
     [self waitForExpectationsWithTimeout:15 handler:nil];
 }
+ */
 #pragma mark -
 - (void) testVideoObjectDescription
 {
