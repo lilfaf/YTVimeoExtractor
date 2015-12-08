@@ -9,7 +9,7 @@
 #import "YTVimeoExtractorOperation.h"
 #import "YTVimeoExtractor.h"
 #import "YTVimeoVideo.h"
-
+#import "YTVimeoError.h"
 @interface YTVimeoExtractorOperation ()<NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;
@@ -98,12 +98,16 @@
 
 -(void)finishOperationWithError:(NSError *)error{
     
+    _error = error;
+    [self finish];
     
 }
 
 -(void)finishOperationWithVideo:(YTVimeoVideo *)video{
     
-    
+    _operationVideo = video;
+    _error = nil;
+    [self finish];
 }
 - (void)finish
 {
@@ -119,13 +123,26 @@
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
     
     if (httpResponse.statusCode != 200) {
-        //
-        __unused NSError *error;
         
-        //TODO: Parse out the statusCode code. E.g. 404 would be a deleted video.
+        if (httpResponse.statusCode == 404) {
+           
+            NSError *deletedError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRemovedVideo userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The request Vimeo video was deleted."}];
+            [self finishOperationWithError:deletedError];
+            
+        }else if (httpResponse.statusCode == 403){
+            
+            NSError *privateError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRestrictedPlayback userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The request Vimeo video is private."}];
+            [self finishOperationWithError:privateError];
+            
+        }else{
+            NSString *response = [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode];
+
+            NSError *unknownError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorUnknown userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey:[NSString stringWithFormat:@"The request Vimeo video out this reponse: %@",response]}];
+            
+          [self finishOperationWithError:unknownError];
+        }
         
         // cancel the session
-        [self finish];
         completionHandler(NSURLSessionResponseCancel);
     }
     
@@ -153,6 +170,23 @@
     
     if (error) {
         
+        if (error.code != -999){
+        //Only do this if the task was not cancelled.
+        //The following code should never have to execute due to cancelling a task once the response was not 200.
+            //However, this is just here to be on the safe side.
+        if ([error.domain isEqualToString:NSURLErrorDomain]) {
+            
+            NSError *networkError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorNetwork userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey:error.localizedDescription}];
+            [self finishOperationWithError:networkError];
+        
+        }else{
+            
+            NSError *someOtherError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorUnknown userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey:error.localizedDescription}];
+            
+            [self finishOperationWithError:someOtherError];
+        }
+    }
+    
     }else{
         
         // parse json from buffered data
@@ -160,10 +194,8 @@
          NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:self.buffer options:NSJSONReadingAllowFragments error:&jsonError];
         _jsonDict = jsonData;
         YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:self.videoIdentifier info:jsonData];
-        _operationVideo = video;
-        
+        [self finishOperationWithVideo:video];
     }
     
-    [self finish];
 }
 @end

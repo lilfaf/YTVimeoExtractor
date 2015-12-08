@@ -7,7 +7,8 @@
 //
 
 #import "YTVimeoVideo.h"
-
+#import "YTVimeoError.h"
+NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
 @implementation YTVimeoVideo
 
 #pragma mark -

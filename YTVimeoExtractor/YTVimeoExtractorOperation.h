@@ -13,4 +13,5 @@
 -(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer;
 @property (nonatomic, readonly) YTVimeoVideo *operationVideo;
 @property (nonatomic, readonly) NSDictionary *jsonDict;
+@property (nonatomic, readonly) NSError *error;
 @end
