@@ -30,6 +30,7 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     if (!(self = [super init]))
         return nil; // LCOV_EXCL_LINE
     _infoDict = [info copy];
+    _identifier = identifier;
     
     return self;
 }

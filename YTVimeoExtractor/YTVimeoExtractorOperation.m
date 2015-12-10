@@ -10,6 +10,12 @@
 #import "YTVimeoExtractor.h"
 #import "YTVimeoVideo.h"
 #import "YTVimeoError.h"
+
+
+
+NSString *const YTVimeoURL = @"https://vimeo.com/%@";
+NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/config";
+
 @interface YTVimeoExtractorOperation ()<NSURLSessionDataDelegate>
 
 @property (nonatomic, strong) NSURLSessionDataTask *dataTask;

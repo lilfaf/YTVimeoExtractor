@@ -15,7 +15,7 @@
 
 
 @property (strong, nonatomic) YTVimeoExtractor *extractor;
-@property (nonatomic) YTVimeoVideoQuality quality;
+//@property (nonatomic) YTVimeoVideoQuality quality;
 
 @end
 
@@ -24,7 +24,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    self.quality = YTVimeoVideoQualityBestAvailable;
+    //self.quality = YTVimeoVideoQualityBestAvailable;
 }
 
 - (void)windowWillClose:(NSNotification *)notification {
@@ -34,6 +34,7 @@
     self.playerView = nil;
 }
 
+/*
 - (IBAction)playVideo:(id)sender {
     [YTVimeoExtractor fetchVideoURLFromURL:self.textURL.stringValue quality:self.quality completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
         if (error) {
@@ -47,7 +48,8 @@
         }
     }];
 }
-
+ */
+/*
 - (IBAction)changeQuality:(id)sender {
     switch (self.qualitySeg.selectedSegment) {
         case 0:
@@ -68,4 +70,5 @@
 
     }
 }
+ */
 @end
