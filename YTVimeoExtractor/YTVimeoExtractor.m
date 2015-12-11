@@ -40,7 +40,7 @@
 }
 
 #pragma mark -
--(YTVimeoExtractorOperation *)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler{
+-(void)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler{
     
     NSParameterAssert(videoIdentifier);
     if (!completionHandler)
@@ -52,7 +52,7 @@
 
         completionHandler(nil, invalidIDError);
 
-        return nil;
+        return;
     }
 
     YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:videoIdentifier referer:referer];
@@ -75,11 +75,10 @@
     #pragma clang diagnostic pop
     
     [self.extractorOperationQueue addOperation:operation];
-    return operation;
     
 }
 
--(YTVimeoExtractorOperation *)fetchVideoWithVimeoURL:(NSString *)videoURL withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler{
+-(void)fetchVideoWithVimeoURL:(NSString *)videoURL withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler{
     
     NSParameterAssert(videoURL);
     if (!completionHandler)
@@ -91,7 +90,7 @@
         
         completionHandler(nil, invalidIDError);
         
-        return nil;
+        return;
     }
     YTVimeoURLParser *parser = [[YTVimeoURLParser alloc]init];
    
@@ -103,7 +102,7 @@
         
         completionHandler(nil, invalidIDError);
 
-        return nil;
+        return;
     
     }else{
     
@@ -127,9 +126,7 @@
 #pragma clang diagnostic pop
     
     [self.extractorOperationQueue addOperation:operation];
-    return operation;
   }
-    return nil;
 }
 
 @end

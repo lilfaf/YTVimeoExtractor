@@ -15,9 +15,9 @@
 
 +(instancetype)sharedExtractor;
 
--(YTVimeoExtractorOperation *)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
+-(void)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
--(YTVimeoExtractorOperation *)fetchVideoWithVimeoURL:(NSString *)videoURL withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
+-(void)fetchVideoWithVimeoURL:(NSString *)videoURL withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
 
 
