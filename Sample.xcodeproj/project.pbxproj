@@ -18,6 +18,7 @@
 		0174ABA51C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0174ABA41C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m */; };
 		0190F0641C0F3B2E001523B7 /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 0190F0631C0F3B2E001523B7 /* testdata.json */; };
 		0190F0661C0F3E1F001523B7 /* testdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0190F0651C0F3E1F001523B7 /* testdata.plist */; };
+		019B5EBF1C1DE4FB00D814BF /* YTVimeoExtractorTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 019B5EBE1C1DE4FB00D814BF /* YTVimeoExtractorTestCase.m */; };
 		01C7996E1C168D31006E4229 /* YTVimeoExtractorOperationTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C7996D1C168D31006E4229 /* YTVimeoExtractorOperationTestCase.m */; };
 		01E559771C0F1E30001F314E /* MacSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E559761C0F1E30001F314E /* MacSampleTests.m */; };
 		01E5597F1C0F1FDD001F314E /* YTVimeoVideoTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E5597E1C0F1FDB001F314E /* YTVimeoVideoTestCase.m */; };
@@ -68,6 +69,7 @@
 		0174ABA41C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoURLParserTestCase.m; sourceTree = "<group>"; };
 		0190F0631C0F3B2E001523B7 /* testdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testdata.json; sourceTree = "<group>"; };
 		0190F0651C0F3E1F001523B7 /* testdata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = testdata.plist; sourceTree = "<group>"; };
+		019B5EBE1C1DE4FB00D814BF /* YTVimeoExtractorTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractorTestCase.m; sourceTree = "<group>"; };
 		01C7996D1C168D31006E4229 /* YTVimeoExtractorOperationTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractorOperationTestCase.m; sourceTree = "<group>"; };
 		01E559741C0F1E30001F314E /* MacSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01E559761C0F1E30001F314E /* MacSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MacSampleTests.m; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		01E559751C0F1E30001F314E /* MacSampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				019B5EBE1C1DE4FB00D814BF /* YTVimeoExtractorTestCase.m */,
 				01C7996D1C168D31006E4229 /* YTVimeoExtractorOperationTestCase.m */,
 				0174ABA41C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m */,
 				01E5597E1C0F1FDB001F314E /* YTVimeoVideoTestCase.m */,
@@ -400,6 +403,7 @@
 				01C7996E1C168D31006E4229 /* YTVimeoExtractorOperationTestCase.m in Sources */,
 				01E559771C0F1E30001F314E /* MacSampleTests.m in Sources */,
 				0174ABA51C0FDEDE00FA0352 /* YTVimeoURLParserTestCase.m in Sources */,
+				019B5EBF1C1DE4FB00D814BF /* YTVimeoExtractorTestCase.m in Sources */,
 				01E5597F1C0F1FDD001F314E /* YTVimeoVideoTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
