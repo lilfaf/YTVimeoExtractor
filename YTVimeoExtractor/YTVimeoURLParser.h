@@ -7,8 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/**
+ *  YTVimeoURLParser is used to valid and parse put Vimeo URLs. The main purpose of the class is to check if a given URL can be handled by the `YTVimeoExtractor`class.
+ */
 @interface YTVimeoURLParser : NSObject
+/**
+ *  ------------------
+ *  @name Validating URLs
+ *  ------------------
+ */
+
 /**
  *  Checks to see if a given URL is a valid Vimeo URL. In additonal, this will determine if it can be handled by the `YTVimeoExtractorOperation` class.
  *

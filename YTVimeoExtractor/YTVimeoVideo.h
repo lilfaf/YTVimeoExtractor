@@ -24,10 +24,39 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoThumbnailQuality) {
      */
      YTVimeoVideoThumbnailQualityHD     = 1280,
 };
+/**
+ *  The various stream or download URLs of Vimeo videos. These values are used as keys in the `<[YTVimeoVideo streamURLs]>` property.
+ */
+typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
+    /**
+     *  A stream URL for a video of low quality with a height of 270 pixels.
+     */
+    YTVimeoVideoQualityLow270    = 270,
+    /**
+     *  A stream URL for a video of medium quality with a height of 360 pixels.
+     */
+    YTVimeoVideoQualityMedium360 = 360,
+    /**
+     *  A stream URL for a video of HD quality with a height of 720 pixels.
+     */
+    YTVimeoVideoQualityHD720     = 720,
+    /**
+     *  A stream URL for a video of HD quality with a height of 1080 pixels.
+     */
+    YTVimeoVideoQualityHD1080    = 1080,
+};
+
+/// YTVimeoVideo represents a Vimeo video. Use this class to access information about a particular. Generally, you should not initialize this class, instead use the `<-[YTVimeoExtractor fetchVideoWithVimeoURL:withReferer:completionHandler:]>` or `<-[YTVimeoExtractor fetchVideoWithIdentifier:withReferer:completionHandler:]>` methods to get a `YTVimeoVideo` object.
 @interface YTVimeoVideo : NSObject
 
 /**
- *  Initializes a `YTVimeoVideo` video object with the specified  identifier and info.
+ *  ------------------
+ *  @name Initializing
+ *  ------------------
+ */
+
+/**
+ *  Initializes a `YTVimeoVideo` video object with the specified identifier and info.
  *
  *  @param identifier A Vimeo video identifier. This parameter should not be `nil`
  *  @param info The dictionary that the class will use to parse out the data. This parameter should not be `nil`
@@ -36,10 +65,24 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoThumbnailQuality) {
  */
 - (nullable instancetype) initWithIdentifier:(NSString *_Nonnull)identifier info:(NSDictionary *_Nonnull)info;
 
+/**
+ *  ----------------------------
+ *  @name Extracting Information
+ *  ----------------------------
+ */
+
+/**
+ *  Starts extracting information about the Vimeo video.
+ *
+ *  @param completionHandler A block to execute when the extraction process is finished. The completion handler is executed on the main thread. If the completion handler is nil, this method throws an exception.
+ */
 - (void)extractVideoInfoWithCompletionHandler:(void (^_Nonnull)(NSError * __nullable error))completionHandler;
 
-
-
+/**
+ *  ----------------------------
+ *  @name Accessing Information
+ *  ----------------------------
+ */
 /**
  *  The Vimeo video identifier.
  */
