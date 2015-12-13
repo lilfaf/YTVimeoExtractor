@@ -10,7 +10,7 @@
 #import "YTVimeoVideo.h"
 
 /**
- `YTVimeoExtractorOperation` is a subclass of NSOperation and is used to fetch and parse out information about Vimeo videos. This a low level class. Generally, you should use the higher level `YTVimeoExtractor`class.
+ `YTVimeoExtractorOperation` is a subclass of NSOperation and is used to fetch and parse out information about Vimeo videos. This a low level class. Generally, you should use the higher level `YTVimeoExtractor` class.
  */
 @interface YTVimeoExtractorOperation : NSOperation
 /**
@@ -23,7 +23,7 @@
  *  Creates a new extractor operation with the specified Vimeo video identifier and referer.
  *
  *  @param videoIdentifier A Vimeo video identifier.
- *  @param videoReferer The referer if, the Vimeo video has domain-level restrictions. If, this value is `nil` then a default one will be used.
+ *  @param videoReferer The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
  *
  *  @return An initialized `YTVimeoExtractorOperation` object.
  */
@@ -32,20 +32,21 @@
  *  Creates a new extractor operation with the specified Vimeo video URL and referer.
  *
  *  @param videoURL     A Vimeo video URL.
- *  @param videoReferer  The referer if, the Vimeo video has domain-level restrictions. If, this value is `nil` then a default one will be used.
+ *  @param videoReferer  The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
  *
  *  @return An initialized `YTVimeoExtractorOperation` object.
  */
+
 - (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer;
 
 /**
  *  ------------------------------------
- *  @name Accessing operation properties
+ *  @name Accessing Operation Properties
  *  ------------------------------------
  */
 
 /**
- *  Returns a `YTVimeoVideo`object if the operation finished sucessfully. Otherwise, will be    `nil`.
+ *  Returns a `YTVimeoVideo` object if the operation finished sucessfully. Otherwise, will be `nil`.
  */
 @property (nonatomic, readonly) YTVimeoVideo *operationVideo;
 /**

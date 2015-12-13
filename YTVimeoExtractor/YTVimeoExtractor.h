@@ -11,16 +11,48 @@
 #import "YTVimeoError.h"
 #import "YTVimeoURLParser.h"
 #import "YTVimeoVideo.h"
-@interface YTVimeoExtractor : NSObject <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
+/**
+ *  The `YTVimeoExtractor` is the main class and its sole purpose is to fetch information about Vimeo videos. Use the two main methods `<-fetchVideoWithIdentifier:withReferer:completionHandler:>` or `<-fetchVideoWithVimeoURL:withReferer:completionHandler:>` to obtain video information.
+ */
+@interface YTVimeoExtractor : NSObject
+NS_ASSUME_NONNULL_BEGIN
+/**
+ *  ------------------
+ *  @name Initializing
+ *  ------------------
+ */
 
+/**
+ *  Returns the shared extractor.
+ *
+ *  @return The shared extractor.
+ */
 +(instancetype)sharedExtractor;
 
--(void)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
+/**
+ *  --------------------------------
+ *  @name Fetching Video Information
+ *  --------------------------------
+ */
 
--(void)fetchVideoWithVimeoURL:(NSString *)videoURL withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
+/**
+ *   Starts an asynchronous operation for the specified video identifier, and referer, then calls a handler upon completion.
+ *
+ *  @param videoIdentifier   A Vimeo video identifier. If the video identifier is `nil` then an exception will be thrown. Also, if it is an empty string the completion handler will be called with the `YTVimeoVideoErrorDomain` domain and `YTVimeoErrorInvalidVideoIdentifier` code.
+ *  @param referer           The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
+ *  @param completionHandler A block to execute when the extraction process is finished, which is executed on the main thread. If the completion handler is nil, this method throws an exception. The block has, two parameters a `YTVimeoVideo` object if, the operation was completed successfully and a `NSError` object describing the network or parsing error that may have occurred.
+ */
+-(void)fetchVideoWithIdentifier:(NSString *_Nonnull)videoIdentifier withReferer:(NSString *__nullable)referer completionHandler:(void (^_Nonnull)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
-
+/**
+ *  Starts an asynchronous operation for the specified video URL, and referer, then calls a handler upon completion.
+ *
+ *  @param videoURL           A Vimeo video URL. If the video URL is `nil` then an exception will be thrown. Also, if it is an empty string the completion handler will be called with the  `YTVimeoVideoErrorDomain` domain and `YTVimeoErrorInvalidVideoIdentifier` code.
+ *  @param referer           The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
+ *  @param completionHandler A block to execute when the extraction process is finished, which is executed on the main thread. If the completion handler is nil, this method throws an exception. The block has, two parameters a `YTVimeoVideo` object if, the operation was completed successfully and a `NSError` object describing the network or parsing error that may have occurred.
+ */
+-(void)fetchVideoWithVimeoURL:(NSString *_Nonnull)videoURL withReferer:(NSString *__nullable)referer completionHandler:(void (^_Nonnull)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
 @end
-
+NS_ASSUME_NONNULL_END
 

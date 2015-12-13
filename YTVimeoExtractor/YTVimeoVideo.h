@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
     YTVimeoVideoQualityHD1080    = 1080,
 };
 
-/// YTVimeoVideo represents a Vimeo video. Use this class to access information about a particular. Generally, you should not initialize this class, instead use the `<-[YTVimeoExtractor fetchVideoWithVimeoURL:withReferer:completionHandler:]>` or `<-[YTVimeoExtractor fetchVideoWithIdentifier:withReferer:completionHandler:]>` methods to get a `YTVimeoVideo` object.
+/// YTVimeoVideo represents a Vimeo video. Use this class to access information about a particular video. Generally, you should not initialize this class, instead use the `<-[YTVimeoExtractor fetchVideoWithVimeoURL:withReferer:completionHandler:]>` or `<-[YTVimeoExtractor fetchVideoWithIdentifier:withReferer:completionHandler:]>` methods to get a `YTVimeoVideo` object.
 @interface YTVimeoVideo : NSObject
 
 /**
@@ -98,6 +98,7 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
 
 /**
  *  A `NSDictionary` object that contains the various stream URLs.
+ * @see YTVimeoVideoQuality
  */
 @property (nonatomic, readonly) NSDictionary *__nullable streamURLs;
 /**
