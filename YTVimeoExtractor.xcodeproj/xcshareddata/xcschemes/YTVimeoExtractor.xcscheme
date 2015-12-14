@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0720"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BF396C1D1A3E0C6400E47BD8"
-               BuildableName = "MacSample.app"
-               BlueprintName = "MacSample"
-               ReferencedContainer = "container:Sample.xcodeproj">
+               BlueprintIdentifier = "01AC342E1C1F21280015CAA6"
+               BuildableName = "YTVimeoExtractor.framework"
+               BlueprintName = "YTVimeoExtractor"
+               ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,27 +26,26 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01E559731C0F1E30001F314E"
-               BuildableName = "MacSampleTests.xctest"
-               BlueprintName = "MacSampleTests"
-               ReferencedContainer = "container:Sample.xcodeproj">
+               BlueprintIdentifier = "01AC34381C1F21290015CAA6"
+               BuildableName = "YTVimeoExtractorTests.xctest"
+               BlueprintName = "YTVimeoExtractorTests"
+               ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BF396C1D1A3E0C6400E47BD8"
-            BuildableName = "MacSample.app"
-            BlueprintName = "MacSample"
-            ReferencedContainer = "container:Sample.xcodeproj">
+            BlueprintIdentifier = "01AC342E1C1F21280015CAA6"
+            BuildableName = "YTVimeoExtractor.framework"
+            BlueprintName = "YTVimeoExtractor"
+            ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -62,16 +61,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BF396C1D1A3E0C6400E47BD8"
-            BuildableName = "MacSample.app"
-            BlueprintName = "MacSample"
-            ReferencedContainer = "container:Sample.xcodeproj">
+            BlueprintIdentifier = "01AC342E1C1F21280015CAA6"
+            BuildableName = "YTVimeoExtractor.framework"
+            BlueprintName = "YTVimeoExtractor"
+            ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -81,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BF396C1D1A3E0C6400E47BD8"
-            BuildableName = "MacSample.app"
-            BlueprintName = "MacSample"
-            ReferencedContainer = "container:Sample.xcodeproj">
+            BlueprintIdentifier = "01AC342E1C1F21280015CAA6"
+            BuildableName = "YTVimeoExtractor.framework"
+            BlueprintName = "YTVimeoExtractor"
+            ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
