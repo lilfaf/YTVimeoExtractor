@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01BBEEFC1C1F3691009A4FEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBEEFB1C1F3691009A4FEA /* AppDelegate.m */; };
+		01BBEEFF1C1F3691009A4FEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBEEFE1C1F3691009A4FEA /* main.m */; };
+		01BBEF021C1F3691009A4FEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBEF011C1F3691009A4FEA /* ViewController.m */; };
+		01BBEF041C1F3691009A4FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF031C1F3691009A4FEA /* Assets.xcassets */; };
+		01BBEF071C1F3691009A4FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF051C1F3691009A4FEA /* Main.storyboard */; };
+		01BBEF1F1C1F3770009A4FEA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBEF1E1C1F3770009A4FEA /* main.m */; };
+		01BBEF221C1F3770009A4FEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBEF211C1F3770009A4FEA /* AppDelegate.m */; };
+		01BBEF251C1F3770009A4FEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BBEF241C1F3770009A4FEA /* ViewController.m */; };
+		01BBEF281C1F3770009A4FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF261C1F3770009A4FEA /* Main.storyboard */; };
+		01BBEF2A1C1F3770009A4FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF291C1F3770009A4FEA /* Assets.xcassets */; };
+		01BBEF2D1C1F3770009A4FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF2B1C1F3770009A4FEA /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		01BBEEF71C1F3690009A4FEA /* YTVimeoExtractor OS X Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YTVimeoExtractor OS X Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01BBEEFA1C1F3691009A4FEA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		01BBEEFB1C1F3691009A4FEA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		01BBEEFE1C1F3691009A4FEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		01BBEF001C1F3691009A4FEA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		01BBEF011C1F3691009A4FEA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		01BBEF031C1F3691009A4FEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01BBEF061C1F3691009A4FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		01BBEF081C1F3691009A4FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01BBEF1B1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YTVimeoExtractor iOS Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01BBEF1E1C1F3770009A4FEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		01BBEF201C1F3770009A4FEA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		01BBEF211C1F3770009A4FEA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		01BBEF231C1F3770009A4FEA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		01BBEF241C1F3770009A4FEA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		01BBEF271C1F3770009A4FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		01BBEF291C1F3770009A4FEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01BBEF2C1C1F3770009A4FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01BBEF2E1C1F3770009A4FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01BBEEF41C1F3690009A4FEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01BBEF181C1F3770009A4FEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01BBEEEE1C1F3690009A4FEA = {
+			isa = PBXGroup;
+			children = (
+				01BBEEF91C1F3690009A4FEA /* YTVimeoExtractor OS X Demo */,
+				01BBEF1C1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo */,
+				01BBEEF81C1F3690009A4FEA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		01BBEEF81C1F3690009A4FEA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01BBEEF71C1F3690009A4FEA /* YTVimeoExtractor OS X Demo.app */,
+				01BBEF1B1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01BBEEF91C1F3690009A4FEA /* YTVimeoExtractor OS X Demo */ = {
+			isa = PBXGroup;
+			children = (
+				01BBEEFA1C1F3691009A4FEA /* AppDelegate.h */,
+				01BBEEFB1C1F3691009A4FEA /* AppDelegate.m */,
+				01BBEF001C1F3691009A4FEA /* ViewController.h */,
+				01BBEF011C1F3691009A4FEA /* ViewController.m */,
+				01BBEF031C1F3691009A4FEA /* Assets.xcassets */,
+				01BBEF051C1F3691009A4FEA /* Main.storyboard */,
+				01BBEF081C1F3691009A4FEA /* Info.plist */,
+				01BBEEFD1C1F3691009A4FEA /* Supporting Files */,
+			);
+			path = "YTVimeoExtractor OS X Demo";
+			sourceTree = "<group>";
+		};
+		01BBEEFD1C1F3691009A4FEA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01BBEEFE1C1F3691009A4FEA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		01BBEF1C1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo */ = {
+			isa = PBXGroup;
+			children = (
+				01BBEF201C1F3770009A4FEA /* AppDelegate.h */,
+				01BBEF211C1F3770009A4FEA /* AppDelegate.m */,
+				01BBEF231C1F3770009A4FEA /* ViewController.h */,
+				01BBEF241C1F3770009A4FEA /* ViewController.m */,
+				01BBEF261C1F3770009A4FEA /* Main.storyboard */,
+				01BBEF291C1F3770009A4FEA /* Assets.xcassets */,
+				01BBEF2B1C1F3770009A4FEA /* LaunchScreen.storyboard */,
+				01BBEF2E1C1F3770009A4FEA /* Info.plist */,
+				01BBEF1D1C1F3770009A4FEA /* Supporting Files */,
+			);
+			path = "YTVimeoExtractor iOS Demo";
+			sourceTree = "<group>";
+		};
+		01BBEF1D1C1F3770009A4FEA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01BBEF1E1C1F3770009A4FEA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01BBEEF61C1F3690009A4FEA /* YTVimeoExtractor OS X Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01BBEF0B1C1F3691009A4FEA /* Build configuration list for PBXNativeTarget "YTVimeoExtractor OS X Demo" */;
+			buildPhases = (
+				01BBEEF31C1F3690009A4FEA /* Sources */,
+				01BBEEF41C1F3690009A4FEA /* Frameworks */,
+				01BBEEF51C1F3690009A4FEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YTVimeoExtractor OS X Demo";
+			productName = "YTVimeoExtractor OS X Demo";
+			productReference = 01BBEEF71C1F3690009A4FEA /* YTVimeoExtractor OS X Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		01BBEF1A1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01BBEF2F1C1F3770009A4FEA /* Build configuration list for PBXNativeTarget "YTVimeoExtractor iOS Demo" */;
+			buildPhases = (
+				01BBEF171C1F3770009A4FEA /* Sources */,
+				01BBEF181C1F3770009A4FEA /* Frameworks */,
+				01BBEF191C1F3770009A4FEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "YTVimeoExtractor iOS Demo";
+			productName = "YTVimeoExtractor iOS Demo";
+			productReference = 01BBEF1B1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01BBEEEF1C1F3690009A4FEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Louis Larpin";
+				TargetAttributes = {
+					01BBEEF61C1F3690009A4FEA = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					01BBEF1A1C1F3770009A4FEA = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 01BBEEF21C1F3690009A4FEA /* Build configuration list for PBXProject "YTVimeoExtractor Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01BBEEEE1C1F3690009A4FEA;
+			productRefGroup = 01BBEEF81C1F3690009A4FEA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01BBEEF61C1F3690009A4FEA /* YTVimeoExtractor OS X Demo */,
+				01BBEF1A1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01BBEEF51C1F3690009A4FEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01BBEF041C1F3691009A4FEA /* Assets.xcassets in Resources */,
+				01BBEF071C1F3691009A4FEA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01BBEF191C1F3770009A4FEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01BBEF2D1C1F3770009A4FEA /* LaunchScreen.storyboard in Resources */,
+				01BBEF2A1C1F3770009A4FEA /* Assets.xcassets in Resources */,
+				01BBEF281C1F3770009A4FEA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01BBEEF31C1F3690009A4FEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01BBEF021C1F3691009A4FEA /* ViewController.m in Sources */,
+				01BBEEFF1C1F3691009A4FEA /* main.m in Sources */,
+				01BBEEFC1C1F3691009A4FEA /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01BBEF171C1F3770009A4FEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01BBEF251C1F3770009A4FEA /* ViewController.m in Sources */,
+				01BBEF221C1F3770009A4FEA /* AppDelegate.m in Sources */,
+				01BBEF1F1C1F3770009A4FEA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		01BBEF051C1F3691009A4FEA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01BBEF061C1F3691009A4FEA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		01BBEF261C1F3770009A4FEA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01BBEF271C1F3770009A4FEA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		01BBEF2B1C1F3770009A4FEA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01BBEF2C1C1F3770009A4FEA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01BBEF091C1F3691009A4FEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		01BBEF0A1C1F3691009A4FEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		01BBEF0C1C1F3691009A4FEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "YTVimeoExtractor OS X Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.louis.larpin.YTVimeoExtractor-OS-X-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		01BBEF0D1C1F3691009A4FEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "YTVimeoExtractor OS X Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.louis.larpin.YTVimeoExtractor-OS-X-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		01BBEF301C1F3770009A4FEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "YTVimeoExtractor iOS Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.louis.larpin.YTVimeoExtractor-iOS-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01BBEF311C1F3770009A4FEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "YTVimeoExtractor iOS Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.louis.larpin.YTVimeoExtractor-iOS-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01BBEEF21C1F3690009A4FEA /* Build configuration list for PBXProject "YTVimeoExtractor Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01BBEF091C1F3691009A4FEA /* Debug */,
+				01BBEF0A1C1F3691009A4FEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01BBEF0B1C1F3691009A4FEA /* Build configuration list for PBXNativeTarget "YTVimeoExtractor OS X Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01BBEF0C1C1F3691009A4FEA /* Debug */,
+				01BBEF0D1C1F3691009A4FEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		01BBEF2F1C1F3770009A4FEA /* Build configuration list for PBXNativeTarget "YTVimeoExtractor iOS Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01BBEF301C1F3770009A4FEA /* Debug */,
+				01BBEF311C1F3770009A4FEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01BBEEEF1C1F3690009A4FEA /* Project object */;
+}
