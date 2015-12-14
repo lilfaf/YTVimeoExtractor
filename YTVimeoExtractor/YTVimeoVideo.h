@@ -37,6 +37,10 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
      */
     YTVimeoVideoQualityMedium360 = 360,
     /**
+     *  A stream URL for a video of medium quality with a height of 480 pixels.
+     */
+    YTVimeoVideoQualityMedium480 = 480,
+    /**
      *  A stream URL for a video of HD quality with a height of 720 pixels.
      */
     YTVimeoVideoQualityHD720     = 720,
