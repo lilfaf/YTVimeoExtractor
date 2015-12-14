@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import <YTVimeoExtractor/YTVimeoExtractor.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AVKit/AVKit.h>
 @interface ViewController : NSViewController
 
+- (IBAction)playAction:(id)sender;
+@property (weak) IBOutlet NSTextField *urlTextField;
+@property (weak) IBOutlet AVPlayerView *playerView;
+@property (weak) IBOutlet NSTextField *titleTextField;
 
 @end
 

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,18 +643,17 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider=""/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="YTVimeoExtractor OS X Demo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
@@ -667,15 +668,65 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jBC-Ke-llX">
+                                <rect key="frame" x="20" y="314" width="371" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Enter a Vimeo URL Here" drawsBackground="YES" id="ajL-MU-1DC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9ev-xf-ijN">
+                                <rect key="frame" x="393" y="308" width="66" height="32"/>
+                                <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VQS-eR-QtH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="playAction:" target="XfG-lQ-9wD" id="LFr-4O-7o9"/>
+                                </connections>
+                            </button>
+                            <avPlayerView controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="WJq-cS-BrA">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            </avPlayerView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F1a-j1-tvq">
+                                <rect key="frame" x="18" y="281" width="437" height="19"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" sendsActionOnEndEditing="YES" alignment="center" id="IuP-Ws-x5u">
+                                    <font key="font" metaFont="system" size="16"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="WJq-cS-BrA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Buy-8f-QXR"/>
+                            <constraint firstItem="9ev-xf-ijN" firstAttribute="top" secondItem="jBC-Ke-llX" secondAttribute="top" id="C4J-f3-cYQ"/>
+                            <constraint firstItem="F1a-j1-tvq" firstAttribute="trailing" secondItem="9ev-xf-ijN" secondAttribute="trailing" id="WUE-RD-h3F"/>
+                            <constraint firstItem="F1a-j1-tvq" firstAttribute="leading" secondItem="jBC-Ke-llX" secondAttribute="leading" id="cbK-gQ-zJ4"/>
+                            <constraint firstAttribute="trailing" secondItem="9ev-xf-ijN" secondAttribute="trailing" constant="27" id="cko-zw-F7X"/>
+                            <constraint firstItem="F1a-j1-tvq" firstAttribute="top" secondItem="jBC-Ke-llX" secondAttribute="bottom" constant="14" id="hZh-2L-mh4"/>
+                            <constraint firstItem="WJq-cS-BrA" firstAttribute="top" secondItem="F1a-j1-tvq" secondAttribute="bottom" constant="11" id="lrm-CC-9bV"/>
+                            <constraint firstAttribute="bottom" secondItem="WJq-cS-BrA" secondAttribute="bottom" id="nUe-Hy-N2D"/>
+                            <constraint firstItem="jBC-Ke-llX" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="qLp-ho-cTs"/>
+                            <constraint firstAttribute="trailing" secondItem="WJq-cS-BrA" secondAttribute="trailing" id="u8i-VD-X1F"/>
+                            <constraint firstItem="9ev-xf-ijN" firstAttribute="leading" secondItem="jBC-Ke-llX" secondAttribute="trailing" constant="8" symbolic="YES" id="uRA-MI-m4U"/>
+                            <constraint firstItem="jBC-Ke-llX" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="14" id="vzR-tE-Aqs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerView" destination="WJq-cS-BrA" id="UnB-BY-pnU"/>
+                        <outlet property="titleTextField" destination="F1a-j1-tvq" id="EdP-0O-Yc0"/>
+                        <outlet property="urlTextField" destination="jBC-Ke-llX" id="Adb-Z9-11Z"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="693"/>
         </scene>
     </scenes>
 </document>

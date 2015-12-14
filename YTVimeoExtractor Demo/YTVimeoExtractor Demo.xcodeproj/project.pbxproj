@@ -18,6 +18,8 @@
 		01BBEF281C1F3770009A4FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF261C1F3770009A4FEA /* Main.storyboard */; };
 		01BBEF2A1C1F3770009A4FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF291C1F3770009A4FEA /* Assets.xcassets */; };
 		01BBEF2D1C1F3770009A4FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF2B1C1F3770009A4FEA /* LaunchScreen.storyboard */; };
+		01CD033B1C1F3EDE00D93100 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CD033A1C1F3EDE00D93100 /* AVFoundation.framework */; };
+		01CD033D1C1F421400D93100 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CD033C1C1F421400D93100 /* AVKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		01BBEF291C1F3770009A4FEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01BBEF2C1C1F3770009A4FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01BBEF2E1C1F3770009A4FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01CD033A1C1F3EDE00D93100 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		01CD033C1C1F421400D93100 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01CD033D1C1F421400D93100 /* AVKit.framework in Frameworks */,
+				01CD033B1C1F3EDE00D93100 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +69,8 @@
 		01BBEEEE1C1F3690009A4FEA = {
 			isa = PBXGroup;
 			children = (
+				01CD033C1C1F421400D93100 /* AVKit.framework */,
+				01CD033A1C1F3EDE00D93100 /* AVFoundation.framework */,
 				01BBEEF91C1F3690009A4FEA /* YTVimeoExtractor OS X Demo */,
 				01BBEF1C1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo */,
 				01BBEEF81C1F3690009A4FEA /* Products */,
@@ -426,6 +434,7 @@
 				01BBEF0D1C1F3691009A4FEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01BBEF2F1C1F3770009A4FEA /* Build configuration list for PBXNativeTarget "YTVimeoExtractor iOS Demo" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +443,7 @@
 				01BBEF311C1F3770009A4FEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
