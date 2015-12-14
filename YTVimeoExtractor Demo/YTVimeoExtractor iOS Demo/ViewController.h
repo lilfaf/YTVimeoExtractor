@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
-
+#import <MediaPlayer/MediaPlayer.h>
+@interface ViewController : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *urlField;
+-(IBAction)playVideoAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 

@@ -18,6 +18,11 @@
 		01BBEF281C1F3770009A4FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF261C1F3770009A4FEA /* Main.storyboard */; };
 		01BBEF2A1C1F3770009A4FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF291C1F3770009A4FEA /* Assets.xcassets */; };
 		01BBEF2D1C1F3770009A4FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01BBEF2B1C1F3770009A4FEA /* LaunchScreen.storyboard */; };
+		01CABDC91C1F79FB00FE2D4A /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CABDC01C1F79FB00FE2D4A /* YTVimeoExtractor.m */; };
+		01CABDCA1C1F79FB00FE2D4A /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CABDC21C1F79FB00FE2D4A /* YTVimeoExtractorOperation.m */; };
+		01CABDCB1C1F79FB00FE2D4A /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CABDC41C1F79FB00FE2D4A /* YTVimeoURLParser.m */; };
+		01CABDCC1C1F79FB00FE2D4A /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CABDC61C1F79FB00FE2D4A /* YTVimeoVideo.m */; };
+		01CABDD31C1F829700FE2D4A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CABDD21C1F829700FE2D4A /* MediaPlayer.framework */; };
 		01CD033B1C1F3EDE00D93100 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CD033A1C1F3EDE00D93100 /* AVFoundation.framework */; };
 		01CD033D1C1F421400D93100 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01CD033C1C1F421400D93100 /* AVKit.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +47,18 @@
 		01BBEF291C1F3770009A4FEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01BBEF2C1C1F3770009A4FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01BBEF2E1C1F3770009A4FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01CABDBE1C1F79FB00FE2D4A /* YTVimeoError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoError.h; sourceTree = "<group>"; };
+		01CABDBF1C1F79FB00FE2D4A /* YTVimeoExtractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractor.h; sourceTree = "<group>"; };
+		01CABDC01C1F79FB00FE2D4A /* YTVimeoExtractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractor.m; sourceTree = "<group>"; };
+		01CABDC11C1F79FB00FE2D4A /* YTVimeoExtractorOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoExtractorOperation.h; sourceTree = "<group>"; };
+		01CABDC21C1F79FB00FE2D4A /* YTVimeoExtractorOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoExtractorOperation.m; sourceTree = "<group>"; };
+		01CABDC31C1F79FB00FE2D4A /* YTVimeoURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoURLParser.h; sourceTree = "<group>"; };
+		01CABDC41C1F79FB00FE2D4A /* YTVimeoURLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoURLParser.m; sourceTree = "<group>"; };
+		01CABDC51C1F79FB00FE2D4A /* YTVimeoVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTVimeoVideo.h; sourceTree = "<group>"; };
+		01CABDC61C1F79FB00FE2D4A /* YTVimeoVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoVideo.m; sourceTree = "<group>"; };
+		01CABDCE1C1F7B3D00FE2D4A /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/AVKit.framework; sourceTree = DEVELOPER_DIR; };
+		01CABDD01C1F7B4300FE2D4A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		01CABDD21C1F829700FE2D4A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		01CD033A1C1F3EDE00D93100 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		01CD033C1C1F421400D93100 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -60,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01CABDD31C1F829700FE2D4A /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +87,9 @@
 		01BBEEEE1C1F3690009A4FEA = {
 			isa = PBXGroup;
 			children = (
+				01CABDD21C1F829700FE2D4A /* MediaPlayer.framework */,
+				01CABDD01C1F7B4300FE2D4A /* AVFoundation.framework */,
+				01CABDCE1C1F7B3D00FE2D4A /* AVKit.framework */,
 				01CD033C1C1F421400D93100 /* AVKit.framework */,
 				01CD033A1C1F3EDE00D93100 /* AVFoundation.framework */,
 				01BBEEF91C1F3690009A4FEA /* YTVimeoExtractor OS X Demo */,
@@ -112,6 +133,7 @@
 		01BBEF1C1C1F3770009A4FEA /* YTVimeoExtractor iOS Demo */ = {
 			isa = PBXGroup;
 			children = (
+				01CABDC81C1F79FB00FE2D4A /* YTVimeoExtractor */,
 				01BBEF201C1F3770009A4FEA /* AppDelegate.h */,
 				01BBEF211C1F3770009A4FEA /* AppDelegate.m */,
 				01BBEF231C1F3770009A4FEA /* ViewController.h */,
@@ -131,6 +153,23 @@
 				01BBEF1E1C1F3770009A4FEA /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		01CABDC81C1F79FB00FE2D4A /* YTVimeoExtractor */ = {
+			isa = PBXGroup;
+			children = (
+				01CABDBE1C1F79FB00FE2D4A /* YTVimeoError.h */,
+				01CABDBF1C1F79FB00FE2D4A /* YTVimeoExtractor.h */,
+				01CABDC01C1F79FB00FE2D4A /* YTVimeoExtractor.m */,
+				01CABDC11C1F79FB00FE2D4A /* YTVimeoExtractorOperation.h */,
+				01CABDC21C1F79FB00FE2D4A /* YTVimeoExtractorOperation.m */,
+				01CABDC31C1F79FB00FE2D4A /* YTVimeoURLParser.h */,
+				01CABDC41C1F79FB00FE2D4A /* YTVimeoURLParser.m */,
+				01CABDC51C1F79FB00FE2D4A /* YTVimeoVideo.h */,
+				01CABDC61C1F79FB00FE2D4A /* YTVimeoVideo.m */,
+			);
+			name = YTVimeoExtractor;
+			path = ../../YTVimeoExtractor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +223,11 @@
 					};
 					01BBEF1A1C1F3770009A4FEA = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -243,8 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01CABDCB1C1F79FB00FE2D4A /* YTVimeoURLParser.m in Sources */,
 				01BBEF251C1F3770009A4FEA /* ViewController.m in Sources */,
 				01BBEF221C1F3770009A4FEA /* AppDelegate.m in Sources */,
+				01CABDCC1C1F79FB00FE2D4A /* YTVimeoVideo.m in Sources */,
+				01CABDCA1C1F79FB00FE2D4A /* YTVimeoExtractorOperation.m in Sources */,
+				01CABDC91C1F79FB00FE2D4A /* YTVimeoExtractor.m in Sources */,
 				01BBEF1F1C1F3770009A4FEA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "YTVimeoExtractor iOS Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.louis.larpin.YTVimeoExtractor-iOS-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -405,7 +453,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "YTVimeoExtractor iOS Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.louis.larpin.YTVimeoExtractor-iOS-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
