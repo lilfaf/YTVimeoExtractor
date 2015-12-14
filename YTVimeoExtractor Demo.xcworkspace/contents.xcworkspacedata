@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:YTVimeoExtractor.xcodeproj">
+      location = "group:YTVimeoExtractor Demo/YTVimeoExtractor Demo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/soneejohn/Documents/AlphaSoft&apos;s Master Folder/Source Code/Open Soucre Projects (Non AlphaSoft)/YTVimeoExtractor/YTVimeoExtractor OS X Demo/YTVimeoExtractor Demo.xcodeproj">
+      location = "group:YTVimeoExtractor.xcodeproj">
    </FileRef>
 </Workspace>
