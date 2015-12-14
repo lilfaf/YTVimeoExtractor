@@ -2,4 +2,4 @@ language: objective-c
 osx_image: xcode7.1
 before_install:
     - brew update
-script: xctool -project Sample.xcodeproj -scheme MacSample test
+script: xctool -project YTVimeoExtractor.xcodeproj -scheme YTVimeoExtractorTests
