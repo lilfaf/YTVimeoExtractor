@@ -96,11 +96,42 @@ Use the two block methods in the `YTVimeoExtractor` class. Both methods will cal
     }];
  ```
  
+ ### Referer Example
+If the Vimeo videos have domain-level restrictions and can only be played from particular domains, it's easy to add a referer:
+
+```objc
+
+ [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:@"https://vimeo.com/channels/staffpicks/147876560" withReferer:@"http://www.mywebsite.com" completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+        
+        if (video) {
+            
+            NSDictionary *streamURLs = video.streamURLs;
+            //Will get the highest available quality.
+            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            
+            NSURL *movieURL = [NSURL URLWithString:url];
+            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:movieURL];
+         
+            [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+        }else{
+           
+            UIAlertView *alertView = [[UIAlertView alloc]init];
+            alertView.title = error.localizedDescription;
+            alertView.message = error.localizedFailureReason;
+            [alertView addButtonWithTitle:@"OK"];
+            alertView.delegate = self;
+            [alertView show];
+            
+        }
+        
+    }];
+ ```
+ 
 ## Acknowledgments
 
 * YTVimeoExtractor was originally created by [Louis Larpin](https://github.com/lilfaf)
 * Reorganization, documentation, and Unit Tests were done by [Soneé John](https://github.com/SoneeJohn)
-* Special thanks to all who [contributed](https://github.com/YTVimeoExtractor/YTVimeoExtractor/graphs/contributors) to the project.
+* Special thanks to all who [contributed](https://github.com/lilfaf/YTVimeoExtractor/graphs/contributors) to the project.
 
 ## License
 
