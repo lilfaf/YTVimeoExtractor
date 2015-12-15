@@ -38,7 +38,7 @@ Alternatively you can just copy the YTVimeoExtractor folder to your project.
 
 ## Usage
 
-Use the two block methods in `YTVimeoExtractor` class. Both methods will call a completionHandler which is executed on the main thread. If the completion handler is nil, an exception will be thrown. The block has, two parameters a `YTVimeoVideo` object, if the operation was completed successfully, and a `NSError` object describing the network or parsing error that may have occurred.
+Use the two block methods in the `YTVimeoExtractor` class. Both methods will call a completionHandler which is executed on the main thread. If the completion handler is nil, an exception will be thrown. The completionHandler has, two parameters a `YTVimeoVideo` object, if the operation was completed successfully, and a `NSError` object describing the network or parsing error that may have occurred.
 
 ### OS X Example
 
