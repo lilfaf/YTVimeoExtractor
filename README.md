@@ -96,7 +96,7 @@ Use the two block methods in the `YTVimeoExtractor` class. Both methods will cal
     }];
  ```
  
- ## Acknowledgments
+## Acknowledgments
 
 * YTVimeoExtractor was originally created by [Louis Larpin](https://github.com/lilfaf)
 * Reorganization, documentation, and Unit Tests were done by [Soneé John](https://github.com/SoneeJohn)
