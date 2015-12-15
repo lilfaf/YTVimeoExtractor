@@ -6,72 +6,53 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YTVimeoError.h"
+#import "YTVimeoExtractorOperation.h"
+#import "YTVimeoError.h"
+#import "YTVimeoURLParser.h"
+#import "YTVimeoVideo.h"
+/**
+ *  The `YTVimeoExtractor` is the main class and its sole purpose is to fetch information about Vimeo videos. Use the two main methods `<-fetchVideoWithIdentifier:withReferer:completionHandler:>` or `<-fetchVideoWithVimeoURL:withReferer:completionHandler:>` to obtain video information.
+ */
+@interface YTVimeoExtractor : NSObject
+NS_ASSUME_NONNULL_BEGIN
+/**
+ *  ------------------
+ *  @name Initializing
+ *  ------------------
+ */
 
-extern NSString *const YTVimeoURL;
-extern NSString *const YTVimeoPlayerConfigURL;
-extern NSString *const YTVimeoExtractorErrorDomain;
+/**
+ *  Returns the shared extractor.
+ *
+ *  @return The shared extractor.
+ */
++(instancetype)sharedExtractor;
 
-enum {
-    YTVimeoExtractorErrorCodeNotInitialized,
-    YTVimeoExtractorErrorInvalidIdentifier,
-    YTVimeoExtractorErrorUnsupportedCodec,
-    YTVimeoExtractorErrorUnavailableQuality
-};
+/**
+ *  --------------------------------
+ *  @name Fetching Video Information
+ *  --------------------------------
+ */
 
-typedef enum YTVimeoVideoQuality : NSUInteger {
-    YTVimeoVideoQualityLow270,
-    YTVimeoVideoQualityMedium360,
-    YTVimeoVideoQualityHD720,
-    YTVimeoVideoQualityHD1080,
-    YTVimeoVideoQualityBestAvailable,
+/**
+ *   Starts an asynchronous operation for the specified video identifier, and referer, then calls a handler upon completion.
+ *
+ *  @param videoIdentifier   A Vimeo video identifier. If the video identifier is `nil` then an exception will be thrown. Also, if it is an empty string the completion handler will be called with the `YTVimeoVideoErrorDomain` domain and `YTVimeoErrorInvalidVideoIdentifier` code.
+ *  @param referer           The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
+ *  @param completionHandler A block to execute when the extraction process is finished, which is executed on the main thread. If the completion handler is nil, this method throws an exception. The block has, two parameters a `YTVimeoVideo` object if, the operation was completed successfully and a `NSError` object describing the network or parsing error that may have occurred.
+ */
+-(void)fetchVideoWithIdentifier:(NSString *_Nonnull)videoIdentifier withReferer:(NSString *__nullable)referer completionHandler:(void (^_Nonnull)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
-    // Depreciated code
-    YTVimeoVideoQualityLow    DEPRECATED_MSG_ATTRIBUTE("please use YTVimeoVideoQualityLow270 instead") = YTVimeoVideoQualityLow270,
-    YTVimeoVideoQualityMedium DEPRECATED_MSG_ATTRIBUTE("please use YTVimeoVideoQualityMedium360 instead") = YTVimeoVideoQualityMedium360,
-    YTVimeoVideoQualityHigh   DEPRECATED_MSG_ATTRIBUTE("please use YTVimeoVideoQualityHD720 or YTVimeoVideoQualityHD1080 instead") = YTVimeoVideoQualityHD1080
-}YTVimeoVideoQuality;
-
-typedef void (^completionHandler) (NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality);
-typedef void (^metadataCompletionHandler) (NSURL *videoURL, NSDictionary* metadata, NSError *error, YTVimeoVideoQuality quality);
-
-@protocol  YTVimeoExtractorDelegate;
-
-@interface YTVimeoExtractor : NSObject <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
-
-@property (nonatomic, readonly) BOOL running;
-@property (nonatomic, readonly) YTVimeoVideoQuality quality;
-@property (nonatomic, readonly) NSString* referer;
-@property (strong, nonatomic, readonly) NSURL *vimeoURL;
-
-@property (unsafe_unretained, nonatomic) id<YTVimeoExtractorDelegate> delegate;
-
-+ (void)fetchVideoURLFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(completionHandler)handler;
-+ (void)fetchVideoURLFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(completionHandler)handler;
-+ (void)fetchVideoURLFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(completionHandler)handler;
-+ (void)fetchVideoURLFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(completionHandler)handler;
-
-+ (void)fetchVideoMetadataFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(metadataCompletionHandler)handler;
-+ (void)fetchVideoMetadataFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality completionHandler:(metadataCompletionHandler)handler;
-+ (void)fetchVideoMetadataFromURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(metadataCompletionHandler)handler;
-+ (void)fetchVideoMetadataFromID:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer completionHandler:(metadataCompletionHandler)handler;
-
-
-- (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality;
-- (id)initWithID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality;
-- (id)initWithURL:(NSString *)videoURL quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer;
-- (id)initWithID:(NSString *)videoID quality:(YTVimeoVideoQuality)quality referer:(NSString *)referer;
-
-- (void)start;
+/**
+ *  Starts an asynchronous operation for the specified video URL, and referer, then calls a handler upon completion.
+ *
+ *  @param videoURL           A Vimeo video URL. If the video URL is `nil` then an exception will be thrown. Also, if it is an empty string the completion handler will be called with the  `YTVimeoVideoErrorDomain` domain and `YTVimeoErrorInvalidVideoIdentifier` code.
+ *  @param referer           The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
+ *  @param completionHandler A block to execute when the extraction process is finished, which is executed on the main thread. If the completion handler is nil, this method throws an exception. The block has, two parameters a `YTVimeoVideo` object if, the operation was completed successfully and a `NSError` object describing the network or parsing error that may have occurred.
+ */
+-(void)fetchVideoWithVimeoURL:(NSString *_Nonnull)videoURL withReferer:(NSString *__nullable)referer completionHandler:(void (^_Nonnull)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
 @end
+NS_ASSUME_NONNULL_END
 
-@protocol YTVimeoExtractorDelegate <NSObject>
-
-@optional
-- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL withQuality:(YTVimeoVideoQuality)quality;
-- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL metadata:(NSDictionary*)metadata withQuality:(YTVimeoVideoQuality)quality;
-
-@required
-- (void)vimeoExtractor:(YTVimeoExtractor *)extractor failedExtractingVimeoURLWithError:(NSError *)error;
-
-@end
