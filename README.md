@@ -95,7 +95,16 @@ Use the two block methods in `YTVimeoExtractor` class. Both methods will call a 
         
     }];
  ```
+ 
+ ## Acknowledgments
+
+* YTVimeoExtractor was originally created by [Louis Larpin](https://github.com/lilfaf)
+* Reorganization, documentation, and Unit Tests were done by [Soneé John](https://github.com/SoneeJohn)
+* Special thanks to all who [contributed](https://github.com/YTVimeoExtractor/YTVimeoExtractor/graphs/contributors) to the project.
 
 ## License
 
 YTVimeoExtractor is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+--------
+###### YTVimeoExtractor is against the Vimeo [Terms of Service](https://vimeo.com/terms). 
