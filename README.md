@@ -96,8 +96,8 @@ Use the two block methods in the `YTVimeoExtractor` class. Both methods will cal
     }];
  ```
  
- ### Referer Example
-If the Vimeo videos have domain-level restrictions and can only be played from particular domains, it's easy to add a referer:
+### Referer Example
+If the Vimeo video has domain-level restrictions and can only be played from particular domains, it's easy to add a referer:
 
 ```objc
 
