@@ -2,11 +2,25 @@
 
 [![Build Status](https://travis-ci.org/SoneeJohn/YTVimeoExtractor.svg?branch=v1.0.0-develop)](https://travis-ci.org/SoneeJohn/YTVimeoExtractor)
 
-YTVimeoExtractor helps you get mp4 urls which can be use in iOS's native player. You can even choose between mobile, standard and high definition quality.
+YTVimeoExtractor extracts the MP4 streams of Vimeo videos which, then can be used to play Vimeo videos via `MPMoviePlayerViewController` or `AVPlayerView`.
 
-YTVimeoExtractor doesn't use UIWebView which makes it fast and clean.
+ <img src="Screenshots/iphone_screenshot.PNG" width="600" height="331">
 
-## Install
+## Requirements
+- Runs on iOS 7.0 and later
+- Runs on OS X 10.9 and later
+- Runs on tvOS 9.0 and later
+
+## Overview of Library
+
+| Class         | Purpose        |
+|---------------|----------------|
+| `YTVimeoExtractor`  |   The `YTVimeoExtractor` is the main class and its sole purpose is to fetch information about Vimeo videos. Use the two main methods `fetchVideoWithIdentifier:withReferer:completionHandler:` or `fetchVideoWithVimeoURL:withReferer:completionHandler:` to obtain video information.  |
+| `YTVimeoExtractorOperation`  |   `YTVimeoExtractorOperation` is a subclass of `NSOperation` and is used to fetch and parse out information about Vimeo videos. This a low level class. Generally speaking, you should use the higher level `YTVimeoExtractor` class.   |
+|`YTVimeoURLParser`			    |	`YTVimeoURLParser` is used to validate and parse put Vimeo URLs. The sole purpose of the class is to check if a given URL can be handled by the `YTVimeoExtractor` class.|
+|`YTVimeoVideo`|  	`YTVimeoVideo` represents a Vimeo video. Use this class to access information about a particular video. Generally, you should not initialize this class, instead use the two main methods of the `YTVimeoExtractor` class.|
+
+## Installation
 
 The preferred way of installation is via [CocoaPods](http://cocoapods.org). Just add to your Podfile
 
@@ -24,75 +38,64 @@ Alternatively you can just copy the YTVimeoExtractor folder to your project.
 
 ## Usage
 
-Use the block based methods and pass it the video url and the desired quality
+Use the two block methods in `YTVimeoExtractor` class. Both methods will call a completionHandler which is executed on the main thread. If the completion handler is nil, an exception will be thrown. The block has, two parameters a `YTVimeoVideo` object, if the operation was completed successfully, and a `NSError` object describing the network or parsing error that may have occurred.
+
+### OS X Example
 
 ```objc
-[YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
-                               quality:YTVimeoVideoQualityHD1080
-                     completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
-    if (error) {
-    	// handle error
-    	NSLog(@"Video URL: %@", [videoURL absoluteString]);
-	} else {
-        // run player
-        dispatch_async (dispatch_get_main_queue(), ^{
-            self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-            [self.playerViewController.moviePlayer prepareToPlay];
-            [self presentViewController:self.playerViewController animated:YES completion:nil];
-       });
-	}
-}];
+[[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:@"https://vimeo.com/channels/staffpicks/147876560" withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+        
+        if (video) {
+            
+            NSDictionary *streamURLs = video.streamURLs;
+            //Will get the highest available quality.
+            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            
+            AVPlayer *player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:url]];
+    
+            self.playerView.player = player;
+            self.playerView.videoGravity = AVLayerVideoGravityResizeAspectFill;
+            [self.playerView.player play];
+
+        }else{
+            
+            [[NSAlert alertWithError:error]runModal];
+        }
+        
+    }];
+
 ```
 
-or create an instance of YTVimeoExtractor.
+### iOS Example
 
 ```objc
-self.extractor = [[YTVimeoExtractor alloc] initWithURL:@"http://vimeo.com/58600663" quality:YTVimeoVideoQualityHD1080];
-self.extractor.delegate = self;
-[self.extractor start];
-```
 
-and implement YTVimeoExtractor delegate methods in your ViewController.
-
-```objc
-- (void)vimeoExtractor:(YTVimeoExtractor *)extractor didSuccessfullyExtractVimeoURL:(NSURL *)videoURL withQuality:(YTVimeoVideoQuality)quality
-{
-    // handle success
-}
-
-- (void)vimeoExtractor:(YTVimeoExtractor *)extractor failedExtractingVimeoURLWithError:(NSError *)error;
-{
-    // handle error
-}
-```
-
-If the Vimeo videos have domain-level restrictions and can only be played from particular domains, it's easy to add a referer:
-
-```objc
-[YTVimeoExtractor fetchVideoURLFromURL:@"http://vimeo.com/58600663"
-                               quality:YTVimeoVideoQualityHD1080
-                               referer:@"http://www.mywebsite.com"
-                     completionHandler:^(NSURL *videoURL, NSError *error, YTVimeoVideoQuality quality) {
-    if (error) {
-        // handle error
-        NSLog(@"Video URL: %@", [videoURL absoluteString]);
-    } else {
-        // run player
-        dispatch_async (dispatch_get_main_queue(), ^{
-          self.playerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-          [self.playerViewController.moviePlayer prepareToPlay];
-          [self presentViewController:self.playerViewController animated:YES completion:nil];
-        });
-    }
-}];
-```
-
-Check the sample application for more details.
-
-## Requirements
-
-YTVimeoExtractor requires iOS 7.0 and above as it is deployed for an ARC environment.
+ [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:@"https://vimeo.com/channels/staffpicks/147876560" withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+        
+        if (video) {
+            
+            NSDictionary *streamURLs = video.streamURLs;
+            //Will get the highest available quality.
+            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            
+            NSURL *movieURL = [NSURL URLWithString:url];
+            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:movieURL];
+         
+            [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+        }else{
+           
+            UIAlertView *alertView = [[UIAlertView alloc]init];
+            alertView.title = error.localizedDescription;
+            alertView.message = error.localizedFailureReason;
+            [alertView addButtonWithTitle:@"OK"];
+            alertView.delegate = self;
+            [alertView show];
+            
+        }
+        
+    }];
+ ```
 
 ## License
 
-YTVimeoExtractor is licensed under the MIT License. See the LICENSE file for details.
+YTVimeoExtractor is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
