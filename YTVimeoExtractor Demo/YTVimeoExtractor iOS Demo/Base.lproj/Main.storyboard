@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Vimeo URL Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="som-V6-1i5">
+                                <rect key="frame" x="66" y="76" width="188" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGD-Pw-kwh">
+                                <rect key="frame" x="124" y="114" width="72" height="30"/>
+                                <state key="normal" title="Play Video"/>
+                                <connections>
+                                    <action selector="playVideoAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2f5-Wc-Ezn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBC-2c-Au7">
+                                <rect key="frame" x="20" y="151" width="285" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="xRP-z8-y82"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="eBC-2c-Au7" secondAttribute="trailing" constant="-1" id="7NQ-OS-DLv"/>
+                            <constraint firstItem="eBC-2c-Au7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="C2e-aW-y7X"/>
+                            <constraint firstItem="som-V6-1i5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JeJ-Vt-Mg2"/>
+                            <constraint firstItem="som-V6-1i5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="56" id="KDU-ee-K8O"/>
+                            <constraint firstItem="PGD-Pw-kwh" firstAttribute="centerX" secondItem="som-V6-1i5" secondAttribute="centerX" id="QSE-dL-vL7"/>
+                            <constraint firstItem="som-V6-1i5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="Uad-gd-IuQ"/>
+                            <constraint firstItem="PGD-Pw-kwh" firstAttribute="top" secondItem="som-V6-1i5" secondAttribute="bottom" constant="8" symbolic="YES" id="eLC-DA-7kD"/>
+                            <constraint firstItem="eBC-2c-Au7" firstAttribute="top" secondItem="PGD-Pw-kwh" secondAttribute="bottom" constant="7" id="mHC-l3-Aoe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="eBC-2c-Au7" id="f53-4j-r3I"/>
+                        <outlet property="urlField" destination="som-V6-1i5" id="Ggc-wu-9Xa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="142" y="364"/>
+        </scene>
+    </scenes>
+</document>
