@@ -98,7 +98,8 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     for (NSString *key in thumbnailsInfo) {
         
         NSInteger thumbnailquality = [key integerValue];
-        NSString *thumbnailURL = thumbnailsInfo[key];
+        NSString *thumbnailString = thumbnailsInfo[key];
+        NSURL *thumbnailURL = [NSURL URLWithString:thumbnailString];
         thumbnailURLs [@(thumbnailquality)] = thumbnailURL;
     }
     
