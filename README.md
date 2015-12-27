@@ -43,20 +43,26 @@ Use the two block methods in the `YTVimeoExtractor` class. Both methods will cal
 ### OS X Example
 
 ```objc
-[[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:@"https://vimeo.com/channels/staffpicks/147876560" withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+[[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:self.urlTextField.stringValue withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
         
         if (video) {
             
-            NSDictionary *streamURLs = video.streamURLs;
-            //Will get the highest available quality.
-            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            [self.titleTextField setStringValue:video.title];
             
-            AVPlayer *player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:url]];
+            //Will get the lowest available quality.
+            //NSURL *lowQualityURL = [video lowestQualityStreamURL];
+            
+            //Will get the highest available quality.
+            NSURL *highQualityURL = [video highestQualityStreamURL];
+            
+            
+            AVPlayer *player = [[AVPlayer alloc]initWithURL:highQualityURL];
     
             self.playerView.player = player;
             self.playerView.videoGravity = AVLayerVideoGravityResizeAspectFill;
             [self.playerView.player play];
-
+            [self.playerView becomeFirstResponder];
+        
         }else{
             
             [[NSAlert alertWithError:error]runModal];
@@ -64,23 +70,26 @@ Use the two block methods in the `YTVimeoExtractor` class. Both methods will cal
         
     }];
 
+
 ```
 
 ### iOS Example
 
 ```objc
 
- [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:@"https://vimeo.com/channels/staffpicks/147876560" withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+ [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:self.urlField.text withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
         
         if (video) {
             
-            NSDictionary *streamURLs = video.streamURLs;
-            //Will get the highest available quality.
-            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            self.titleLabel.text = [NSString stringWithFormat:@"Video Title: %@",video.title];
+            //Will get the lowest available quality.
+            //NSURL *lowQualityURL = [video lowestQualityStreamURL];
             
-            NSURL *movieURL = [NSURL URLWithString:url];
-            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:movieURL];
-         
+            //Will get the highest available quality.
+            NSURL *highQualityURL = [video highestQualityStreamURL];
+            
+            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:highQualityURL];
+
             [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
         }else{
            
@@ -105,12 +114,13 @@ If the Vimeo video has domain-level restrictions and can only be played from par
         
         if (video) {
             
-            NSDictionary *streamURLs = video.streamURLs;
-            //Will get the highest available quality.
-            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            //Will get the lowest available quality.
+            //NSURL *lowQualityURL = [video lowestQualityStreamURL];
             
-            NSURL *movieURL = [NSURL URLWithString:url];
-            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:movieURL];
+            //Will get the highest available quality.
+            NSURL *highQualityURL = [video highestQualityStreamURL];
+            
+            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:highQualityURL];
          
             [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
         }else{
