@@ -114,5 +114,19 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  *  A `NSDictionary` object that contains all the metadata about the video.
  */
 @property (nonatomic, readonly) NSDictionary *__nullable metaData;
+/**
+ *  Convenience method to get the highest quality stream URL.
+ *
+ *  @see YTVimeoVideoQuality
+ *  @return The highest quality stream URL.
+ */
+-(NSURL *__nullable)highestQualityStreamURL;
+/**
+ *  Convenience method to get the lowest quality stream URL.
+ *
+ *  @see YTVimeoVideoQuality
+ *  @return The lowest quality stream URL.
+ */
+-(NSURL *__nullable)lowestQualityStreamURL;
 
 @end
