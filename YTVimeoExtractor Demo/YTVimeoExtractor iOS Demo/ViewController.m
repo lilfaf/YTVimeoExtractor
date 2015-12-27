@@ -35,12 +35,13 @@
         if (video) {
             
             self.titleLabel.text = [NSString stringWithFormat:@"Video Title: %@",video.title];
-            NSDictionary *streamURLs = video.streamURLs;
-            //Will get the highest available quality.
-            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            //Will get the lowest available quality.
+            //NSURL *lowQualityURL = [video lowestQualityStreamURL];
             
-            NSURL *movieURL = [NSURL URLWithString:url];
-            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:movieURL];
+            //Will get the highest available quality.
+            NSURL *highQualityURL = [video highestQualityStreamURL];
+            
+            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:highQualityURL];
 
             [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
         }else{
