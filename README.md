@@ -1,6 +1,6 @@
 ## YTVimeoExtractor
 
-[![Build Status](https://travis-ci.org/SoneeJohn/YTVimeoExtractor.svg?branch=v1.0.0-develop)](https://travis-ci.org/SoneeJohn/YTVimeoExtractor)
+[![Build Status](https://travis-ci.org/lilfaf/YTVimeoExtractor.svg?branch=development)](https://travis-ci.org/lilfaf/YTVimeoExtractor)
 
 YTVimeoExtractor extracts the MP4 streams of Vimeo videos, which then can be used to play via a `MPMoviePlayerViewController` or `AVPlayerView`.
 
