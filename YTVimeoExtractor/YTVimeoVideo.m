@@ -72,11 +72,12 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
         
         NSInteger quality = [[info valueForKey:@"quality"]integerValue];
         NSString *urlString = info[@"url"];
+        NSURL *url = [NSURL URLWithString:urlString];
         
         //Only if the file is playable on OS X or iOS natively
         if([urlString rangeOfString:@".mp4"].location != NSNotFound){
             
-            streamURLs[@(quality)] = urlString;
+            streamURLs[@(quality)] = url;
             
         }
     }
