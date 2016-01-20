@@ -1,0 +1,6 @@
+framework module YTVimeoExtractor {
+  umbrella header "YTVimeoExtractor.h"
+
+  export *
+  module * { export * }
+}
