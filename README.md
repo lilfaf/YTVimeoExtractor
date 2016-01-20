@@ -56,7 +56,7 @@ To integrate YTVimeoExtractor into your Xcode project using Carthage, specify it
 your `Cartfile`:
 
 ```ogdl
-github "lilfaf/YTVimeoExtractor" ~> 3.0
+github "lilfaf/YTVimeoExtractor"
 ```
 
 Run `carthage` to build the framework and drag the built
