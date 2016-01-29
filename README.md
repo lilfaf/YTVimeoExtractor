@@ -1,6 +1,12 @@
 ## YTVimeoExtractor
 
+<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/lilfaf/YTVimeoExtractor.svg?branch=development)](https://travis-ci.org/lilfaf/YTVimeoExtractor)
+=======
+[![Build Status](https://travis-ci.org/lilfaf/YTVimeoExtractor.svg?branch=master)](https://travis-ci.org/lilfaf/YTVimeoExtractor)
+[![Carthage
+compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+>>>>>>> master
 
 YTVimeoExtractor extracts the MP4 streams of Vimeo videos, which then can be used to play via a `MPMoviePlayerViewController` or `AVPlayerView`.
 
@@ -22,6 +28,8 @@ YTVimeoExtractor extracts the MP4 streams of Vimeo videos, which then can be use
 
 ## Installation
 
+### CocoaPods
+
 The preferred way of installation is via [CocoaPods](http://cocoapods.org). Just add to your Podfile
 
 ```ruby
@@ -35,6 +43,29 @@ Alternatively you can just copy the YTVimeoExtractor folder to your project.
 ```objc
 #import "YTVimeoExtractor.h"
 ```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency
+manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following
+command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate YTVimeoExtractor into your Xcode project using Carthage, specify it in
+your `Cartfile`:
+
+```ogdl
+github "lilfaf/YTVimeoExtractor"
+```
+
+Run `carthage` to build the framework and drag the built
+`YTVimeoExtractor.framework` into your Xcode project.
 
 ## Usage
 
