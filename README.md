@@ -1,12 +1,8 @@
 ## YTVimeoExtractor
 
-<<<<<<< HEAD
-[![Build Status](https://travis-ci.org/lilfaf/YTVimeoExtractor.svg?branch=development)](https://travis-ci.org/lilfaf/YTVimeoExtractor)
-=======
 [![Build Status](https://travis-ci.org/lilfaf/YTVimeoExtractor.svg?branch=master)](https://travis-ci.org/lilfaf/YTVimeoExtractor)
 [![Carthage
 compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
->>>>>>> master
 
 YTVimeoExtractor extracts the MP4 streams of Vimeo videos, which then can be used to play via a `MPMoviePlayerViewController` or `AVPlayerView`.
 
