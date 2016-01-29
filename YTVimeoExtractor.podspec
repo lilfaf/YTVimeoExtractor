@@ -9,8 +9,7 @@ Pod::Spec.new do |s|
                     DESC
   s.homepage     = "https://github.com/lilfaf/YTVimeoExtractor"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.authors       = { "Louis Larpin" => "louis.larpin@gmail.com",
-                      "Soneé John"     => "sonee@alphasoftware"}                                         }
+  s.author       = { "Louis Larpin" => "louis.larpin@gmail.com" }
   s.source       = { :git => "https://github.com/lilfaf/YTVimeoExtractor.git", :tag => "1.0.0" }
 
   s.ios.deployment_target = '7.0'
