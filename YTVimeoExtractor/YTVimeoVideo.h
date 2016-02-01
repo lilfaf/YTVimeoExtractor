@@ -129,4 +129,5 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  */
 -(NSURL *__nullable)lowestQualityStreamURL;
 
+@property (nonatomic, readonly) NSURL *__nullable HTTPLiveStreamURL;
 @end
