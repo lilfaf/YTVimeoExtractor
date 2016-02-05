@@ -62,7 +62,7 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     
     
     NSArray *filesInfo = [self.infoDict valueForKeyPath:@"request.files.progressive"];
-    _HTTPLiveStreamURL = [NSURL URLWithString:[self.infoDict valueForKeyPath:@"request.files.hls.url"]]?:nil;
+    
     
     NSMutableDictionary *streamURLs = [NSMutableDictionary new];
     NSMutableDictionary *thumbnailURLs = [NSMutableDictionary new];
