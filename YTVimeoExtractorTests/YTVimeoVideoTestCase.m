@@ -80,6 +80,35 @@
     [self waitForExpectationsWithTimeout:15 handler:nil];
 }
 
+-(void)testConvenienceMethods{
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
+    
+    NSString *filePath = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"testdata.plist"];
+    
+    NSData *buffer = [NSData dataWithContentsOfFile:filePath];
+    NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:buffer];
+    
+    YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:@"147318819" info:myDictionary];
+    
+    [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
+        
+        XCTAssertNotNil(video.streamURLs);
+        
+        NSURL *highestURL = video.streamURLs[@(YTVimeoVideoQualityHD1080)] ?: video.streamURLs[@(YTVimeoVideoQualityHD720)] ?: video.streamURLs [@(YTVimeoVideoQualityMedium480)]?: video.streamURLs[@(YTVimeoVideoQualityMedium360)]?:video.streamURLs[@(YTVimeoVideoQualityLow270)];
+        
+        NSURL *lowestURL = video.streamURLs[@(YTVimeoVideoQualityLow270)] ?: video.streamURLs[@(YTVimeoVideoQualityMedium360)] ?: video.streamURLs[@(YTVimeoVideoQualityMedium480)]?: video.streamURLs[@(YTVimeoVideoQualityHD720)]?:video.streamURLs[@(YTVimeoVideoQualityHD1080)];
+        
+        XCTAssertEqual(highestURL, [video highestQualityStreamURL]);
+        
+        XCTAssertEqual(lowestURL, [video lowestQualityStreamURL]);
+
+        
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:15 handler:nil];
+}
+
 /*
 -(void)testUnsuitableStreamThatAlsoHasSuitableStreams{
     __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];

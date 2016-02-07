@@ -72,11 +72,12 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
         
         NSInteger quality = [[info valueForKey:@"quality"]integerValue];
         NSString *urlString = info[@"url"];
+        NSURL *url = [NSURL URLWithString:urlString];
         
         //Only if the file is playable on OS X or iOS natively
         if([urlString rangeOfString:@".mp4"].location != NSNotFound){
             
-            streamURLs[@(quality)] = urlString;
+            streamURLs[@(quality)] = url;
             
         }
     }
@@ -97,7 +98,8 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     for (NSString *key in thumbnailsInfo) {
         
         NSInteger thumbnailquality = [key integerValue];
-        NSString *thumbnailURL = thumbnailsInfo[key];
+        NSString *thumbnailString = thumbnailsInfo[key];
+        NSURL *thumbnailURL = [NSURL URLWithString:thumbnailString];
         thumbnailURLs [@(thumbnailquality)] = thumbnailURL;
     }
     
@@ -108,6 +110,20 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     });
 }
 
+#pragma mark -
+-(NSURL *)highestQualityStreamURL{
+    
+    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityHD1080)] ?: self.streamURLs[@(YTVimeoVideoQualityHD720)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium360)]?:self.streamURLs[@(YTVimeoVideoQualityLow270)];
+    
+    return url;
+}
+
+-(NSURL *)lowestQualityStreamURL{
+    
+    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityLow270)] ?: self.streamURLs[@(YTVimeoVideoQualityMedium360)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?:self.streamURLs[@(YTVimeoVideoQualityHD1080)];
+    
+    return url;
+}
 
 #pragma mark - NSObject
 - (NSString *) description

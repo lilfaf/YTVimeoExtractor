@@ -29,12 +29,14 @@
             
             [self.titleTextField setStringValue:video.title];
             
-            NSDictionary *streamURLs = video.streamURLs;
+            //Will get the lowest available quality.
+            //NSURL *lowQualityURL = [video lowestQualityStreamURL];
+            
             //Will get the highest available quality.
-            NSString *url = streamURLs[@(YTVimeoVideoQualityHD1080)] ?: streamURLs[@(YTVimeoVideoQualityHD720)] ?: streamURLs [@(YTVimeoVideoQualityMedium480)]?: streamURLs[@(YTVimeoVideoQualityMedium360)]?:streamURLs[@(YTVimeoVideoQualityLow270)];
+            NSURL *highQualityURL = [video highestQualityStreamURL];
             
             
-            AVPlayer *player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:url]];
+            AVPlayer *player = [[AVPlayer alloc]initWithURL:highQualityURL];
     
             self.playerView.player = player;
             self.playerView.videoGravity = AVLayerVideoGravityResizeAspectFill;
