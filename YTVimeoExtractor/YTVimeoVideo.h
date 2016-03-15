@@ -59,7 +59,21 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
     YTVimeoVideoQualityHD1080    = 1080,
 };
 
-/// YTVimeoVideo represents a Vimeo video. Use this class to access information about a particular video. Generally, you should not initialize this class, instead use the `<-[YTVimeoExtractor fetchVideoWithVimeoURL:withReferer:completionHandler:]>` or `<-[YTVimeoExtractor fetchVideoWithIdentifier:withReferer:completionHandler:]>` methods to get a `YTVimeoVideo` object.
+/**
+`YTVimeoVideo`represents a YouTube video. Use this class to access information about a particular video.
+
+@see `YTVimeoExtractor` to obtain a `YTVimeoVideo` object.
+
+@warning Do not manually initialize a `YTVimeoVideo` object. Using the `-init` method will throw an exception.
+
+## Subclassing Notes
+
+It is very important that you do not create a subclass of `YTVimeoVideo`
+
+## NSObject Notes
+
+`YTVimeoVideo` uses the `identifier` to determine the equality between two `YTVimeoVideo` objects. Calling `-isEqual:` on two `YTVimeoVideo` objects that contain the same identifiers will return `YES`, otherwise `-isEqual:` will return `NO`.
+*/
 @interface YTVimeoVideo : NSObject <NSCopying>
 /**
  *  ----------------------------
@@ -104,14 +118,14 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  */
 @property (nonatomic, readonly) NSDictionary *metaData;
 /**
- *  Get the highest quality stream URL.
+ *  Extracts the highest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The highest quality stream URL.
  */
 -(NSURL *)highestQualityStreamURL;
 /**
- *  Get the lowest quality stream URL.
+ *  Extracts the lowest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The lowest quality stream URL.
