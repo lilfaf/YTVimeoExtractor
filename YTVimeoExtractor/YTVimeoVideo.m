@@ -130,6 +130,17 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
 }
 
 #pragma mark - NSObject
+
+- (BOOL) isEqual:(id)object
+{
+    return [object isKindOfClass:[YTVimeoVideo class]] && [((YTVimeoVideo *)object).identifier isEqual:self.identifier];
+}
+
+-(NSUInteger)hash{
+    
+    return self.identifier.hash;
+}
+
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"[%@] %@", self.identifier, self.title];
