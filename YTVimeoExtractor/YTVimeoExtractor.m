@@ -26,7 +26,8 @@
     return sharedExtractor;
 }
 
-- (id)init {
+- (instancetype)init {
+    
     if (self = [super init]) {
         
         _extractorOperationQueue = [[NSOperationQueue alloc]init];

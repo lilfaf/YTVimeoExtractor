@@ -8,7 +8,7 @@
 
 #import "YTVimeoVideo.h"
 #import "YTVimeoError.h"
-
+#import "YTVimeoVideo+Private.h"
 @interface YTVimeoVideo ()
 @property (nonatomic, strong) NSDictionary *infoDict;
 
@@ -27,11 +27,15 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     NSParameterAssert(identifier);
     NSParameterAssert(info);
     
-    if (!(self = [super init]))
-        return nil; // LCOV_EXCL_LINE
+    self = [super init];
+    
+    if (self) {
+    
     _infoDict = [info copy];
     _identifier = identifier;
-    
+       
+    }
+ 
     return self;
 }
 #pragma mark - 
@@ -113,19 +117,30 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
 #pragma mark -
 -(NSURL *)highestQualityStreamURL{
     
-    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityHD1080)] ?: self.streamURLs[@(YTVimeoVideoQualityHD720)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium360)]?:self.streamURLs[@(YTVimeoVideoQualityLow270)];
+    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityHD1080)] ?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium360)]?:self.streamURLs[@(YTVimeoVideoQualityLow270)];
     
     return url;
 }
 
 -(NSURL *)lowestQualityStreamURL{
     
-    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityLow270)] ?: self.streamURLs[@(YTVimeoVideoQualityMedium360)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?:self.streamURLs[@(YTVimeoVideoQualityHD1080)];
+    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityLow270)] ?: self.streamURLs[@(YTVimeoVideoQualityMedium360)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?:self.streamURLs[@(YTVimeoVideoQualityHD1080)];
     
     return url;
 }
 
 #pragma mark - NSObject
+
+- (BOOL) isEqual:(id)object
+{
+    return [object isKindOfClass:[YTVimeoVideo class]] && [((YTVimeoVideo *)object).identifier isEqual:self.identifier];
+}
+
+-(NSUInteger)hash{
+    
+    return self.identifier.hash;
+}
+
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"[%@] %@", self.identifier, self.title];

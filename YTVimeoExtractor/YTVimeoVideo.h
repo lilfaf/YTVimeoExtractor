@@ -6,7 +6,16 @@
 //  Copyright © 2015 Louis Larpin. All rights reserved.
 //
 
+#if !__has_feature(nullability)
+#define NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_END
+#define nullable
+#endif
+
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  The various thumbnails of Vimeo videos. These values are used as keys in the `<[YTVimeoVideo thumbnailURLs]>` property.
  */
@@ -41,6 +50,10 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
      */
     YTVimeoVideoQualityMedium480 = 480,
     /**
+     *  A stream URL for a video of medium quality with a height of 540 pixels.
+     */
+    YTVimeoVideoQualityMedium540 = 540,
+    /**
      *  A stream URL for a video of HD quality with a height of 720 pixels.
      */
     YTVimeoVideoQualityHD720     = 720,
@@ -50,38 +63,22 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
     YTVimeoVideoQualityHD1080    = 1080,
 };
 
-/// YTVimeoVideo represents a Vimeo video. Use this class to access information about a particular video. Generally, you should not initialize this class, instead use the `<-[YTVimeoExtractor fetchVideoWithVimeoURL:withReferer:completionHandler:]>` or `<-[YTVimeoExtractor fetchVideoWithIdentifier:withReferer:completionHandler:]>` methods to get a `YTVimeoVideo` object.
-@interface YTVimeoVideo : NSObject
-
 /**
- *  ------------------
- *  @name Initializing
- *  ------------------
- */
+`YTVimeoVideo`represents a YouTube video. Use this class to access information about a particular video.
 
-/**
- *  Initializes a `YTVimeoVideo` video object with the specified identifier and info.
- *
- *  @param identifier A Vimeo video identifier. This parameter should not be `nil`
- *  @param info The dictionary that the class will use to parse out the data. This parameter should not be `nil`
- *
- *  @return A newly initialized `YTVimeoVideo` object.
- */
-- (nullable instancetype) initWithIdentifier:(NSString *_Nonnull)identifier info:(NSDictionary *_Nonnull)info;
+@see `YTVimeoExtractor` to obtain a `YTVimeoVideo` object.
 
-/**
- *  ----------------------------
- *  @name Extracting Information
- *  ----------------------------
- */
+@warning Do not manually initialize a `YTVimeoVideo` object. Using the `-init` method will throw an exception.
 
-/**
- *  Starts extracting information about the Vimeo video.
- *
- *  @param completionHandler A block to execute when the extraction process is finished. The completion handler is executed on the main thread. If the completion handler is nil, this method throws an exception.
- */
-- (void)extractVideoInfoWithCompletionHandler:(void (^_Nonnull)(NSError * __nullable error))completionHandler;
+## Subclassing Notes
 
+It is very important that you do not create a subclass of `YTVimeoVideo`
+
+## NSObject Notes
+
+`YTVimeoVideo` uses the `identifier` to determine the equality between two `YTVimeoVideo` objects. Calling `-isEqual:` on two `YTVimeoVideo` objects that contain the same identifiers will return `YES`, otherwise `-isEqual:` will return `NO`.
+*/
+@interface YTVimeoVideo : NSObject <NSCopying>
 /**
  *  ----------------------------
  *  @name Accessing Information
@@ -90,11 +87,11 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
 /**
  *  The Vimeo video identifier.
  */
-@property (nonatomic, readonly) NSString *__nullable identifier;
+@property (nonatomic, readonly) NSString *identifier;
 /**
  *  The title of the video.
  */
-@property (nonatomic, readonly) NSString *__nullable title;
+@property (nonatomic, readonly) NSString *title;
 /**
  *  The duration of the video in seconds.
  */
@@ -104,29 +101,40 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  *  A `NSDictionary` object that contains the various stream URLs.
  * @see YTVimeoVideoQuality
  */
-@property (nonatomic, readonly) NSDictionary<id, NSURL *> *__nullable streamURLs;
+#if __has_feature(objc_generics)
+@property (nonatomic, readonly) NSDictionary<id, NSURL *> *streamURLs;
+#else
+@property (nonatomic, readonly) NSDictionary *streamURLs;
+#endif
+
 /**
  *  A `NSDictionary` object that contains the various thumbnail URLs.
  *  @see YTVimeoVideoThumbnailQuality
  */
+#if __has_feature(objc_generics)
 @property (nonatomic, readonly) NSDictionary<id, NSURL *> *__nullable thumbnailURLs;
+#else
+@property (nonatomic, readonly) NSDictionary *thumbnailURLs;
+#endif
+
 /**
  *  A `NSDictionary` object that contains all the metadata about the video.
  */
-@property (nonatomic, readonly) NSDictionary *__nullable metaData;
+@property (nonatomic, readonly) NSDictionary *metaData;
 /**
- *  Get the highest quality stream URL.
+ *  Extracts the highest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The highest quality stream URL.
  */
--(NSURL *__nullable)highestQualityStreamURL;
+-(NSURL *)highestQualityStreamURL;
 /**
- *  Get the lowest quality stream URL.
+ *  Extracts the lowest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The lowest quality stream URL.
  */
--(NSURL *__nullable)lowestQualityStreamURL;
+-(NSURL *)lowestQualityStreamURL;
+NS_ASSUME_NONNULL_END
 
 @end
