@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019F95101C984EF400E2A405 /* YTVimeoVideo+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 019F950F1C984EF400E2A405 /* YTVimeoVideo+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		01AC343A1C1F21290015CAA6 /* YTVimeoExtractor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01AC342F1C1F21280015CAA6 /* YTVimeoExtractor.framework */; };
 		01AC34521C1F21750015CAA6 /* YTVimeoError.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC34491C1F21750015CAA6 /* YTVimeoError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		01AC34531C1F21750015CAA6 /* YTVimeoExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC344A1C1F21750015CAA6 /* YTVimeoExtractor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		019F950F1C984EF400E2A405 /* YTVimeoVideo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTVimeoVideo+Private.h"; sourceTree = "<group>"; };
 		01AC342F1C1F21280015CAA6 /* YTVimeoExtractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YTVimeoExtractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		01AC34341C1F21290015CAA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01AC34391C1F21290015CAA6 /* YTVimeoExtractorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YTVimeoExtractorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 				01AC344F1C1F21750015CAA6 /* YTVimeoURLParser.m */,
 				01AC34501C1F21750015CAA6 /* YTVimeoVideo.h */,
 				01AC34511C1F21750015CAA6 /* YTVimeoVideo.m */,
+				019F950F1C984EF400E2A405 /* YTVimeoVideo+Private.h */,
 				01AC34341C1F21290015CAA6 /* Info.plist */,
 			);
 			path = YTVimeoExtractor;
@@ -136,6 +139,7 @@
 				01AC34571C1F21750015CAA6 /* YTVimeoURLParser.h in Headers */,
 				01AC34531C1F21750015CAA6 /* YTVimeoExtractor.h in Headers */,
 				01AC34551C1F21750015CAA6 /* YTVimeoExtractorOperation.h in Headers */,
+				019F95101C984EF400E2A405 /* YTVimeoVideo+Private.h in Headers */,
 				01AC34591C1F21750015CAA6 /* YTVimeoVideo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

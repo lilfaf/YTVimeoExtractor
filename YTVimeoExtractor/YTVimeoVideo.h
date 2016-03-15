@@ -61,36 +61,6 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
 
 /// YTVimeoVideo represents a Vimeo video. Use this class to access information about a particular video. Generally, you should not initialize this class, instead use the `<-[YTVimeoExtractor fetchVideoWithVimeoURL:withReferer:completionHandler:]>` or `<-[YTVimeoExtractor fetchVideoWithIdentifier:withReferer:completionHandler:]>` methods to get a `YTVimeoVideo` object.
 @interface YTVimeoVideo : NSObject <NSCopying>
-
-/**
- *  ------------------
- *  @name Initializing
- *  ------------------
- */
-
-/**
- *  Initializes a `YTVimeoVideo` video object with the specified identifier and info.
- *
- *  @param identifier A Vimeo video identifier. This parameter should not be `nil`
- *  @param info The dictionary that the class will use to parse out the data. This parameter should not be `nil`
- *
- *  @return A newly initialized `YTVimeoVideo` object.
- */
-- (nullable instancetype) initWithIdentifier:(NSString *)identifier info:(NSDictionary *)info;
-
-/**
- *  ----------------------------
- *  @name Extracting Information
- *  ----------------------------
- */
-
-/**
- *  Starts extracting information about the Vimeo video.
- *
- *  @param completionHandler A block to execute when the extraction process is finished. The completion handler is executed on the main thread. If the completion handler is nil, this method throws an exception.
- */
-- (void)extractVideoInfoWithCompletionHandler:(void (^)(NSError * __nullable error))completionHandler;
-
 /**
  *  ----------------------------
  *  @name Accessing Information

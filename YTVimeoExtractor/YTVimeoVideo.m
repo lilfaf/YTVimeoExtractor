@@ -8,7 +8,7 @@
 
 #import "YTVimeoVideo.h"
 #import "YTVimeoError.h"
-
+#import "YTVimeoVideo+Private.h"
 @interface YTVimeoVideo ()
 @property (nonatomic, strong) NSDictionary *infoDict;
 

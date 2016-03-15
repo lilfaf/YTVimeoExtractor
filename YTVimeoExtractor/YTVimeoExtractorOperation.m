@@ -10,7 +10,7 @@
 #import "YTVimeoExtractor.h"
 #import "YTVimeoVideo.h"
 #import "YTVimeoError.h"
-
+#import "YTVimeoVideo+Private.h"
 
 
 NSString *const YTVimeoURL = @"https://vimeo.com/%@";
