@@ -6,7 +6,16 @@
 //  Copyright © 2015 Louis Larpin. All rights reserved.
 //
 
+#if !__has_feature(nullability)
+#define NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_END
+#define nullable
+#endif
+
 #import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  The various thumbnails of Vimeo videos. These values are used as keys in the `<[YTVimeoVideo thumbnailURLs]>` property.
  */
@@ -67,7 +76,7 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  *
  *  @return A newly initialized `YTVimeoVideo` object.
  */
-- (nullable instancetype) initWithIdentifier:(NSString *_Nonnull)identifier info:(NSDictionary *_Nonnull)info;
+- (nullable instancetype) initWithIdentifier:(NSString *)identifier info:(NSDictionary *)info;
 
 /**
  *  ----------------------------
@@ -80,7 +89,7 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  *
  *  @param completionHandler A block to execute when the extraction process is finished. The completion handler is executed on the main thread. If the completion handler is nil, this method throws an exception.
  */
-- (void)extractVideoInfoWithCompletionHandler:(void (^_Nonnull)(NSError * __nullable error))completionHandler;
+- (void)extractVideoInfoWithCompletionHandler:(void (^)(NSError * __nullable error))completionHandler;
 
 /**
  *  ----------------------------
@@ -128,5 +137,6 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  *  @return The lowest quality stream URL.
  */
 -(NSURL *__nullable)lowestQualityStreamURL;
+NS_ASSUME_NONNULL_END
 
 @end
