@@ -27,11 +27,15 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     NSParameterAssert(identifier);
     NSParameterAssert(info);
     
-    if (!(self = [super init]))
-        return nil; // LCOV_EXCL_LINE
+    self = [super init];
+    
+    if (self) {
+    
     _infoDict = [info copy];
     _identifier = identifier;
-    
+       
+    }
+ 
     return self;
 }
 #pragma mark - 
