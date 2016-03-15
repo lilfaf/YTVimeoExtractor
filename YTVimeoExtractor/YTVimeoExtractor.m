@@ -28,7 +28,9 @@
 
 - (instancetype)init {
     
-    if (self = [super init]) {
+    self = [super init];
+    
+    if (self) {
         
         _extractorOperationQueue = [[NSOperationQueue alloc]init];
         if ([_extractorOperationQueue respondsToSelector:@selector(qualityOfService)]) {

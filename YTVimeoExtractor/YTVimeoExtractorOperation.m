@@ -40,8 +40,11 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 -(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer{
     
     NSParameterAssert(videoIdentifier);
-    if (!(self = [super init]))
-        return nil;
+    
+    self = [super init];
+    
+    if (self) {
+        
     _videoIdentifier = videoIdentifier;
     _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoIdentifier]];
     
@@ -50,6 +53,8 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
         _referer = videoReferer;
     } else {
         _referer = [NSString stringWithFormat:YTVimeoURL, videoIdentifier];
+      }
+   
     }
 
     return self;
