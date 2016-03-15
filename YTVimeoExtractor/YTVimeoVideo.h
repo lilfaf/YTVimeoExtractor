@@ -99,11 +99,11 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
 /**
  *  The Vimeo video identifier.
  */
-@property (nonatomic, readonly) NSString *__nullable identifier;
+@property (nonatomic, readonly) NSString *identifier;
 /**
  *  The title of the video.
  */
-@property (nonatomic, readonly) NSString *__nullable title;
+@property (nonatomic, readonly) NSString *title;
 /**
  *  The duration of the video in seconds.
  */
@@ -113,30 +113,40 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
  *  A `NSDictionary` object that contains the various stream URLs.
  * @see YTVimeoVideoQuality
  */
-@property (nonatomic, readonly) NSDictionary<id, NSURL *> *__nullable streamURLs;
+#if __has_feature(objc_generics)
+@property (nonatomic, readonly) NSDictionary<id, NSURL *> *streamURLs;
+#else
+@property (nonatomic, readonly) NSDictionary *streamURLs;
+#endif
+
 /**
  *  A `NSDictionary` object that contains the various thumbnail URLs.
  *  @see YTVimeoVideoThumbnailQuality
  */
+#if __has_feature(objc_generics)
 @property (nonatomic, readonly) NSDictionary<id, NSURL *> *__nullable thumbnailURLs;
+#else
+@property (nonatomic, readonly) NSDictionary *thumbnailURLs;
+#endif
+
 /**
  *  A `NSDictionary` object that contains all the metadata about the video.
  */
-@property (nonatomic, readonly) NSDictionary *__nullable metaData;
+@property (nonatomic, readonly) NSDictionary *metaData;
 /**
  *  Get the highest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The highest quality stream URL.
  */
--(NSURL *__nullable)highestQualityStreamURL;
+-(NSURL *)highestQualityStreamURL;
 /**
  *  Get the lowest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The lowest quality stream URL.
  */
--(NSURL *__nullable)lowestQualityStreamURL;
+-(NSURL *)lowestQualityStreamURL;
 NS_ASSUME_NONNULL_END
 
 @end
