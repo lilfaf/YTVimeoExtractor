@@ -70,7 +70,7 @@ Use the two block methods in the `YTVimeoExtractor` class. Both methods will cal
 ### OS X Example
 
 ```objc
-[[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:self.urlTextField.stringValue withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+[[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:@"https://vimeo.com/channels/staffpicks/147876560" withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
         
         if (video) {
             
@@ -104,7 +104,7 @@ Use the two block methods in the `YTVimeoExtractor` class. Both methods will cal
 
 ```objc
 
- [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:self.urlField.text withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+ [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:@"https://vimeo.com/channels/staffpicks/147876560" withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
         
         if (video) {
             

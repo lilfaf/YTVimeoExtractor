@@ -48,7 +48,7 @@
     
     if (videoIdentifier.length == 0) {
         
-        NSError *invalidIDError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorInvalidVideoIdentifier userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The video identifier is invalid."}];
+        NSError *invalidIDError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorInvalidVideoIdentifier userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish successfully.", NSLocalizedFailureReasonErrorKey: @"The video identifier is invalid."}];
 
         completionHandler(nil, invalidIDError);
 
@@ -86,7 +86,7 @@
     
     if (videoURL.length == 0) {
         
-        NSError *invalidIDError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorInvalidVideoIdentifier userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The video identifier is invalid."}];
+        NSError *invalidIDError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorInvalidVideoIdentifier userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish successfully.", NSLocalizedFailureReasonErrorKey: @"The video identifier is invalid."}];
         
         completionHandler(nil, invalidIDError);
         
@@ -98,7 +98,7 @@
    
     if (isValidURL == NO) {
         
-        NSError *invalidIDError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorInvalidVideoIdentifier userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The video identifier is invalid."}];
+        NSError *invalidIDError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorInvalidVideoIdentifier userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish successfully.", NSLocalizedFailureReasonErrorKey: @"The video identifier is invalid."}];
         
         completionHandler(nil, invalidIDError);
 

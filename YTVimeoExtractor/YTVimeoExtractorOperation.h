@@ -46,7 +46,7 @@
  */
 
 /**
- *  Returns a `YTVimeoVideo` object if the operation finished sucessfully. Otherwise, will be `nil`.
+ *  Returns a `YTVimeoVideo` object if the operation finished successfully. Otherwise, will be `nil`.
  */
 @property (nonatomic, readonly) YTVimeoVideo *operationVideo;
 /**

@@ -48,7 +48,7 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     if (thumbnailsInfo.count == 0 || thumbnailsInfo == nil) {
         //Private video
         //This could also be a deleted video. However, the `YTVimeoExtractorOperation`class will catch deleted videos. 
-        NSError *privateError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRestrictedPlayback userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video is private."}];
+        NSError *privateError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRestrictedPlayback userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish successfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video is private."}];
         completionHandler(privateError);
         return;
     }
@@ -62,7 +62,7 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     
     
     NSArray *filesInfo = [self.infoDict valueForKeyPath:@"request.files.progressive"];
-    _HTTPLiveStreamURL = [NSURL URLWithString:[self.infoDict valueForKeyPath:@"request.files.hls.url"]]?:nil;
+    
     
     NSMutableDictionary *streamURLs = [NSMutableDictionary new];
     NSMutableDictionary *thumbnailURLs = [NSMutableDictionary new];
@@ -84,7 +84,7 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
     
     if (streamURLs.count == 0 || streamURLs == nil) {
         
-        NSError *unsuitableError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorNoSuitableStreamAvailable userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish sucessfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video does not have a suitable stream. The file cannot natively play on iOS or OS X."}];
+        NSError *unsuitableError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorNoSuitableStreamAvailable userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish successfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video does not have a suitable stream. The file cannot natively play on iOS or OS X."}];
         
         completionHandler(unsuitableError);
         return;
