@@ -5,6 +5,12 @@
 //  Created by Louis Larpin on 18/02/13.
 //
 
+#if !__has_feature(nullability)
+#define NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_END
+#define nullable
+#endif
+
 #import <Foundation/Foundation.h>
 #import "YTVimeoError.h"
 #import "YTVimeoExtractorOperation.h"
@@ -42,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param referer           The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
  *  @param completionHandler A block to execute when the extraction process is finished, which is executed on the main thread. If the completion handler is nil, this method throws an exception. The block has, two parameters a `YTVimeoVideo` object if, the operation was completed successfully and a `NSError` object describing the network or parsing error that may have occurred.
  */
--(void)fetchVideoWithIdentifier:(NSString *_Nonnull)videoIdentifier withReferer:(NSString *__nullable)referer completionHandler:(void (^_Nonnull)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
+-(void)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *__nullable)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
 /**
  *  Starts an asynchronous operation for the specified video URL, and referer, then calls a handler upon completion.
@@ -51,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param referer           The referer, if the Vimeo video has domain-level restrictions. If this value is `nil` then a default one will be used.
  *  @param completionHandler A block to execute when the extraction process is finished, which is executed on the main thread. If the completion handler is nil, this method throws an exception. The block has, two parameters a `YTVimeoVideo` object if, the operation was completed successfully and a `NSError` object describing the network or parsing error that may have occurred.
  */
--(void)fetchVideoWithVimeoURL:(NSString *_Nonnull)videoURL withReferer:(NSString *__nullable)referer completionHandler:(void (^_Nonnull)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
+-(void)fetchVideoWithVimeoURL:(NSString *)videoURL withReferer:(NSString *__nullable)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler;
 
 @end
 NS_ASSUME_NONNULL_END
