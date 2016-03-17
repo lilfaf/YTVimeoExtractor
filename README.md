@@ -4,6 +4,9 @@
 [![Carthage
 compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![codecov.io](https://codecov.io/github/lilfaf/YTVimeoExtractor/coverage.svg?branch=development)](https://codecov.io/github/lilfaf/YTVimeoExtractor?branch=development)
+[![GitHub release](https://img.shields.io/github/release/lilfaf/YTVimeoExtractor.svg)](https://github.com/lilfaf/YTVimeoExtractor/releases)
+[![CocoaPods Platform Status](https://img.shields.io/cocoapods/p/YTVimeoExtractor.svg)](https://github.com/lilfaf/YTVimeoExtractor/releases)
+[![CocoaPods Docs](https://img.shields.io/cocoapods/metrics/doc-percent/YTVimeoExtractor.svg)](http://cocoadocs.org/docsets/YTVimeoExtractor/)
 
 YTVimeoExtractor extracts the MP4 streams of Vimeo videos, which then can be used to play via a `MPMoviePlayerViewController` or `AVPlayerView`.
 
