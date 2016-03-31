@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/lilfaf/YTVimeoExtractor.svg?branch=master)](https://travis-ci.org/lilfaf/YTVimeoExtractor)
 [![Carthage
 compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![codecov.io](https://codecov.io/github/lilfaf/YTVimeoExtractor/coverage.svg?branch=development)](https://codecov.io/github/lilfaf/YTVimeoExtractor?branch=development)
+[![GitHub release](https://img.shields.io/github/release/lilfaf/YTVimeoExtractor.svg)](https://github.com/lilfaf/YTVimeoExtractor/releases)
+[![CocoaPods Platform Status](https://img.shields.io/cocoapods/p/YTVimeoExtractor.svg)](https://github.com/lilfaf/YTVimeoExtractor/releases)
+[![CocoaPods Docs](https://img.shields.io/cocoapods/metrics/doc-percent/YTVimeoExtractor.svg)](http://cocoadocs.org/docsets/YTVimeoExtractor/)
 
 YTVimeoExtractor extracts the MP4 streams of Vimeo videos, which then can be used to play via a `MPMoviePlayerViewController` or `AVPlayerView`.
 
@@ -20,7 +24,7 @@ YTVimeoExtractor extracts the MP4 streams of Vimeo videos, which then can be use
 | `YTVimeoExtractor`  |   The `YTVimeoExtractor` is the main class and its sole purpose is to fetch information about Vimeo videos. Use the two main methods `fetchVideoWithIdentifier:withReferer:completionHandler:` or `fetchVideoWithVimeoURL:withReferer:completionHandler:` to obtain video information.  |
 | `YTVimeoExtractorOperation`  |   `YTVimeoExtractorOperation` is a subclass of `NSOperation` and is used to fetch and parse out information about Vimeo videos. This a low level class. Generally speaking, you should use the higher level `YTVimeoExtractor` class.   |
 |`YTVimeoURLParser`			    |	`YTVimeoURLParser` is used to validate and parse put Vimeo URLs. The main purpose of the class is to check if a given URL can be handled by the `YTVimeoExtractor` class.|
-|`YTVimeoVideo`|  	`YTVimeoVideo` represents a Vimeo video. Use this class to access information about a particular video. Generally, you should not initialize this class, instead use the two main methods of the `YTVimeoExtractor` class.|
+|`YTVimeoVideo`|  	`YTVimeoVideo` represents a Vimeo video. Use this class to access information about a particular video.  Do not manually initialize a `YTVimeoVideo` object. Using the `-init` method will throw an exception, instead use the two main methods of the `YTVimeoExtractor` class to obtain a `YTVimeoVideo` object. |
 
 ## Installation
 

@@ -1,6 +1,6 @@
 //
 //  YTVimeoExtractorTestCase.m
-//  Sample
+//  YTVimeoExtractor
 //
 //  Created by Soneé John on 12/13/15.
 //  Copyright © 2015 Louis Larpin. All rights reserved.

@@ -35,7 +35,6 @@
             //Will get the highest available quality.
             NSURL *highQualityURL = [video highestQualityStreamURL];
             
-            
             AVPlayer *player = [[AVPlayer alloc]initWithURL:highQualityURL];
     
             self.playerView.player = player;

@@ -1,6 +1,6 @@
 //
 //  YTVimeoURLParser.m
-//  Sample
+//  YTVimeoExtractor
 //
 //  Created by Soneé Delano John on 12/2/15.
 //  Copyright © 2015 Louis Larpin. All rights reserved.

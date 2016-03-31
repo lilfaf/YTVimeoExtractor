@@ -1,17 +1,15 @@
 //
 //  YTVimeoExtractorOperation.m
-//  Sample
+//  YTVimeoExtractor
 //
 //  Created by Soneé Delano John on 11/28/15.
 //  Copyright © 2015 Louis Larpin. All rights reserved.
 //
 
 #import "YTVimeoExtractorOperation.h"
-#import "YTVimeoExtractor.h"
 #import "YTVimeoVideo.h"
+#import "YTVimeoVideo+Private.h"
 #import "YTVimeoError.h"
-
-
 
 NSString *const YTVimeoURL = @"https://vimeo.com/%@";
 NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/config";
@@ -42,8 +40,11 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 -(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer{
     
     NSParameterAssert(videoIdentifier);
-    if (!(self = [super init]))
-        return nil;
+    
+    self = [super init];
+    
+    if (self) {
+        
     _videoIdentifier = videoIdentifier;
     _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoIdentifier]];
     
@@ -52,6 +53,8 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
         _referer = videoReferer;
     } else {
         _referer = [NSString stringWithFormat:YTVimeoURL, videoIdentifier];
+      }
+   
     }
 
     return self;

@@ -1,6 +1,6 @@
 //
 //  YTVimeoVideoTestCase.m
-//  Sample
+//  YTVimeoExtractor
 //
 //  Created by Soneé Delano John on 12/2/15.
 //  Copyright © 2015 Louis Larpin. All rights reserved.
@@ -10,6 +10,7 @@
 #import "YTVimeoVideo.h"
 #import "YTVimeoExtractorOperation.h"
 #import "YTVimeoError.h"
+#import "YTVimeoVideo+Private.h"
 @interface YTVimeoVideoTestCase : XCTestCase
 
 @end
@@ -178,6 +179,35 @@
             
             [expectation fulfill];
         }];
+        
+        
+    };
+    
+    [operation start];
+    
+    [self waitForExpectationsWithTimeout:15 handler:nil];
+}
+
+#pragma mark -
+
+-(void)testEquality{
+    
+    __weak XCTestExpectation *expectation = [self expectationWithDescription:@""];
+    
+    YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:@"148222047" referer:nil];
+    
+    operation.completionBlock = ^{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+        
+        YTVimeoVideo *video1 = [[YTVimeoVideo alloc]initWithIdentifier:@"148222047" info:operation.jsonDict];
+        YTVimeoVideo *video2 = [[YTVimeoVideo alloc]initWithIdentifier:@"148222047" info:operation.jsonDict];
+        
+        XCTAssertEqualObjects(video1, video2, @"Both objects should be equal.");
+        [expectation fulfill];
+
+        
+#pragma clang diagnostic pop
         
         
     };
