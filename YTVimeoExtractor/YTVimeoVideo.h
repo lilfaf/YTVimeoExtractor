@@ -64,7 +64,7 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
 };
 
 /**
-`YTVimeoVideo`represents a YouTube video. Use this class to access information about a particular video.
+`YTVimeoVideo`represents a Vimeo video. Use this class to access information about a particular video.
 
 @see `YTVimeoExtractor` to obtain a `YTVimeoVideo` object.
 
