@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AC0B406C1DF50DF1000723B6"
-               BuildableName = "YTVimeoExtractor tvOS.framework"
+               BuildableName = "YTVimeoExtractor.framework"
                BlueprintName = "YTVimeoExtractor tvOS"
                ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AC0B406C1DF50DF1000723B6"
-            BuildableName = "YTVimeoExtractor tvOS.framework"
+            BuildableName = "YTVimeoExtractor.framework"
             BlueprintName = "YTVimeoExtractor tvOS"
             ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AC0B406C1DF50DF1000723B6"
-            BuildableName = "YTVimeoExtractor tvOS.framework"
+            BuildableName = "YTVimeoExtractor.framework"
             BlueprintName = "YTVimeoExtractor tvOS"
             ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
          </BuildableReference>
