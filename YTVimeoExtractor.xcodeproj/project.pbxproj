@@ -24,26 +24,6 @@
 		01AC34621C1F21ED0015CAA6 /* YTVimeoVideoTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC345E1C1F21ED0015CAA6 /* YTVimeoVideoTestCase.m */; };
 		01AC34641C1F21F70015CAA6 /* testdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 01AC34631C1F21F70015CAA6 /* testdata.json */; };
 		01AC34661C1F22980015CAA6 /* testdata.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01AC34651C1F22980015CAA6 /* testdata.plist */; };
-		AC0B40771DF50F19000723B6 /* YTVimeoError.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC34491C1F21750015CAA6 /* YTVimeoError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC0B40781DF50F19000723B6 /* YTVimeoExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC344A1C1F21750015CAA6 /* YTVimeoExtractor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC0B40791DF50F19000723B6 /* YTVimeoExtractorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC344C1C1F21750015CAA6 /* YTVimeoExtractorOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC0B407A1DF50F19000723B6 /* YTVimeoURLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC344E1C1F21750015CAA6 /* YTVimeoURLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC0B407B1DF50F19000723B6 /* YTVimeoVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC34501C1F21750015CAA6 /* YTVimeoVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC0B407C1DF50F19000723B6 /* YTVimeoVideo+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 019F950F1C984EF400E2A405 /* YTVimeoVideo+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		AC0B407D1DF50F2F000723B6 /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC344B1C1F21750015CAA6 /* YTVimeoExtractor.m */; };
-		AC0B407E1DF50F36000723B6 /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC344D1C1F21750015CAA6 /* YTVimeoExtractorOperation.m */; };
-		AC0B407F1DF50F36000723B6 /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC344F1C1F21750015CAA6 /* YTVimeoURLParser.m */; };
-		AC0B40801DF50F36000723B6 /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC34511C1F21750015CAA6 /* YTVimeoVideo.m */; };
-		AC57301C1DF491A5006C5B33 /* YTVimeoVideo+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 019F950F1C984EF400E2A405 /* YTVimeoVideo+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		AC57301D1DF491B6006C5B33 /* YTVimeoError.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC34491C1F21750015CAA6 /* YTVimeoError.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC57301E1DF491B6006C5B33 /* YTVimeoExtractor.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC344A1C1F21750015CAA6 /* YTVimeoExtractor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC57301F1DF491B6006C5B33 /* YTVimeoExtractorOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC344C1C1F21750015CAA6 /* YTVimeoExtractorOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC5730201DF491B6006C5B33 /* YTVimeoURLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC344E1C1F21750015CAA6 /* YTVimeoURLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC5730211DF491B6006C5B33 /* YTVimeoVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = 01AC34501C1F21750015CAA6 /* YTVimeoVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AC5730221DF491CE006C5B33 /* YTVimeoExtractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC344B1C1F21750015CAA6 /* YTVimeoExtractor.m */; };
-		AC5730231DF491D1006C5B33 /* YTVimeoExtractorOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC344D1C1F21750015CAA6 /* YTVimeoExtractorOperation.m */; };
-		AC5730241DF491D4006C5B33 /* YTVimeoURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC344F1C1F21750015CAA6 /* YTVimeoURLParser.m */; };
-		AC5730251DF491D8006C5B33 /* YTVimeoVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AC34511C1F21750015CAA6 /* YTVimeoVideo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +57,7 @@
 		01AC345E1C1F21ED0015CAA6 /* YTVimeoVideoTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTVimeoVideoTestCase.m; sourceTree = "<group>"; };
 		01AC34631C1F21F70015CAA6 /* testdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testdata.json; sourceTree = "<group>"; };
 		01AC34651C1F22980015CAA6 /* testdata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = testdata.plist; sourceTree = "<group>"; };
-		AC0B406D1DF50DF1000723B6 /* YTVimeoExtractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YTVimeoExtractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0B40751DF50E48000723B6 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		AC5730141DF48EBC006C5B33 /* YTVimeoExtractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YTVimeoExtractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5730171DF48EBC006C5B33 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "YTVimeoExtractor/Info-iOS.plist"; sourceTree = SOURCE_ROOT; };
 		AC98CDA81DF6398500400763 /* Info-iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		AC98CDB91DF63A1800400763 /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
@@ -101,20 +79,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC0B40691DF50DF1000723B6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5730101DF48EBC006C5B33 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -132,8 +96,6 @@
 			children = (
 				01AC342F1C1F21280015CAA6 /* YTVimeoExtractor.framework */,
 				01AC34391C1F21290015CAA6 /* YTVimeoExtractorTests.xctest */,
-				AC5730141DF48EBC006C5B33 /* YTVimeoExtractor.framework */,
-				AC0B406D1DF50DF1000723B6 /* YTVimeoExtractor.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,32 +152,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC0B406A1DF50DF1000723B6 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AC0B40771DF50F19000723B6 /* YTVimeoError.h in Headers */,
-				AC0B40781DF50F19000723B6 /* YTVimeoExtractor.h in Headers */,
-				AC0B40791DF50F19000723B6 /* YTVimeoExtractorOperation.h in Headers */,
-				AC0B407A1DF50F19000723B6 /* YTVimeoURLParser.h in Headers */,
-				AC0B407B1DF50F19000723B6 /* YTVimeoVideo.h in Headers */,
-				AC0B407C1DF50F19000723B6 /* YTVimeoVideo+Private.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5730111DF48EBC006C5B33 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AC57301D1DF491B6006C5B33 /* YTVimeoError.h in Headers */,
-				AC57301E1DF491B6006C5B33 /* YTVimeoExtractor.h in Headers */,
-				AC57301F1DF491B6006C5B33 /* YTVimeoExtractorOperation.h in Headers */,
-				AC5730201DF491B6006C5B33 /* YTVimeoURLParser.h in Headers */,
-				AC5730211DF491B6006C5B33 /* YTVimeoVideo.h in Headers */,
-				AC57301C1DF491A5006C5B33 /* YTVimeoVideo+Private.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -255,42 +191,6 @@
 			productReference = 01AC34391C1F21290015CAA6 /* YTVimeoExtractorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		AC0B406C1DF50DF1000723B6 /* YTVimeoExtractor tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AC0B40741DF50DF1000723B6 /* Build configuration list for PBXNativeTarget "YTVimeoExtractor tvOS" */;
-			buildPhases = (
-				AC0B40681DF50DF1000723B6 /* Sources */,
-				AC0B40691DF50DF1000723B6 /* Frameworks */,
-				AC0B406A1DF50DF1000723B6 /* Headers */,
-				AC0B406B1DF50DF1000723B6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "YTVimeoExtractor tvOS";
-			productName = "YTVimeoExtractor-tvos";
-			productReference = AC0B406D1DF50DF1000723B6 /* YTVimeoExtractor.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		AC5730131DF48EBC006C5B33 /* YTVimeoExtractor iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AC57301B1DF48EBC006C5B33 /* Build configuration list for PBXNativeTarget "YTVimeoExtractor iOS" */;
-			buildPhases = (
-				AC57300F1DF48EBC006C5B33 /* Sources */,
-				AC5730101DF48EBC006C5B33 /* Frameworks */,
-				AC5730111DF48EBC006C5B33 /* Headers */,
-				AC5730121DF48EBC006C5B33 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "YTVimeoExtractor iOS";
-			productName = YTVimeoExtractorIOS;
-			productReference = AC5730141DF48EBC006C5B33 /* YTVimeoExtractor.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -306,14 +206,6 @@
 					};
 					01AC34381C1F21290015CAA6 = {
 						CreatedOnToolsVersion = 7.2;
-					};
-					AC0B406C1DF50DF1000723B6 = {
-						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
-					};
-					AC5730131DF48EBC006C5B33 = {
-						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -331,8 +223,6 @@
 			targets = (
 				01AC342E1C1F21280015CAA6 /* YTVimeoExtractor */,
 				01AC34381C1F21290015CAA6 /* YTVimeoExtractorTests */,
-				AC5730131DF48EBC006C5B33 /* YTVimeoExtractor iOS */,
-				AC0B406C1DF50DF1000723B6 /* YTVimeoExtractor tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -351,20 +241,6 @@
 			files = (
 				01AC34661C1F22980015CAA6 /* testdata.plist in Resources */,
 				01AC34641C1F21F70015CAA6 /* testdata.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC0B406B1DF50DF1000723B6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC5730121DF48EBC006C5B33 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,28 +266,6 @@
 				01AC34621C1F21ED0015CAA6 /* YTVimeoVideoTestCase.m in Sources */,
 				01AC34611C1F21ED0015CAA6 /* YTVimeoURLParserTestCase.m in Sources */,
 				01AC345F1C1F21ED0015CAA6 /* YTVimeoExtractorOperationTestCase.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC0B40681DF50DF1000723B6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AC0B407F1DF50F36000723B6 /* YTVimeoURLParser.m in Sources */,
-				AC0B40801DF50F36000723B6 /* YTVimeoVideo.m in Sources */,
-				AC0B407E1DF50F36000723B6 /* YTVimeoExtractorOperation.m in Sources */,
-				AC0B407D1DF50F2F000723B6 /* YTVimeoExtractor.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC57300F1DF48EBC006C5B33 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AC5730241DF491D4006C5B33 /* YTVimeoURLParser.m in Sources */,
-				AC5730251DF491D8006C5B33 /* YTVimeoVideo.m in Sources */,
-				AC5730231DF491D1006C5B33 /* YTVimeoExtractorOperation.m in Sources */,
-				AC5730221DF491CE006C5B33 /* YTVimeoExtractor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +381,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.louis.larpin.YTVimeoExtractor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
 			};
 			name = Debug;
 		};
@@ -546,6 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.louis.larpin.YTVimeoExtractor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
 			};
 			name = Release;
 		};
@@ -570,112 +426,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.louis.larpin.YTVimeoExtractorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator";
-			};
-			name = Release;
-		};
-		AC0B40721DF50DF1000723B6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/YTVimeoExtractor/Info-tvOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.louis.larpin.YTVimeoExtractor;
-				PRODUCT_NAME = YTVimeoExtractor;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		AC0B40731DF50DF1000723B6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/YTVimeoExtractor/Info-tvOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.louis.larpin.YTVimeoExtractor;
-				PRODUCT_NAME = YTVimeoExtractor;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		AC5730191DF48EBC006C5B33 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/YTVimeoExtractor/Info-iOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.louis.larpin.YTVimeoExtractor;
-				PRODUCT_NAME = YTVimeoExtractor;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		AC57301A1DF48EBC006C5B33 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/YTVimeoExtractor/Info-iOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.louis.larpin.YTVimeoExtractor;
-				PRODUCT_NAME = YTVimeoExtractor;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -705,24 +455,6 @@
 			buildConfigurations = (
 				01AC34471C1F21290015CAA6 /* Debug */,
 				01AC34481C1F21290015CAA6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AC0B40741DF50DF1000723B6 /* Build configuration list for PBXNativeTarget "YTVimeoExtractor tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AC0B40721DF50DF1000723B6 /* Debug */,
-				AC0B40731DF50DF1000723B6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		AC57301B1DF48EBC006C5B33 /* Build configuration list for PBXNativeTarget "YTVimeoExtractor iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AC5730191DF48EBC006C5B33 /* Debug */,
-				AC57301A1DF48EBC006C5B33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
