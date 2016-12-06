@@ -26,9 +26,29 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "01AC34381C1F21290015CAA6"
+               BuildableName = "YTVimeoExtractorTests.xctest"
+               BlueprintName = "YTVimeoExtractorTests"
+               ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AC5730131DF48EBC006C5B33"
+            BuildableName = "YTVimeoExtractor.framework"
+            BlueprintName = "YTVimeoExtractor iOS"
+            ReferencedContainer = "container:YTVimeoExtractor.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
