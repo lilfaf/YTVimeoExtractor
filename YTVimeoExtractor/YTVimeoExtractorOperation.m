@@ -115,18 +115,18 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 }
 
 -(void)finishOperationWithError:(NSError *)error{
-    
     _error = error;
     [self finish];
-    
+    [self.networkSession invalidateAndCancel];
 }
 
 -(void)finishOperationWithVideo:(YTVimeoVideo *)video{
-    
     _operationVideo = video;
     _error = nil;
     [self finish];
+    [self.networkSession finishTasksAndInvalidate];
 }
+
 - (void)finish
 {
     self.isExecuting = NO;
