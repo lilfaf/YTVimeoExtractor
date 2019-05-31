@@ -10,6 +10,7 @@
 		010461E6229CA28700C7A41C /* YTVimeoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010461DC229CA28700C7A41C /* YTVimeoKit.framework */; };
 		010461EB229CA28700C7A41C /* YTVimeoKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010461EA229CA28700C7A41C /* YTVimeoKitTests.swift */; };
 		010461ED229CA28700C7A41C /* YTVimeoKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 010461DF229CA28700C7A41C /* YTVimeoKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01545E4322A0A88F000A7390 /* YTVimeoVideoWebpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01545E4222A0A88F000A7390 /* YTVimeoVideoWebpage.swift */; };
 		01A9647A229EDC6800C00E89 /* YTVimeoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A96479229EDC6800C00E89 /* YTVimeoOperation.swift */; };
 		01A9647C229EE35000C00E89 /* YTUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A9647B229EE35000C00E89 /* YTUtilities.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		010461E5229CA28700C7A41C /* YTVimeoKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YTVimeoKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		010461EA229CA28700C7A41C /* YTVimeoKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTVimeoKitTests.swift; sourceTree = "<group>"; };
 		010461EC229CA28700C7A41C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01545E4222A0A88F000A7390 /* YTVimeoVideoWebpage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTVimeoVideoWebpage.swift; sourceTree = "<group>"; };
 		01A96479229EDC6800C00E89 /* YTVimeoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTVimeoOperation.swift; sourceTree = "<group>"; };
 		01A9647B229EE35000C00E89 /* YTUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 			children = (
 				010461DF229CA28700C7A41C /* YTVimeoKit.h */,
 				01A96479229EDC6800C00E89 /* YTVimeoOperation.swift */,
+				01545E4222A0A88F000A7390 /* YTVimeoVideoWebpage.swift */,
 				01A9647B229EE35000C00E89 /* YTUtilities.swift */,
 				010461E0229CA28700C7A41C /* Info.plist */,
 			);
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01545E4322A0A88F000A7390 /* YTVimeoVideoWebpage.swift in Sources */,
 				01A9647A229EDC6800C00E89 /* YTVimeoOperation.swift in Sources */,
 				01A9647C229EE35000C00E89 /* YTUtilities.swift in Sources */,
 			);

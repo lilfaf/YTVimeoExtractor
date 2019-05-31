@@ -46,6 +46,8 @@ import Foundation
     fileprivate var dataTask: URLSessionDataTask?
     
     fileprivate var requestType: RequestType?
+    fileprivate var webpage: YTVimeoVideoWebpage?
+    
     //MARK: - Init
     
     public init(videoIdentifier: String, referer: String?) {
@@ -91,45 +93,9 @@ import Foundation
     }
     
     fileprivate func handleWatchPageRequest(HTML: String) {
-        guard let regex = try? NSRegularExpression(pattern: "vimeo\\.config\\s*=\\s*(?:(\\{.+?\\})|_extend\\([^,]+,\\s+(\\{.+?\\})\\));", options: []) else { return }
-        let matches = regex.matches(in: HTML, options: [], range: NSMakeRange(0, HTML.count))
+        webpage = YTVimeoVideoWebpage(html: HTML)
+        guard webpage?.vimeoConfiguration?["state"] as? String != "failed" else { return }
+        print(webpage?.configurationURL)
         
-        var vimeoConfiguration: [String : Any]?
-        
-        matches.forEach { (result) in
-            let groups = result.groups(string: HTML)
-            for string in groups {
-                guard let data = string.data(using: .utf8) else { continue }
-                guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else { continue }
-                vimeoConfiguration = json
-                break
-            }
-        }
-        
-        guard vimeoConfiguration?["state"] as? String != "failed" else { return }
-        var configurationURL: URL?
-        
-        let configURLRegex = try? NSRegularExpression(pattern: " data-config-url=\"(.+?)\"", options: [])
-        guard configURLRegex?.matches(in: HTML, options: [], range: NSMakeRange(0, HTML.count)).isEmpty ?? false else {
-            let regex = try? NSRegularExpression(pattern: "vimeo\\.clip_page_config\\s*=\\s*(\\{.+?\\});", options: [])
-            let matches = regex?.matches(in: HTML, options: [], range: NSMakeRange(0, HTML.count))
-            
-            var vimeoClipPageConfiguration: [String : Any]?
-            
-            matches?.forEach { (result) in
-                let groups = result.groups(string: HTML)
-                for string in groups {
-                    guard let data = string.data(using: .utf8) else { continue }
-                    guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else { continue }
-                    vimeoClipPageConfiguration = json
-                    break
-                }
-            }
-            guard let configurationURLString = (vimeoClipPageConfiguration as NSDictionary?)?.value(forKeyPath: "player.config_url") as? String else { return }
-            configurationURL = URL(string: configurationURLString)
-            return
-        }
-        
-        //TODO: Check matches from configURLRegex for alternative way to get configurationURL
     }
 }
