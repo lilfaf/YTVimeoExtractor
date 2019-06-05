@@ -36,11 +36,12 @@ import Cocoa
         var streamURLs: [YTVimeoVideoStreamQuality : URL] = [:]
         
         for info in progressiveData {
-            guard let height = info["height"] as? YTVimeoVideoStreamQuality else { continue }
+            guard let height = info["height"] as? UInt else { continue }
             guard let urlString = info["url"] as? String else { continue }
             guard let url = URL(string: urlString) else { continue }
+            guard let streamQuality = YTVimeoVideoStreamQuality(rawValue: height) else { continue }
             
-            streamURLs[height] = url
+            streamURLs[streamQuality] = url
         }
         
         guard streamURLs.isEmpty == false else { return nil }
