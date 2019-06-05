@@ -6,7 +6,7 @@
 //  Copyright © 2019 Louis Larpin. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 @objcMembers public class YTVimeoVideoStream: NSObject {
     
