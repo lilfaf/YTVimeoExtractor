@@ -17,7 +17,7 @@ import Cocoa
         }
     }
     
-    public var streamURLs: [YTVimeoVideoStreamQuality : URL]
+    public var streamURLs: [UInt : URL]
     public enum YTVimeoVideoStreamQuality: UInt {
         case low270 = 270
         case medium360 = 360
@@ -33,7 +33,7 @@ import Cocoa
         guard let progressiveData = (configuration  as NSDictionary).value(forKeyPath: "request.files.progressive") as? [[String : Any]] else { return nil }
         
         self.downloadConfiguration = downloadConfiguration
-        var streamURLs: [YTVimeoVideoStreamQuality : URL] = [:]
+        var streamURLs: [UInt : URL] = [:]
         
         for info in progressiveData {
             guard let height = info["height"] as? UInt else { continue }
@@ -41,7 +41,7 @@ import Cocoa
             guard let url = URL(string: urlString) else { continue }
             guard let streamQuality = YTVimeoVideoStreamQuality(rawValue: height) else { continue }
             
-            streamURLs[streamQuality] = url
+            streamURLs[streamQuality.rawValue] = url
         }
         
         guard streamURLs.isEmpty == false else { return nil }
