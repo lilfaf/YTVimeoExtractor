@@ -44,6 +44,8 @@ import Foundation
     public let videoIdentifier: String
     public let referer: String?
     
+    public var video: YTVimeoVideo?
+    
     fileprivate let session: URLSession
     fileprivate var dataTask: URLSessionDataTask?
     
@@ -161,6 +163,9 @@ import Foundation
     }
     
     fileprivate func finishWithVideo(configuration: [String : Any], downloadConfiguration: [String : Any]?) {
-        let video = try! YTVimeoVideo(videoIdentifier: videoIdentifier, configuration: configuration, downloadConfiguration: downloadConfiguration)
+        guard let video = try? YTVimeoVideo(videoIdentifier: videoIdentifier, configuration: configuration, downloadConfiguration: downloadConfiguration) else { return }
+        
+        self.video = video
+        state = .finished
     }
 }
