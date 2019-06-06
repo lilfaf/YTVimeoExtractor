@@ -22,6 +22,7 @@ import Foundation
     public let title: String
     public let duration: TimeInterval
     public let streams: [YTVimeoVideoStream]
+    public var sourceStream: YTVimeoVideoStream?
     
     internal init?(videoIdentifier: String, configuration: [String : Any], downloadConfiguration: [String : Any]?) throws {
         guard let videoInfo = configuration["video"] as? [String : Any] else { return nil }
@@ -47,7 +48,9 @@ import Foundation
             
             if (height != nil) && (width != nil) && urlString != nil {
                 let url = URL(string: urlString!)
-                streams.append(YTVimeoVideoStream(url: url!, size: .init(width: width!, height: height!), isSourceStream: true))
+                let stream = YTVimeoVideoStream(url: url!, size: .init(width: width!, height: height!), isSourceStream: true)
+                self.sourceStream = stream
+                streams.append(stream)
             }
         }
         //Sort the streams from biggest to smallest (first object being the largest size stream)
