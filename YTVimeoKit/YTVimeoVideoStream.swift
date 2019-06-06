@@ -10,41 +10,11 @@ import Foundation
 
 @objcMembers public class YTVimeoVideoStream: NSObject {
     
-    public var sourceURL: URL? {
-        get {
-            guard let sourceURLString = (downloadConfiguration as NSDictionary?)?.value(forKeyPath: "source_file.download_url") as? String else { return nil }
-            return URL(string: sourceURLString)
-        }
-    }
+    public let url: URL
+    public let size: NSSize
     
-    public var streamURLs: [UInt : URL]
-    public enum YTVimeoVideoStreamQuality: UInt {
-        case low270 = 270
-        case medium360 = 360
-        case medium480 = 480
-        case medium540 = 540
-        case HD720 = 720
-        case HD1080p = 1080
-    }
-    
-    fileprivate let downloadConfiguration: [String : Any]?
-
-    internal init?(configuration: [String : Any], downloadConfiguration: [String : Any]?) throws {
-        guard let progressiveData = (configuration  as NSDictionary).value(forKeyPath: "request.files.progressive") as? [[String : Any]] else { return nil }
-        
-        self.downloadConfiguration = downloadConfiguration
-        var streamURLs: [UInt : URL] = [:]
-        
-        for info in progressiveData {
-            guard let height = info["height"] as? UInt else { continue }
-            guard let urlString = info["url"] as? String else { continue }
-            guard let url = URL(string: urlString) else { continue }
-            guard let streamQuality = YTVimeoVideoStreamQuality(rawValue: height) else { continue }
-            
-            streamURLs[streamQuality.rawValue] = url
-        }
-        
-        guard streamURLs.isEmpty == false else { return nil }
-        self.streamURLs = streamURLs
+    internal init(url: URL, size: NSSize) {
+        self.url = url
+        self.size = size
     }
 }
