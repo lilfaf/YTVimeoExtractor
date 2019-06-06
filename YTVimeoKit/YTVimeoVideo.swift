@@ -9,6 +9,17 @@
 import Foundation
 
 @objcMembers public class YTVimeoVideo: NSObject {
+    
+    public enum YTVimeoVideoStreamQuality: Int {
+        public typealias RawValue = Int
+        case low270 = 270
+        case medium360 = 360
+        case medium480 = 480
+        case medium540 = 540
+        case HD720 = 720
+        case HD1080p = 1080
+    }
+    
     public let title: String
     public let duration: TimeInterval
     public let streams: [YTVimeoVideoStream]
@@ -35,5 +46,26 @@ import Foundation
         
         guard streams.isEmpty == false else { return nil }
         self.streams = streams
+    }
+    
+    public func streamQuality(desiredQuality: YTVimeoVideoStreamQuality) -> YTVimeoVideoStream? {
+        //Sort from smallest to largest
+        let sorted = self.streams.sorted(by: { ($0.size.height * $0.size.width) < ($1.size.height * $1.size.width) })
+        
+        let overStream = sorted.first(where: { Int($0.size.height) >= desiredQuality.rawValue })
+        let underStream = sorted.last(where: { Int($0.size.height) <= desiredQuality.rawValue })
+        
+        guard overStream != nil else {
+            return underStream
+        }
+        
+        guard underStream != nil else {
+            return overStream
+        }
+        
+        let diffOver = Int(overStream!.size.height) - desiredQuality.rawValue
+        let diffUnder = desiredQuality.rawValue - Int(underStream!.size.height)
+        
+        return (diffOver < diffUnder) ? overStream : underStream
     }
 }
