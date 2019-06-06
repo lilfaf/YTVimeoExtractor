@@ -10,8 +10,7 @@ import Foundation
 
 @objcMembers public class YTVimeoVideo: NSObject {
     
-    public enum YTVimeoVideoStreamQuality: Int {
-        public typealias RawValue = Int
+    @objc public enum YTVimeoVideoStreamQuality: Int {
         case low270 = 270
         case medium360 = 360
         case medium480 = 480
