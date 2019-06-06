@@ -41,8 +41,20 @@ import Foundation
             streams.append(YTVimeoVideoStream(url: url, size: .init(width: width, height: height)))
         }
         
+        if let sourceInfo = downloadConfiguration?["source_file"] as? [String : Any] {
+            let height = sourceInfo["height"] as? Int
+            let width = sourceInfo["width"] as? Int
+            let urlString = sourceInfo["download_url"] as? String
+            
+            if (height != nil) && (width != nil) && urlString != nil {
+                let url = URL(string: urlString!)
+                streams.append(YTVimeoVideoStream(url: url!, size: .init(width: width!, height: height!), isSourceStream: true))
+            }
+        }
         //Sort the streams from biggest to smallest (first object being the largest size stream)
         streams = streams.sorted(by: { ($0.size.height * $0.size.width) > ($1.size.height * $1.size.width) })
+        //The sourceStream should be placed first
+        streams = streams.sorted(by: { $0.isSourceStream || $1.isSourceStream == true })
         
         guard streams.isEmpty == false else { return nil }
         self.streams = streams
