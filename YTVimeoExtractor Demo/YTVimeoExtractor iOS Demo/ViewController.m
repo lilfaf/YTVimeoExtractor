@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "YTVimeoExtractor.h"
+#import <AVKit/AVKit.h>
 @interface ViewController ()
 
 @end
@@ -30,7 +31,7 @@
 }
 -(IBAction)playVideoAction:(id)sender{
     
-    [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:self.urlField.text withReferer:nil completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
+    [[YTVimeoExtractor sharedExtractor]fetchVideoWithVimeoURL:self.urlField.text withReferer:nil isLive: YES completionHandler:^(YTVimeoVideo * _Nullable video, NSError * _Nullable error) {
         
         if (video) {
             
@@ -41,9 +42,12 @@
             //Will get the highest available quality.
             NSURL *highQualityURL = [video highestQualityStreamURL];
             
-            MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc]initWithContentURL:highQualityURL];
-
-            [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+            AVPlayerViewController *moviePlayerViewController = [[AVPlayerViewController alloc] init];
+            moviePlayerViewController.player = [[AVPlayer alloc] initWithURL:highQualityURL];
+            moviePlayerViewController.showsPlaybackControls = YES;
+            [self presentViewController:moviePlayerViewController animated:YES completion:^{
+                [moviePlayerViewController.player play];
+            }];
         }else{
            
             UIAlertView *alertView = [[UIAlertView alloc]init];

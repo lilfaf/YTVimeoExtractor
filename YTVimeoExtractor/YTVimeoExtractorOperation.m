@@ -30,6 +30,8 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 
 @property (strong, nonatomic, readonly) NSURL *vimeoURL;
 
+@property (nonatomic, assign) BOOL isLive;
+
 @end
 @implementation YTVimeoExtractorOperation
 
@@ -65,6 +67,11 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
     return [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer];
 }
 
+- (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer isLive:(BOOL)isLive {
+    YTVimeoExtractorOperation *op = [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer];
+    op.isLive = isLive;
+    return op;
+}
 
 #pragma mark - NSOperation
 
@@ -217,19 +224,34 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
         }
         _jsonDict = jsonData;
         YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:self.videoIdentifier info:jsonData];
-        [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
-           
-            if (error) {
+        if (self.isLive) {
+            [video extractLiveVideoInfoWithCompletionHandler:^(NSError * _Nonnull error) {
+                if (error) {
+                    
+                    [self finishOperationWithError:error];
+                    
+                }else{
+                    
+                    [self finishOperationWithVideo:video];
+                    
+                }
+            }];
+        }
+        else {
+            [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
                 
-                [self finishOperationWithError:error];
-           
-            }else{
+                if (error) {
+                    
+                    [self finishOperationWithError:error];
+                    
+                }else{
+                    
+                    [self finishOperationWithVideo:video];
+                    
+                }
                 
-                [self finishOperationWithVideo:video];
-
-            }
-            
-        }];
+            }];
+        }
     }
     
 }
