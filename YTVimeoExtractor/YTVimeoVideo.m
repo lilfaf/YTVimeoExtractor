@@ -184,14 +184,18 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
 -(NSURL *)highestQualityStreamURL{
     
     NSURL *url = self.streamURLs[@(YTVimeoVideoQualityHD1080)] ?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium360)]?:self.streamURLs[@(YTVimeoVideoQualityLow270)]?:self.streamURLs[@(YTVimeoVideoQualityDefault)];
-    
+    if (url == nil) {
+        url = self.streamURLs.allValues.firstObject;
+    }
     return url;
 }
 
 -(NSURL *)lowestQualityStreamURL{
     
     NSURL *url = self.streamURLs[@(YTVimeoVideoQualityLow270)] ?: self.streamURLs[@(YTVimeoVideoQualityMedium360)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?:self.streamURLs[@(YTVimeoVideoQualityHD1080)]?:self.streamURLs[@(YTVimeoVideoQualityDefault)];
-    
+    if (url == nil) {
+        url = self.streamURLs.allValues.firstObject;
+    }
     return url;
 }
 

@@ -131,14 +131,14 @@ It is very important that you do not create a subclass of `YTVimeoVideo`
  *  @see YTVimeoVideoQuality
  *  @return The highest quality stream URL.
  */
--(NSURL *)highestQualityStreamURL;
+-(nullable NSURL *)highestQualityStreamURL;
 /**
  *  Extracts the lowest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The lowest quality stream URL.
  */
--(NSURL *)lowestQualityStreamURL;
+-(nullable NSURL *)lowestQualityStreamURL;
 /**
  *  The HTTP Live Stream URL for the video.
  */
