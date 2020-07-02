@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return An initialized `YTVimeoExtractorOperation` object.
  */
--(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *_Nullable)videoReferer;
+-(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *_Nullable)videoReferer isLive:(BOOL)isLive;
 /**
  *  Creates a new extractor operation with the specified Vimeo video URL and referer.
  *

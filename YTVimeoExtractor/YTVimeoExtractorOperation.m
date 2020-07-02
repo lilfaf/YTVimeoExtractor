@@ -39,7 +39,7 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 {
     @throw [NSException exceptionWithName:NSGenericException reason:@"Use the `initWithVideoIdentifier:referer`or `initWithURL:referer` method instead." userInfo:nil];
 }
--(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer{
+-(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer isLive:(BOOL)isLive {
     
     NSParameterAssert(videoIdentifier);
     
@@ -47,16 +47,16 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
     
     if (self) {
         
-    _videoIdentifier = videoIdentifier;
-    _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoIdentifier]];
-    
-    // use given referer or default to vimeo domain
-    if (videoReferer) {
-        _referer = videoReferer;
-    } else {
-        _referer = [NSString stringWithFormat:YTVimeoURL, videoIdentifier];
-      }
-   
+        _videoIdentifier = videoIdentifier;
+        _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoIdentifier]];
+        
+        // use given referer or default to vimeo domain
+        if (videoReferer) {
+            _referer = videoReferer;
+        } else {
+            _referer = [NSString stringWithFormat:YTVimeoURL, videoIdentifier];
+        }
+        self.isLive = isLive;
     }
 
     return self;
@@ -64,12 +64,11 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 
 - (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer{
     
-    return [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer];
+    return [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer isLive:false];
 }
 
 - (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer isLive:(BOOL)isLive {
-    YTVimeoExtractorOperation *op = [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer];
-    op.isLive = isLive;
+    YTVimeoExtractorOperation *op = [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer isLive:isLive];
     return op;
 }
 

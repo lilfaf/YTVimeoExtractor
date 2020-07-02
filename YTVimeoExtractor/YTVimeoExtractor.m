@@ -43,7 +43,7 @@
 }
 
 #pragma mark -
--(void)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *)referer completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler{
+-(void)fetchVideoWithIdentifier:(NSString *)videoIdentifier withReferer:(NSString *)referer isLive:(BOOL)isLive completionHandler:(void (^)(YTVimeoVideo * __nullable video, NSError * __nullable error))completionHandler{
     
     NSParameterAssert(videoIdentifier);
     if (!completionHandler)
@@ -58,7 +58,7 @@
         return;
     }
 
-    YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:videoIdentifier referer:referer];
+    YTVimeoExtractorOperation *operation = [[YTVimeoExtractorOperation alloc]initWithVideoIdentifier:videoIdentifier referer:referer isLive: isLive];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
     operation.completionBlock = ^{
