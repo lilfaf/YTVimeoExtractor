@@ -116,17 +116,86 @@ NSString *const YTVimeoVideoErrorDomain = @"YTVimeoVideoErrorDomain";
 }
 
 #pragma mark -
+- (void)extractLiveVideoInfoWithCompletionHandler:(void (^)(NSError *error))completionHandler{
+
+    if (!completionHandler)
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"The `completionHandler` must not be nil." userInfo:nil];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+    NSDictionary *videoInfo = [self.infoDict valueForKey:@"video"];
+    
+    NSDictionary *thumbnailsInfo = [videoInfo valueForKeyPath:@"thumbs"];
+    if (thumbnailsInfo.count == 0 || thumbnailsInfo == nil) {
+        //Private video
+        //This could also be a deleted video. However, the `YTVimeoExtractorOperation`class will catch deleted videos.
+        NSError *privateError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorRestrictedPlayback userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish successfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video is private."}];
+        completionHandler(privateError);
+        return;
+    }
+    
+    _metaData = videoInfo;
+
+    NSString *title = videoInfo[@"title"] ?: @"";
+    
+    _duration = [videoInfo[@"duration"] doubleValue];
+    _title = title;
+    
+        NSString *defaultCDN = [self.infoDict valueForKeyPath:@"request.files.hls.default_cdn"];
+        NSString *urlString = [self.infoDict valueForKeyPath:[[NSString alloc] initWithFormat:@"request.files.hls.cdns.%@.url", defaultCDN]];
+    
+    
+    NSMutableDictionary *streamURLs = [NSMutableDictionary new];
+    NSMutableDictionary *thumbnailURLs = [NSMutableDictionary new];
+    
+    _HTTPLiveStreamURL = [NSURL URLWithString:[self.infoDict valueForKeyPath:@"request.files.hls.url"]];
+        streamURLs[@(0)] = [NSURL URLWithString:urlString];
+    
+    if (streamURLs.count == 0 || streamURLs == nil) {
+        
+        NSError *unsuitableError = [NSError errorWithDomain:YTVimeoVideoErrorDomain code:YTVimeoErrorNoSuitableStreamAvailable userInfo:@{NSLocalizedDescriptionKey:@"The operation was unable to finish successfully.", NSLocalizedFailureReasonErrorKey: @"The requested Vimeo video does not have a suitable stream. The file cannot natively play on iOS or OS X."}];
+        
+        completionHandler(unsuitableError);
+        return;
+    
+    }else{
+        
+        _streamURLs = [streamURLs copy];
+    }
+    
+    
+    for (NSString *key in thumbnailsInfo) {
+        
+        NSInteger thumbnailquality = [key integerValue];
+        NSString *thumbnailString = thumbnailsInfo[key];
+        NSURL *thumbnailURL = [NSURL URLWithString:thumbnailString];
+        thumbnailURLs [@(thumbnailquality)] = thumbnailURL;
+    }
+    
+    _thumbnailURLs = [thumbnailURLs copy];
+    
+    completionHandler(nil);
+
+    });
+}
+
+
+#pragma mark -
 -(NSURL *)highestQualityStreamURL{
     
-    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityHD1080)] ?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium360)]?:self.streamURLs[@(YTVimeoVideoQualityLow270)];
-    
+    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityHD1080)] ?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium360)]?:self.streamURLs[@(YTVimeoVideoQualityLow270)]?:self.streamURLs[@(YTVimeoVideoQualityDefault)];
+    if (url == nil) {
+        url = self.streamURLs.allValues.firstObject;
+    }
     return url;
 }
 
 -(NSURL *)lowestQualityStreamURL{
     
-    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityLow270)] ?: self.streamURLs[@(YTVimeoVideoQualityMedium360)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?:self.streamURLs[@(YTVimeoVideoQualityHD1080)];
-    
+    NSURL *url = self.streamURLs[@(YTVimeoVideoQualityLow270)] ?: self.streamURLs[@(YTVimeoVideoQualityMedium360)] ?: self.streamURLs [@(YTVimeoVideoQualityMedium480)]?: self.streamURLs[@(YTVimeoVideoQualityMedium540)]?: self.streamURLs[@(YTVimeoVideoQualityHD720)]?:self.streamURLs[@(YTVimeoVideoQualityHD1080)]?:self.streamURLs[@(YTVimeoVideoQualityDefault)];
+    if (url == nil) {
+        url = self.streamURLs.allValues.firstObject;
+    }
     return url;
 }
 

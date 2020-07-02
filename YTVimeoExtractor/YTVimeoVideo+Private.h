@@ -31,5 +31,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)extractVideoInfoWithCompletionHandler:(void (^)(NSError *error))completionHandler;
 
+
+/**
+ *  Starts extracting information about the live Vimeo video.
+ *
+ *  @param completionHandler A block to execute when the extraction process is finished. The completion handler is executed on the main thread. If the completion handler is nil, this method throws an exception.
+ */
+- (void)extractLiveVideoInfoWithCompletionHandler:(void (^)(NSError *error))completionHandler;
+
 NS_ASSUME_NONNULL_END
 @end

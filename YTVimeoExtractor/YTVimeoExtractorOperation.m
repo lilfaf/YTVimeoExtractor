@@ -30,6 +30,8 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 
 @property (strong, nonatomic, readonly) NSURL *vimeoURL;
 
+@property (nonatomic, assign) BOOL isLive;
+
 @end
 @implementation YTVimeoExtractorOperation
 
@@ -37,7 +39,7 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 {
     @throw [NSException exceptionWithName:NSGenericException reason:@"Use the `initWithVideoIdentifier:referer`or `initWithURL:referer` method instead." userInfo:nil];
 }
--(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer{
+-(instancetype)initWithVideoIdentifier:(NSString *)videoIdentifier referer:(NSString *)videoReferer isLive:(BOOL)isLive {
     
     NSParameterAssert(videoIdentifier);
     
@@ -45,16 +47,16 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
     
     if (self) {
         
-    _videoIdentifier = videoIdentifier;
-    _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoIdentifier]];
-    
-    // use given referer or default to vimeo domain
-    if (videoReferer) {
-        _referer = videoReferer;
-    } else {
-        _referer = [NSString stringWithFormat:YTVimeoURL, videoIdentifier];
-      }
-   
+        _videoIdentifier = videoIdentifier;
+        _vimeoURL = [NSURL URLWithString:[NSString stringWithFormat:YTVimeoPlayerConfigURL, videoIdentifier]];
+        
+        // use given referer or default to vimeo domain
+        if (videoReferer) {
+            _referer = videoReferer;
+        } else {
+            _referer = [NSString stringWithFormat:YTVimeoURL, videoIdentifier];
+        }
+        self.isLive = isLive;
     }
 
     return self;
@@ -62,9 +64,13 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
 
 - (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer{
     
-    return [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer];
+    return [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer isLive:false];
 }
 
+- (instancetype)initWithURL:(NSString *)videoURL referer:(NSString *)videoReferer isLive:(BOOL)isLive {
+    YTVimeoExtractorOperation *op = [self initWithVideoIdentifier:videoURL.lastPathComponent referer:videoReferer isLive:isLive];
+    return op;
+}
 
 #pragma mark - NSOperation
 
@@ -217,19 +223,34 @@ NSString *const YTVimeoPlayerConfigURL = @"https://player.vimeo.com/video/%@/con
         }
         _jsonDict = jsonData;
         YTVimeoVideo *video = [[YTVimeoVideo alloc]initWithIdentifier:self.videoIdentifier info:jsonData];
-        [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
-           
-            if (error) {
+        if (self.isLive) {
+            [video extractLiveVideoInfoWithCompletionHandler:^(NSError * _Nonnull error) {
+                if (error) {
+                    
+                    [self finishOperationWithError:error];
+                    
+                }else{
+                    
+                    [self finishOperationWithVideo:video];
+                    
+                }
+            }];
+        }
+        else {
+            [video extractVideoInfoWithCompletionHandler:^(NSError * _Nullable error) {
                 
-                [self finishOperationWithError:error];
-           
-            }else{
+                if (error) {
+                    
+                    [self finishOperationWithError:error];
+                    
+                }else{
+                    
+                    [self finishOperationWithVideo:video];
+                    
+                }
                 
-                [self finishOperationWithVideo:video];
-
-            }
-            
-        }];
+            }];
+        }
     }
     
 }

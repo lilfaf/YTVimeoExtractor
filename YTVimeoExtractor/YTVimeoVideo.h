@@ -38,6 +38,10 @@ typedef NS_ENUM(NSUInteger, YTVimeoVideoThumbnailQuality) {
  */
 typedef NS_ENUM(NSUInteger, YTVimeoVideoQuality) {
     /**
+     *  A stream URL for a live video with default quality.
+     */
+    YTVimeoVideoQualityDefault    = 0,
+    /**
      *  A stream URL for a video of low quality with a height of 270 pixels.
      */
     YTVimeoVideoQualityLow270    = 270,
@@ -127,14 +131,14 @@ It is very important that you do not create a subclass of `YTVimeoVideo`
  *  @see YTVimeoVideoQuality
  *  @return The highest quality stream URL.
  */
--(NSURL *)highestQualityStreamURL;
+-(nullable NSURL *)highestQualityStreamURL;
 /**
  *  Extracts the lowest quality stream URL.
  *
  *  @see YTVimeoVideoQuality
  *  @return The lowest quality stream URL.
  */
--(NSURL *)lowestQualityStreamURL;
+-(nullable NSURL *)lowestQualityStreamURL;
 /**
  *  The HTTP Live Stream URL for the video.
  */
